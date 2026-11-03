@@ -1,0 +1,70 @@
+@startuml DER
+hide circle
+skinparam linetype ortho
+
+entity plantillas {
+  * id : int <<PK>>
+  --
+  nombre : varchar(200)
+  descripcion : text
+  version : int
+  estado : varchar(20)
+  plantilla_origen_id : int <<FK>> NULL
+  creada_en : datetime UTC
+}
+entity preguntas {
+  * id : int <<PK>>
+  --
+  plantilla_id : int <<FK>>
+  orden : int
+  enunciado : text
+  tipo : varchar(20)
+  obligatoria : bool
+  opciones_json : text
+}
+entity encuestas {
+  * id : int <<PK>>
+  --
+  plantilla_id : int <<FK>>
+  celda_programa_id : int
+  celda_asignatura_id : int
+  celda_curso_academico_id : int
+  programa_nombre : varchar(200)
+  asignatura_nombre : varchar(200)
+  curso_academico_etiqueta : varchar(20)
+  apertura : datetime UTC
+  cierre : datetime UTC
+  umbral_minimo : int
+  estado : varchar(20)
+  creada_por : varchar(200)
+  creada_en : datetime UTC
+}
+entity codigos_invitacion {
+  * id : int <<PK>>
+  --
+  encuesta_id : int <<FK>>
+  codigo_hash : char(64) <<UQ>>
+  consumido : bool
+}
+entity respuestas {
+  * id : char(32) <<PK>> uuid4
+  --
+  encuesta_id : int <<FK>>
+}
+entity respuesta_items {
+  * id : char(32) <<PK>> uuid4
+  --
+  respuesta_id : char(32) <<FK>>
+  pregunta_id : int <<FK>>
+  valor_entero : int NULL
+  valor_texto : text NULL
+}
+
+plantillas ||--o{ preguntas
+plantillas |o--o{ plantillas
+plantillas ||--o{ encuestas
+encuestas ||--o{ codigos_invitacion
+encuestas ||--o{ respuestas
+respuestas ||--o{ respuesta_items
+preguntas ||--o{ respuesta_items
+@enduml

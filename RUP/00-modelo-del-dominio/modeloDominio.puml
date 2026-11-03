@@ -1,0 +1,58 @@
+@startuml modeloDominio
+skinparam linetype ortho
+hide empty methods
+
+package "CELDA (dueño, PULSO solo consume)" #EEEEEE {
+  class Programa
+  class Asignatura
+  class CursoAcademico
+  class Profesor
+  Programa "1" o-- "*" Asignatura
+  Profesor "*" -- "*" Asignatura : imparte en\nCursoAcademico >
+  Profesor "*" -- "*" Programa : dirige >
+}
+
+package "PULSO" {
+  class Plantilla {
+    nombre
+    version
+    estado
+  }
+  class Pregunta {
+    orden
+    enunciado
+    tipo
+    obligatoria
+    opciones
+  }
+  class Encuesta {
+    apertura
+    cierre
+    umbralMinimo
+    estado
+  }
+  class CodigoInvitacion <<identidad>> {
+    consumido
+  }
+  class Respuesta <<contenido>>
+  class RespuestaItem {
+    valor
+  }
+
+  Plantilla "1" *-- "1..*" Pregunta
+  Plantilla "0..1" <-- "*" Plantilla : versión de >
+  Encuesta "*" --> "1" Plantilla
+  Encuesta "1" *-- "*" CodigoInvitacion
+  Encuesta "1" *-- "*" Respuesta
+  Respuesta "1" *-- "*" RespuestaItem
+  RespuestaItem "*" --> "1" Pregunta
+}
+
+Encuesta "*" ..> "1" Asignatura : contexto
+Encuesta "*" ..> "1" CursoAcademico : contexto
+Encuesta "*" ..> "1" Programa : contexto
+
+note "Sin asociación entre CodigoInvitacion y Respuesta:\nsaber QUIÉN participó no permite saber QUÉ contestó." as N1
+CodigoInvitacion .. N1
+Respuesta .. N1
+@enduml

@@ -1,0 +1,12 @@
+@startuml encuesta
+hide empty description
+[*] --> Borrador : crear (Gestor)
+Borrador : emitir códigos
+Borrador --> Abierta : abrir [códigos emitidos >= umbral]
+Abierta : emitir códigos
+Abierta : recibe respuestas [apertura <= ahora < cierre]
+Abierta --> Cerrada : cerrar (Gestor)\no vencimiento de la ventana
+Cerrada --> Publicada : publicar [respuestas >= umbral]
+Cerrada : sin umbral, queda aquí:\nresultados nunca visibles
+Publicada : visible a profesores de la\nasignatura y dirección del programa
+@enduml

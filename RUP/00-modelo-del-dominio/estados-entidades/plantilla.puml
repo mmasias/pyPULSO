@@ -1,0 +1,10 @@
+@startuml plantilla
+hide empty description
+[*] --> Borrador : crear
+Borrador : añadir preguntas
+Borrador --> Publicada : publicar [>= 1 pregunta]
+Publicada : inmutable
+Publicada --> Archivada : archivar
+Publicada --> [*] : nueva versión\n(crea otra Plantilla en Borrador)
+Archivada --> [*] : nueva versión
+@enduml

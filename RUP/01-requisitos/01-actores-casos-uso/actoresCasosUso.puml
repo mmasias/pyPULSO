@@ -1,0 +1,48 @@
+@startuml actoresCasosUso
+left to right direction
+actor "Gestor de calidad" as G
+actor "Alumno" as A
+actor "Profesor" as P
+actor "Director de programa" as D
+actor "CELDA" as C <<sistema>>
+
+rectangle "PULSO v1" {
+  usecase "crearPlantilla" as UC1
+  usecase "añadirPregunta" as UC2
+  usecase "publicarPlantilla" as UC3
+  usecase "versionarPlantilla" as UC4
+  usecase "archivarPlantilla" as UC5
+  usecase "crearEncuesta" as UC6
+  usecase "emitirCodigos" as UC7
+  usecase "abrirEncuesta" as UC8
+  usecase "cerrarEncuesta" as UC9
+  usecase "publicarResultados" as UC10
+  usecase "consultarParticipacion" as UC11
+  usecase "accederConCodigo" as UC12
+  usecase "responderEncuesta" as UC13
+  usecase "consultarResultados" as UC14
+  usecase "consultarEncuestas" as UC15
+}
+
+G --> UC1
+G --> UC2
+G --> UC3
+G --> UC4
+G --> UC5
+G --> UC6
+G --> UC7
+G --> UC8
+G --> UC9
+G --> UC10
+G --> UC11
+G --> UC14
+G --> UC15
+A --> UC12
+A --> UC13
+P --> UC14
+P --> UC15
+D --> UC14
+D --> UC15
+UC6 --> C
+UC14 --> C
+@enduml
