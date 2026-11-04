@@ -1,0 +1,121 @@
+{
+ "_fuente": "UNIB, 'Encuestas de satisfacción' (Encuestas-satisfaccion-Esp_v0r1), 2. Encuestas de satisfacción del personal administrativo, págs. 7-8. Texto literal.",
+ "_notas": [
+  "Escala de valoración del instrumento: 1 'nada satisfecho o en total desacuerdo', 7 'totalmente satisfecho o en total acuerdo' (tipo likert7).",
+  "Cabecera 'Curso académico' y 'Titulación': no son preguntas; los aporta el contexto de la encuesta.",
+  "Sin bloque de datos generales en el original.",
+  "Población pequeña (personal administrativo): el umbral mínimo de participación es la principal protección del anonimato."
+ ],
+ "nombre": "Encuesta de satisfacción del personal administrativo",
+ "descripcion": "Valore los siguientes aspectos del 1 al 7, siendo: 1 \"nada satisfecho o en total desacuerdo\" y 7 \"totalmente satisfecho o en total acuerdo\".",
+ "preguntas": [
+  {
+   "seccion": "Información y transparencia",
+   "tipo": "likert7",
+   "enunciado": "La información disponible en la web sobre títulos de grado y posgrado es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Información y transparencia",
+   "tipo": "likert7",
+   "enunciado": "La comunicación con los responsables y el equipo directivo es satisfactoria.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Información y transparencia",
+   "tipo": "likert7",
+   "enunciado": "La comunicación con el PDI es satisfactoria.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Información y transparencia",
+   "tipo": "likert7",
+   "enunciado": "La comunicación con el alumnado es satisfactoria.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Información y transparencia",
+   "tipo": "likert7",
+   "enunciado": "Los procesos de trabajo están bien definidos.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Información y transparencia",
+   "tipo": "likert7",
+   "enunciado": "Existen canales de comunicación efectivos para trasladar las quejas y sugerencias.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Instalaciones e infraestructuras",
+   "tipo": "likert7",
+   "enunciado": "Las condiciones ambientales de mi puesto de trabajo (iluminación, climatización, etc.) son adecuadas.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Instalaciones e infraestructuras",
+   "tipo": "likert7",
+   "enunciado": "Los recursos materiales que la universidad pone a su disposición son adecuados.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Instalaciones e infraestructuras",
+   "tipo": "likert7",
+   "enunciado": "El equipamiento de los espacios de trabajo y salas de reuniones permite la realización del trabajo con efectividad.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Instalaciones e infraestructuras",
+   "tipo": "likert7",
+   "enunciado": "La actualización de las funcionalidades del ÁGORA ha ido respondiendo a las necesidades del trabajo.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Instalaciones e infraestructuras",
+   "tipo": "likert7",
+   "enunciado": "La limpieza de las instalaciones de la universidad es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Instalaciones e infraestructuras",
+   "tipo": "likert7",
+   "enunciado": "El grado de satisfacción global con los recursos y servicios que ofrece la universidad es adecuado.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "El clima laboral es satisfactorio.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "La universidad proporciona información sobre temas que afectan a mi trabajo.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "La universidad me ofrece oportunidades para desarrollar mi carrera profesional.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "El trabajo que realizo es reconocido por la universidad.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "Me siento satisfecho de manera general con la universidad.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Observaciones",
+   "tipo": "texto_libre",
+   "obligatoria": false,
+   "enunciado": "Observaciones: añada brevemente cualquier otra opinión que quiera manifestar en relación a lo evaluado en la encuesta."
+  }
+ ]
+}

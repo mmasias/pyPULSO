@@ -33,7 +33,7 @@ class RespuestaItem(Base):
     id: Mapped[str] = mapped_column(String(32), primary_key=True, default=_uuid)
     respuesta_id: Mapped[str] = mapped_column(ForeignKey("respuestas.id"), index=True)
     pregunta_id: Mapped[int] = mapped_column(ForeignKey("preguntas.id"))
-    # likert5: 1..5; opcion_unica: indice de la opcion.
+    # likert5: 1..5; likert7: 1..7; opcion_unica: indice de la opcion.
     valor_entero: Mapped[int | None] = mapped_column(nullable=True)
     valor_texto: Mapped[str | None] = mapped_column(Text, nullable=True)
 

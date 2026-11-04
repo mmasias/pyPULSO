@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { post } from "../api/cliente";
-import type { Formulario, Pregunta } from "../api/tipos";
+import { ESCALAS, porSeccion, type Formulario, type Pregunta } from "../api/tipos";
 
 type Valor = { entero?: number; texto?: string };
 
@@ -40,7 +40,12 @@ export default function Participar() {
     }
   }
 
-  const fijar = (id: number, v: Valor) => setValores({ ...valores, [id]: v });
+  const fijar = (id: number, v: Valor | undefined) => {
+    const nuevos = { ...valores };
+    if (v === undefined) delete nuevos[id];
+    else nuevos[id] = v;
+    setValores(nuevos);
+  };
 
   if (enviado) {
     return (
@@ -74,8 +79,14 @@ export default function Participar() {
           {formulario.programa_nombre} · {formulario.curso_academico_etiqueta} · {formulario.plantilla_nombre}
         </p>
       </div>
-      {formulario.preguntas.map((p) => (
-        <CampoPregunta key={p.id} pregunta={p} valor={valores[p.id]} onCambio={(v) => fijar(p.id, v)} />
+      {formulario.plantilla_descripcion && <p className="instruccion">{formulario.plantilla_descripcion}</p>}
+      {porSeccion(formulario.preguntas).map((bloque, i) => (
+        <section key={i}>
+          {bloque.seccion && <h3 className="seccion">{bloque.seccion}</h3>}
+          {bloque.elementos.map((p) => (
+            <CampoPregunta key={p.id} pregunta={p} valor={valores[p.id]} onCambio={(v) => fijar(p.id, v)} />
+          ))}
+        </section>
       ))}
       <button type="submit">Enviar respuesta</button>
       {error && <p className="error">{error}</p>}
@@ -83,22 +94,25 @@ export default function Participar() {
   );
 }
 
-function CampoPregunta({ pregunta, valor, onCambio }: { pregunta: Pregunta; valor?: Valor; onCambio: (v: Valor) => void }) {
+function CampoPregunta({ pregunta, valor, onCambio }: { pregunta: Pregunta; valor?: Valor; onCambio: (v: Valor | undefined) => void }) {
   const nombre = `p${pregunta.id}`;
+  const escala = ESCALAS[pregunta.tipo];
   return (
     <fieldset className="tarjeta">
       <legend>
         {pregunta.orden}. {pregunta.enunciado} {pregunta.obligatoria && <span className="tenue">(obligatoria)</span>}
       </legend>
-      {pregunta.tipo === "likert5" && (
-        <div className="likert">
-          {[1, 2, 3, 4, 5].map((n) => (
-            <label key={n}>
-              <input type="radio" name={nombre} checked={valor?.entero === n} onChange={() => onCambio({ entero: n })} /> {n}
-            </label>
-          ))}
-          <span className="tenue">1 = muy en desacuerdo · 5 = muy de acuerdo</span>
-        </div>
+      {escala && (
+        <>
+          <div className="likert">
+            {Array.from({ length: escala.max }, (_, k) => k + 1).map((n) => (
+              <label key={n}>
+                <input type="radio" name={nombre} checked={valor?.entero === n} onChange={() => onCambio({ entero: n })} /> {n}
+              </label>
+            ))}
+          </div>
+          <p className="tenue extremos">1 = {escala.min_txt} · {escala.max} = {escala.max_txt}</p>
+        </>
       )}
       {pregunta.tipo === "opcion_unica" && (
         <div className="opciones">
@@ -108,6 +122,9 @@ function CampoPregunta({ pregunta, valor, onCambio }: { pregunta: Pregunta; valo
             </label>
           ))}
         </div>
+      )}
+      {!pregunta.obligatoria && pregunta.tipo !== "texto_libre" && valor !== undefined && (
+        <button type="button" className="secundario borrar" onClick={() => onCambio(undefined)}>Borrar respuesta</button>
       )}
       {pregunta.tipo === "texto_libre" && (
         <>

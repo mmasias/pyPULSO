@@ -23,11 +23,16 @@ export default function NuevaEncuesta() {
   useEffect(() => {
     if (f.programa)
       api<AsignaturaCatalogo[]>(`/api/catalogo/programas/${f.programa}/asignaturas`).then((as) =>
-        setAsignaturas([...as].sort((a, b) => a.codigo.localeCompare(b.codigo))),
+        setAsignaturas(
+          // La asignatura ENCUESTA (encuestas del programa entero) primero.
+          [...as].sort((a, b) => Number(b.codigo === "ENC") - Number(a.codigo === "ENC") || a.codigo.localeCompare(b.codigo)),
+        ),
       );
   }, [f.programa]);
 
   const niveles = [...new Set(programas.map((p) => p.nivel))];
+  const programaElegido = programas.find((p) => String(p.id) === f.programa);
+  const asignaturaElegida = asignaturas.find((a) => String(a.id) === f.asignatura);
 
   const campo = (k: keyof typeof f) => ({
     value: f[k],
@@ -79,6 +84,13 @@ export default function NuevaEncuesta() {
           </option>
         ))}
       </select>
+      {asignaturaElegida?.codigo === "ENC" && (
+        <p className="aviso-ambito">
+          {programaElegido?.nivel === "Institucional"
+            ? "Encuesta institucional: los resultados solo los ve el gestor de calidad."
+            : "Encuesta del programa entero: los resultados los ven el gestor y la dirección de este programa. Las encuestas del personal administrativo y de la facultad van en los programas PAS y FACULTAD."}
+        </p>
+      )}
       <label>Curso académico</label>
       <select {...campo("curso")} required>
         <option value="" />

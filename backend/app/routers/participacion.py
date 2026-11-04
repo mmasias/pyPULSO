@@ -30,6 +30,7 @@ def acceder(datos: AccederIn, request: Request, db: Session = Depends(get_db)):
         programa_nombre=encuesta.programa_nombre,
         curso_academico_etiqueta=encuesta.curso_academico_etiqueta,
         plantilla_nombre=encuesta.plantilla.nombre,
+        plantilla_descripcion=encuesta.plantilla.descripcion,
         preguntas=[PreguntaOut.model_validate(p) for p in encuesta.plantilla.preguntas],
     )
 

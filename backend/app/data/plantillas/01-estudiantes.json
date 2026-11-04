@@ -1,0 +1,202 @@
+{
+ "_fuente": "UNIB, 'Encuestas de satisfacción' (Encuestas-satisfaccion-Esp_v0r1), 1. Encuestas de satisfacción de estudiantes, págs. 3-5. Texto literal.",
+ "_notas": [
+  "Escala de valoración del instrumento: 1 'nada satisfecho o en total desacuerdo', 7 'totalmente satisfecho o en total acuerdo' (tipo likert7).",
+  "Cabecera 'Curso académico' y 'Titulación': no son preguntas; los aporta el contexto de la encuesta.",
+  "Errata del instrumento, cargada literal: los tramos de edad se solapan en sus límites (20 - 25 y 25 - 30, etc.).",
+  "Numeración del original: 1-19, bloque TFM numerado 1-3 (corresponde a 20-22) y 23-25. Aquí manda el orden.",
+  "Datos generales opcionales: en grupos pequeños, sexo + edad + país pueden identificar al respondente.",
+  "Bloque TFM en rojo en el original (posible borrador); sus preguntas son opcionales."
+ ],
+ "nombre": "Encuesta de satisfacción de estudiantes",
+ "descripcion": "Valore los siguientes aspectos del 1 al 7, siendo: 1 \"nada satisfecho o en total desacuerdo\" y 7 \"totalmente satisfecho o en total acuerdo\".",
+ "preguntas": [
+  {
+   "seccion": "Datos generales",
+   "tipo": "opcion_unica",
+   "enunciado": "Sexo",
+   "opciones": [
+    "Hombre",
+    "Mujer"
+   ],
+   "obligatoria": false
+  },
+  {
+   "seccion": "Datos generales",
+   "tipo": "opcion_unica",
+   "enunciado": "Edad",
+   "opciones": [
+    "<20",
+    "20 - 25",
+    "25 - 30",
+    "30 - 40",
+    "40 - 50",
+    "50 - 60",
+    ">60"
+   ],
+   "obligatoria": false
+  },
+  {
+   "seccion": "Datos generales",
+   "tipo": "texto_libre",
+   "enunciado": "País",
+   "obligatoria": false
+  },
+  {
+   "seccion": "Atención al estudiante",
+   "tipo": "likert7",
+   "enunciado": "La información disponible en la web de la universidad sobre la titulación es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Atención al estudiante",
+   "tipo": "likert7",
+   "enunciado": "La atención prestada por el Personal de Administración y Servicios (admisiones - secretaría académica) es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Atención al estudiante",
+   "tipo": "likert7",
+   "enunciado": "Los trámites de matrícula y gestión del expediente son adecuados.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "La distribución y secuenciación de asignaturas en el plan de estudios es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "Los contenidos se trabajan de manera coordinada y no presentan vacíos.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "El tiempo dedicado al estudio de las asignaturas es proporcional al volumen de contenidos y tareas que comprende.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "El profesorado orienta el proceso de aprendizaje de forma efectiva.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "El profesorado motiva a aprender y profundizar en el conocimiento de la asignatura.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "El profesorado presenta dominio de los contenidos trabajados en las asignaturas.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "El profesorado interactúa en los foros de manera adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "El profesorado se muestra accesible y atiende las consultas con eficacia en el tiempo indicado.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "Los materiales didácticos presentan un lenguaje claro que favorece el aprendizaje autónomo.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "Las actividades formativas y de evaluación favorecen un buen aprendizaje.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "La utilidad del material didáctico es satisfactoria.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "Las actividades de evaluación miden de manera adecuada los aprendizajes de los estudiantes.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Organización docente y profesorado",
+   "tipo": "likert7",
+   "enunciado": "Su satisfacción global con el profesorado es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Infraestructuras",
+   "tipo": "likert7",
+   "enunciado": "Las interfaces del PANAL y campus virtual son atractivas y de fácil manejo.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Infraestructuras",
+   "tipo": "likert7",
+   "enunciado": "La biblioteca virtual presenta fuentes bibliográficas relevantes y facilitan el estudio del contenido de las asignaturas.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Infraestructuras",
+   "tipo": "likert7",
+   "enunciado": "La atención del soporte técnico es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Trabajo de Fin de Máster (solo para alumnos que hayan matriculado la asignatura)",
+   "tipo": "likert7",
+   "enunciado": "La información recibida para la realización de TFM y la defensa oral es adecuada (plazos, criterios de evaluación, formato).",
+   "obligatoria": false
+  },
+  {
+   "seccion": "Trabajo de Fin de Máster (solo para alumnos que hayan matriculado la asignatura)",
+   "tipo": "likert7",
+   "enunciado": "La atención recibida (accesibilidad, calidad de la atención) por parte del tutor de TFM es adecuada.",
+   "obligatoria": false
+  },
+  {
+   "seccion": "Trabajo de Fin de Máster (solo para alumnos que hayan matriculado la asignatura)",
+   "tipo": "likert7",
+   "enunciado": "Su satisfacción global con el TFM es adecuada.",
+   "obligatoria": false
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "Su satisfacción global con el proceso de aprendizaje es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "Su satisfacción global con el cumplimiento de expectativas iniciales es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "Su satisfacción global con la titulación es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Observaciones",
+   "tipo": "texto_libre",
+   "obligatoria": false,
+   "enunciado": "Observaciones: añada brevemente cualquier otra opinión que quiera manifestar en relación a lo evaluado en la encuesta."
+  }
+ ]
+}

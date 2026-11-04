@@ -4,7 +4,7 @@ from collections import Counter
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import Encuesta, RespuestaItem, Respuesta, TipoPregunta
+from app.models import ESCALAS, Encuesta, RespuestaItem, Respuesta, TipoPregunta
 from app.schemas.resultados import ResultadoPregunta, ResultadosOut
 from app.services.encuestas import contar_respuestas
 
@@ -44,12 +44,13 @@ def agregar(db: Session, encuesta: Encuesta) -> ResultadosOut:
             orden=pregunta.orden,
             enunciado=pregunta.enunciado,
             tipo=pregunta.tipo,
+            seccion=pregunta.seccion,
             n=len(propios),
         )
-        if pregunta.tipo == TipoPregunta.LIKERT5:
+        if pregunta.tipo in ESCALAS:
             valores = [i.valor_entero for i in propios]
             conteo = Counter(valores)
-            r.distribucion = {str(k): conteo.get(k, 0) for k in range(1, 6)}
+            r.distribucion = {str(k): conteo.get(k, 0) for k in range(1, ESCALAS[pregunta.tipo] + 1)}
             r.media = round(sum(valores) / len(valores), 2) if valores else None
         elif pregunta.tipo == TipoPregunta.OPCION_UNICA:
             conteo = Counter(i.valor_entero for i in propios)

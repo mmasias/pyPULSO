@@ -12,6 +12,7 @@ from sqlalchemy.orm import Session
 
 from app.core.codigos import hash_codigo
 from app.models import (
+    ESCALAS,
     CodigoInvitacion,
     Encuesta,
     EstadoEncuesta,
@@ -74,8 +75,8 @@ def _validar_items(plantilla: Plantilla, datos: EnviarIn) -> list[RespuestaItem]
 
         if item.valor_texto is not None or item.valor_entero is None:
             raise Invalido(f"Pregunta {pregunta.id}: se esperaba valor entero")
-        if pregunta.tipo == TipoPregunta.LIKERT5:
-            limite = range(1, 6)
+        if pregunta.tipo in ESCALAS:
+            limite = range(1, ESCALAS[pregunta.tipo] + 1)
         else:
             limite = range(len(pregunta.opciones))
         if item.valor_entero not in limite:

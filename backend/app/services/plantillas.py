@@ -33,6 +33,7 @@ def anadir_pregunta(db: Session, plantilla_id: int, datos: PreguntaIn) -> Planti
         enunciado=datos.enunciado,
         tipo=datos.tipo,
         obligatoria=datos.obligatoria,
+        seccion=(datos.seccion or "").strip() or None,
     )
     pregunta.opciones = datos.opciones
     plantilla.preguntas.append(pregunta)
@@ -72,7 +73,11 @@ def nueva_version(db: Session, plantilla_id: int) -> Plantilla:
     )
     for p in origen.preguntas:
         nueva = Pregunta(
-            orden=p.orden, enunciado=p.enunciado, tipo=p.tipo, obligatoria=p.obligatoria
+            orden=p.orden,
+            enunciado=p.enunciado,
+            tipo=p.tipo,
+            obligatoria=p.obligatoria,
+            seccion=p.seccion,
         )
         nueva.opciones = p.opciones
         copia.preguntas.append(nueva)

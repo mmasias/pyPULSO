@@ -44,8 +44,8 @@ Un gestor de encuestas docentes construido sobre el catálogo de [CELDA](https:/
 ### Gestor de calidad
 
 1. Inicia sesión en la página de entrada.
-1. Crea una plantilla, añade preguntas (escala 1-5, opción única, texto libre) y la publica.
-1. Crea una encuesta: plantilla, programa, asignatura, curso académico, ventana y umbral.
+1. Usa una plantilla institucional (cargadas desde `backend/app/data/plantillas/` con `python -m app.cargar_plantillas`) o crea una: preguntas de escala 1-5 o 1-7, opción única o texto libre, agrupadas por sección.
+1. Crea una encuesta: plantilla, programa, asignatura, curso académico, ventana y umbral. Las encuestas del programa entero (p. ej. satisfacción de estudiantes) se crean sobre la asignatura `ENC · ENCUESTA` que tiene cada programa; las del personal administrativo y de la facultad, sobre los programas internos `PAS` y `FACULTAD` (resultados solo para el gestor).
 1. Emite tantos códigos como alumnos y los descarga (se muestran una sola vez).
 1. Abre la encuesta y sigue la participación (solo recuento: el contenido no se ve hasta el cierre).
 1. La cierra (o vence la ventana) y la publica si alcanza el umbral.
@@ -76,7 +76,7 @@ npm install
 npm run dev                   # http://localhost:5173 (proxy /api -> :8000)
 ```
 
-La página de entrada (`/`) tiene el login del personal (usuario y contraseña) y el acceso del alumno (`/participar`); el resto de la aplicación (`/app`) exige sesión. La cuenta de acceso se configura en `backend/.env` (`ACCESO_USUARIO` y `ACCESO_CLAVE_HASH`, generado con `python3 -m app.core.claves`) y tiene rol Gestor de calidad. El catálogo es el de UNIB (20 programas, 783 asignaturas, extraído de unib.org por `backend/scripts/generar_catalogo_unib.py`); profesores y director, sin cuenta con contraseña todavía, son identidades ficticias que solo se usan en desarrollo por la cabecera `X-Dev-User` (tests y `curl`):
+La página de entrada (`/`) tiene el login del personal (usuario y contraseña) y el acceso del alumno (`/participar`); el resto de la aplicación (`/app`) exige sesión. La cuenta de acceso se configura en `backend/.env` (`ACCESO_USUARIO` y `ACCESO_CLAVE_HASH`, generado con `python3 -m app.core.claves`) y tiene rol Gestor de calidad. El catálogo es el de UNIB (20 programas y 783 asignaturas extraídos de unib.org por `backend/scripts/generar_catalogo_unib.py`, más los programas internos PAS y FACULTAD y una asignatura `ENC · ENCUESTA` por programa: 22 programas y 805 asignaturas); profesores y director, sin cuenta con contraseña todavía, son identidades ficticias que solo se usan en desarrollo por la cabecera `X-Dev-User` (tests y `curl`):
 
 | Identidad | Rol |
 |---|---|
@@ -246,6 +246,8 @@ cd /opt/pulso/backend
 sudo -u pulso -H env UV_PYTHON_PREFERENCE=only-system uv sync --frozen --no-dev
 sudo -u pulso -H install -m 600 .env.example .env      # rellenar según la tabla de variables
 sudo -u pulso -H .venv/bin/python -m app.core.claves    # hash para ACCESO_CLAVE_HASH, entre comillas simples
+# Plantillas institucionales (app/data/plantillas); --migrar añade columnas nuevas a una BD existente
+sudo -u pulso -H sh -c 'set -a; . ./.env; set +a; .venv/bin/python -m app.cargar_plantillas --migrar'
 
 # 5. Frontend (aquí o en otra máquina; al servidor solo hace falta dist/)
 cd /opt/pulso/frontend
@@ -260,9 +262,20 @@ curl -s https://pulso.<dominio>/api/health   # {"status":"ok"}
 
 Caddy necesita leer `frontend/dist`: o se añade su usuario al grupo `pulso` (`sudo usermod -aG pulso caddy` y reinicio de Caddy), o se copia `dist/` a un directorio propio de Caddy (p. ej. `/srv/pulso`) y se ajusta `root` en el Caddyfile.
 
+#### Actualización
+
+```bash
+cd /opt/pulso && sudo -u pulso -H git pull
+cd backend && sudo -u pulso -H env UV_PYTHON_PREFERENCE=only-system uv sync --frozen --no-dev
+# Antes de reiniciar: columnas nuevas y plantillas nuevas (create_all no altera tablas existentes)
+sudo -u pulso -H sh -c 'set -a; . ./.env; set +a; .venv/bin/python -m app.cargar_plantillas --migrar'
+cd ../frontend && sudo -u pulso -H npm ci && sudo -u pulso -H npm run build
+sudo systemctl restart pulso
+```
+
 #### Límites conocidos del despliegue
 
-- Sin migraciones: las tablas se crean al arrancar. Cambios de modelo con datos reales requieren Alembic.
+- Sin migraciones completas: las tablas se crean al arrancar y `python -m app.cargar_plantillas --migrar` solo añade columnas nuevas anulables. Cambios de modelo de mayor calado con datos reales requieren Alembic.
 - Sin Dockerfile ni `DEPLOY.md` al estilo pyCelda.
 - Una sola cuenta de acceso (Gestor de calidad); profesores y directores, pendientes del login institucional.
 
