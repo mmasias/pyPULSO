@@ -79,10 +79,45 @@ def test_umbral_oculta_resultados_incluso_al_gestor(client):
     e, codigos = crear_encuesta_abierta(client, umbral=3)
     responder(client, codigos[0])
     responder(client, codigos[1])
+    _cerrar(client, e["id"])
     r = client.get(f"/api/encuestas/{e['id']}/resultados", headers=GESTOR).json()
     assert r["publicable"] is False and r["preguntas"] == [] and r["respuestas"] == 2
-    _cerrar(client, e["id"])
     assert client.post(f"/api/encuestas/{e['id']}/publicar", headers=GESTOR).status_code == 409
+
+
+def test_sin_resultados_en_vivo_para_nadie(client):
+    # Revision C1: con resultados en vivo, la diferencia entre dos consultas
+    # aisla cada respuesta nueva aunque se haya superado el umbral.
+    e, codigos = crear_encuesta_abierta(client, umbral=1)
+    for c in codigos[:3]:
+        responder(client, c)
+    r = client.get(f"/api/encuestas/{e['id']}/resultados", headers=GESTOR)
+    assert r.status_code == 409
+    _cerrar(client, e["id"])
+    assert client.get(f"/api/encuestas/{e['id']}/resultados", headers=GESTOR).status_code == 200
+
+
+def test_opciones_repetidas_rechazadas(client):
+    p = client.post("/api/plantillas", json={"nombre": "x"}, headers=GESTOR).json()
+    r = client.post(
+        f"/api/plantillas/{p['id']}/preguntas",
+        json={"enunciado": "q", "tipo": "opcion_unica", "opciones": ["Si", "si", "No"]},
+        headers=GESTOR,
+    )
+    assert r.status_code == 422
+
+
+def test_encuesta_vencida_se_cierra_sola(client, db_session):
+    from app.models import Encuesta
+
+    e, codigos = crear_encuesta_abierta(client, umbral=1)
+    responder(client, codigos[0])
+    db = db_session()
+    enc = db.get(Encuesta, e["id"])
+    enc.cierre = datetime.now(UTC) - timedelta(minutes=1)
+    db.commit()
+    db.close()
+    assert client.get(f"/api/encuestas/{e['id']}", headers=GESTOR).json()["estado"] == "Cerrada"
 
 
 def test_resultados_agregados_y_visibilidad(client):
@@ -106,3 +141,34 @@ def test_resultados_agregados_y_visibilidad(client):
     assert client.get(f"/api/encuestas/{e['id']}/resultados", headers=PROFESOR_B).status_code == 403
     assert [x["id"] for x in client.get("/api/encuestas", headers=PROFESOR_A).json()] == [e["id"]]
     assert client.get("/api/encuestas", headers=PROFESOR_B).json() == []
+
+
+def test_sin_pulso_env_no_se_acepta_identidad_por_cabecera(monkeypatch):
+    # Revision I1: el valor por defecto es produccion.
+    from app.core import config
+
+    monkeypatch.delenv("PULSO_ENV", raising=False)
+    monkeypatch.setenv("CODIGO_PEPPER", "x" * 64)
+    monkeypatch.setenv("SESSION_SECRET", "y" * 64)
+    config.get_settings.cache_clear()
+    try:
+        assert config.get_settings().es_dev is False
+    finally:
+        config.get_settings.cache_clear()
+
+
+def test_fuera_de_dev_exige_secreto_de_sesion(monkeypatch):
+    import pytest
+
+    from app.core import config
+
+    monkeypatch.setenv("PULSO_ENV", "prod")
+    monkeypatch.setenv("CODIGO_PEPPER", "x" * 64)
+    monkeypatch.delenv("SESSION_SECRET", raising=False)
+    config.get_settings.cache_clear()
+    try:
+        with pytest.raises(RuntimeError):
+            config.get_settings()
+    finally:
+        monkeypatch.setenv("PULSO_ENV", "dev")
+        config.get_settings.cache_clear()

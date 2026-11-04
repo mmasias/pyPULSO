@@ -14,6 +14,7 @@ from app.core.codigos import hash_codigo
 from app.models import (
     CodigoInvitacion,
     Encuesta,
+    EstadoEncuesta,
     Plantilla,
     Respuesta,
     RespuestaItem,
@@ -93,14 +94,29 @@ def enviar(db: Session, datos: EnviarIn) -> None:
 
     # Consumo condicional: si dos envios concurrentes usan el mismo codigo,
     # solo uno actualiza la fila.
+    # La condicion sobre la encuesta se evalua dentro de la escritura: si un
+    # cierre ha ganado la carrera (services/encuestas.py::_pasar_a_cerrada),
+    # este envio no entra despues del barajado conservando su orden.
+    sigue_abierta = (
+        select(Encuesta.id)
+        .where(Encuesta.id == encuesta.id, Encuesta.estado == EstadoEncuesta.ABIERTA)
+        .exists()
+    )
     resultado = db.execute(
         update(CodigoInvitacion)
-        .where(CodigoInvitacion.id == registro.id, CodigoInvitacion.consumido.is_(False))
+        .where(
+            CodigoInvitacion.id == registro.id,
+            CodigoInvitacion.consumido.is_(False),
+            sigue_abierta,
+        )
         .values(consumido=True)
     )
     if resultado.rowcount != 1:
         db.rollback()
-        raise CodigoRechazado("Codigo ya utilizado")
+        db.refresh(registro)
+        if registro.consumido:
+            raise CodigoRechazado("Codigo ya utilizado")
+        raise ErrorDominio("La encuesta no esta abierta")
 
     db.add(Respuesta(encuesta_id=encuesta.id, items=items))
     db.commit()

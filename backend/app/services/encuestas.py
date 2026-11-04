@@ -1,6 +1,8 @@
+import random
+import uuid
 from datetime import UTC, datetime
 
-from sqlalchemy import func, select
+from sqlalchemy import delete, func, insert, select, update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
@@ -13,17 +15,94 @@ from app.models import (
     EstadoEncuesta,
     EstadoPlantilla,
     Respuesta,
+    RespuestaItem,
 )
 from app.schemas.encuesta import EncuestaIn
 from app.services import plantillas
 from app.services.errores import ErrorDominio, Invalido, NoEncontrado, Prohibido
 
 
+_azar = random.SystemRandom()
+
+
 def obtener(db: Session, encuesta_id: int) -> Encuesta:
     encuesta = db.get(Encuesta, encuesta_id)
     if encuesta is None:
         raise NoEncontrado("Encuesta no encontrada")
+    return _cerrar_si_vencida(db, encuesta)
+
+
+def _cerrar_si_vencida(db: Session, encuesta: Encuesta) -> Encuesta:
+    if encuesta.estado == EstadoEncuesta.ABIERTA and encuesta.cierre <= datetime.now(UTC):
+        _pasar_a_cerrada(db, encuesta.id)
+        db.commit()
+        db.refresh(encuesta)
     return encuesta
+
+
+def _pasar_a_cerrada(db: Session, encuesta_id: int) -> bool:
+    """Transicion Abierta -> Cerrada, atomica. False si otra peticion ya la hizo.
+
+    El UPDATE condicional va primero: abre la transaccion de escritura y
+    toma el cerrojo de SQLite antes de leer las respuestas. Asi, dos cierres
+    simultaneos no barajan dos veces (duplicarian respuestas) y ningun envio
+    concurrente puede colarse entre la lectura y el borrado: el envio
+    re-comprueba el estado dentro de su propia escritura
+    (services/participacion.py). El llamante hace commit."""
+    resultado = db.execute(
+        update(Encuesta)
+        .where(Encuesta.id == encuesta_id, Encuesta.estado == EstadoEncuesta.ABIERTA)
+        .values(estado=EstadoEncuesta.CERRADA)
+        .execution_options(synchronize_session=False)
+    )
+    if resultado.rowcount != 1:
+        return False
+    _barajar_respuestas(db, encuesta_id)
+    return True
+
+
+def _barajar_respuestas(db: Session, encuesta_id: int) -> None:
+    """Reescribe las respuestas de la encuesta en orden aleatorio.
+
+    Mientras la encuesta esta abierta, el orden fisico de las filas (rowid
+    de SQLite) refleja el orden de llegada, que puede cruzarse con logs de
+    acceso o con observaciones de `codigos_invitacion.consumido`. Al cerrar
+    se borran y se reinsertan barajadas, con identificadores nuevos; con
+    `PRAGMA secure_delete` las filas originales no quedan en paginas libres
+    del fichero. Solo SQL de nucleo: no toca el mapa de identidad de la
+    sesion ni descarta cambios pendientes del llamante.
+    Ver RUP/02-analisis/anonimato.md."""
+    de_la_encuesta = select(Respuesta.id).where(Respuesta.encuesta_id == encuesta_id)
+    contenido: dict[str, list[tuple]] = {i: [] for i in db.scalars(de_la_encuesta)}
+    for respuesta_id, pregunta_id, entero, texto in db.execute(
+        select(
+            RespuestaItem.respuesta_id,
+            RespuestaItem.pregunta_id,
+            RespuestaItem.valor_entero,
+            RespuestaItem.valor_texto,
+        ).where(RespuestaItem.respuesta_id.in_(de_la_encuesta))
+    ):
+        contenido[respuesta_id].append((pregunta_id, entero, texto))
+    if not contenido:
+        return
+    db.execute(delete(RespuestaItem).where(RespuestaItem.respuesta_id.in_(de_la_encuesta)))
+    db.execute(delete(Respuesta).where(Respuesta.encuesta_id == encuesta_id))
+
+    lotes = list(contenido.values())
+    _azar.shuffle(lotes)
+    respuestas, items = [], []
+    for lote in lotes:
+        _azar.shuffle(lote)
+        nuevo_id = uuid.uuid4().hex
+        respuestas.append({"id": nuevo_id, "encuesta_id": encuesta_id})
+        items.extend(
+            {"id": uuid.uuid4().hex, "respuesta_id": nuevo_id, "pregunta_id": p,
+             "valor_entero": e, "valor_texto": t}
+            for p, e, t in lote
+        )
+    db.execute(insert(Respuesta), respuestas)
+    if items:
+        db.execute(insert(RespuestaItem), items)
 
 
 def puede_ver(usuario: Usuario, encuesta: Encuesta, catalogo: CatalogoCelda) -> bool:
@@ -35,9 +114,12 @@ def puede_ver(usuario: Usuario, encuesta: Encuesta, catalogo: CatalogoCelda) -> 
 
 
 def listar_visibles(db: Session, usuario: Usuario, catalogo: CatalogoCelda) -> list[Encuesta]:
-    todas = db.scalars(select(Encuesta).order_by(Encuesta.id.desc()))
+    abiertas = db.scalars(select(Encuesta.id).where(Encuesta.estado == EstadoEncuesta.ABIERTA))
+    for encuesta_id in list(abiertas):
+        _cerrar_si_vencida(db, db.get(Encuesta, encuesta_id))
+    todas = list(db.scalars(select(Encuesta).order_by(Encuesta.id.desc())))
     if usuario.es_gestor:
-        return list(todas)
+        return todas
     # Profesor y director solo ven encuestas Publicadas de su ambito.
     return [
         e
@@ -63,7 +145,7 @@ def crear(db: Session, datos: EncuestaIn, gestor: Usuario, catalogo: CatalogoCel
         celda_asignatura_id=asignatura.id,
         celda_curso_academico_id=curso.id,
         programa_nombre=programa.nombre,
-        asignatura_nombre=asignatura.nombre,
+        asignatura_nombre=asignatura.etiqueta,
         curso_academico_etiqueta=curso.etiqueta,
         apertura=datos.apertura,
         cierre=datos.cierre,
@@ -121,10 +203,11 @@ def abrir(db: Session, encuesta_id: int) -> Encuesta:
 
 def cerrar(db: Session, encuesta_id: int) -> Encuesta:
     encuesta = obtener(db, encuesta_id)
-    if encuesta.estado != EstadoEncuesta.ABIERTA:
+    if encuesta.estado != EstadoEncuesta.ABIERTA or not _pasar_a_cerrada(db, encuesta.id):
+        db.rollback()
         raise ErrorDominio("Solo se cierra una encuesta Abierta")
-    encuesta.estado = EstadoEncuesta.CERRADA
     db.commit()
+    db.refresh(encuesta)
     return encuesta
 
 
@@ -140,19 +223,22 @@ def publicar(db: Session, encuesta_id: int) -> Encuesta:
 
 
 def cerrar_vencidas(db: Session, ahora: datetime | None = None) -> int:
-    """Cierra las encuestas Abiertas cuya ventana ya termino. Pensado para
-    ejecutarse periodicamente; la recepcion de respuestas ya respeta la
-    ventana por si misma (Encuesta.admite_respuestas)."""
+    """Cierra (y baraja) las encuestas Abiertas cuya ventana ya termino.
+
+    Las consultas ya cierran una encuesta vencida al leerla; esta funcion
+    cubre las que nadie consulta, que si no conservarian el orden de llegada
+    indefinidamente. Uso periodico: `python -m app.tareas` (README)."""
     ahora = ahora or datetime.now(UTC)
     vencidas = [
-        e
+        e.id
         for e in db.scalars(select(Encuesta).where(Encuesta.estado == EstadoEncuesta.ABIERTA))
         if e.cierre <= ahora
     ]
-    for e in vencidas:
-        e.estado = EstadoEncuesta.CERRADA
-    db.commit()
-    return len(vencidas)
+    cerradas = 0
+    for encuesta_id in vencidas:
+        cerradas += _pasar_a_cerrada(db, encuesta_id)
+        db.commit()
+    return cerradas
 
 
 def comprobar_acceso(usuario: Usuario, encuesta: Encuesta, catalogo: CatalogoCelda) -> None:
@@ -160,3 +246,13 @@ def comprobar_acceso(usuario: Usuario, encuesta: Encuesta, catalogo: CatalogoCel
         raise Prohibido("Sin acceso a esta encuesta")
     if not usuario.es_gestor and encuesta.estado != EstadoEncuesta.PUBLICADA:
         raise Prohibido("Resultados no publicados")
+
+
+def comprobar_resultados(encuesta: Encuesta) -> None:
+    """Sin contenido mientras la encuesta admite respuestas, para ningun rol.
+
+    Con resultados en vivo, dos consultas antes y despues de una respuesta
+    aislan esa respuesta por diferencia, y el umbral deja de proteger nada.
+    Cerrada la encuesta, el conjunto ya no cambia."""
+    if encuesta.estado in (EstadoEncuesta.BORRADOR, EstadoEncuesta.ABIERTA):
+        raise ErrorDominio("Resultados disponibles cuando la encuesta se cierre")

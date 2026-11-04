@@ -5,8 +5,11 @@ Borrador : emitir códigos
 Borrador --> Abierta : abrir [códigos emitidos >= umbral]
 Abierta : emitir códigos
 Abierta : recibe respuestas [apertura <= ahora < cierre]
-Abierta --> Cerrada : cerrar (Gestor)\no vencimiento de la ventana
+Abierta : sin resultados para nadie
+Abierta --> Cerrada : cerrar (Gestor)\no vencimiento de la ventana\n(al consultarla)
 Cerrada --> Publicada : publicar [respuestas >= umbral]
+Cerrada : al entrar: respuestas barajadas
+Cerrada : resultados solo para el gestor
 Cerrada : sin umbral, queda aquí:\nresultados nunca visibles
 Publicada : visible a profesores de la\nasignatura y dirección del programa
 @enduml

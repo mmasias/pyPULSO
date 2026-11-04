@@ -3,7 +3,7 @@
 from sqlalchemy import inspect, select
 
 from app.models import CodigoInvitacion, Respuesta, RespuestaItem
-from tests.conftest import crear_encuesta_abierta, responder
+from tests.conftest import GESTOR, crear_encuesta_abierta, responder
 
 
 def test_esquema_sin_vinculo_entre_codigo_y_respuesta(db_session):
@@ -50,3 +50,35 @@ def test_consumo_y_respuesta_en_misma_transaccion(client, db_session):
     assert db.scalar(select(CodigoInvitacion).where(CodigoInvitacion.consumido)) is None
     assert db.scalars(select(Respuesta)).first() is None
     assert responder(client, codigos[0]).status_code == 204
+
+
+def test_cierre_borra_el_orden_de_llegada(client, db_session, monkeypatch):
+    # Revision C2: mientras esta abierta, el rowid de SQLite refleja el orden
+    # de envio. Al cerrar, las respuestas se reinsertan barajadas y con
+    # identificadores nuevos. Barajado determinista (inversion) para el test.
+    from sqlalchemy import text
+
+    from app.services import encuestas as servicio
+
+    monkeypatch.setattr(servicio._azar, "shuffle", lambda lista: lista.reverse())
+    e, codigos = crear_encuesta_abierta(client, umbral=1)
+    for c, v in zip(codigos, (1, 2, 3, 4, 5)):
+        assert responder(client, c, likert=v).status_code == 204
+
+    db = db_session()
+    consulta = text(
+        "SELECT r.id, i.valor_entero FROM respuestas r JOIN respuesta_items i "
+        "ON i.respuesta_id = r.id WHERE i.valor_entero IS NOT NULL "
+        "AND i.valor_texto IS NULL AND i.pregunta_id = :p ORDER BY r.rowid"
+    )
+    likert_id = db.execute(text("SELECT id FROM preguntas WHERE tipo='likert5'")).scalar()
+    antes = db.execute(consulta, {"p": likert_id}).all()
+    assert [v for _, v in antes] == [1, 2, 3, 4, 5]
+    db.close()
+
+    assert client.post(f"/api/encuestas/{e['id']}/cerrar", headers=GESTOR).status_code == 200
+    db = db_session()
+    despues = db.execute(consulta, {"p": likert_id}).all()
+    assert [v for _, v in despues] == [5, 4, 3, 2, 1]
+    assert not {i for i, _ in antes} & {i for i, _ in despues}
+    assert db.execute(text("PRAGMA secure_delete")).scalar() == 1

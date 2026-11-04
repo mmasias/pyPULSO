@@ -24,18 +24,32 @@ Flujo de envío (`app/services/participacion.py`), en una única transacción:
 4. Insertar `Respuesta` + `RespuestaItem` con identificadores `uuid4`.
 5. Commit: consumo y respuesta existen juntos o no existen.
 
-Propiedad resultante: aunque el gestor anote a qué alumno entregó cada código y además lea la base de datos completa, solo puede saber **qué alumnos participaron**, nunca **qué contestó cada uno**. No hay columna, clave ni orden que permita la unión.
+El esquema por sí solo no basta: la revisión adversarial previa al primer commit encontró dos formas de vincular código y respuesta observando el sistema **en el tiempo**, y v1 las cierra con dos medidas más:
 
-Los tests de `backend/tests/test_anonimato.py` fijan la propiedad sobre el esquema: si alguien añade una FK o una marca temporal a las tablas de contenido, fallan.
+| Ataque | Mecanismo | Medida |
+|---|---|---|
+| Diferencial sobre resultados en vivo | El gestor consulta los agregados antes y después de que se consuma un código concreto (sabe cuál sondeando `/participacion/acceder`); la diferencia es exactamente esa respuesta, texto libre incluido | **Sin resultados mientras la encuesta está en Borrador o Abierta, para ningún rol** (`services/encuestas.py::comprobar_resultados`). Cerrada, el conjunto ya no cambia |
+| Orden físico de las filas | El `rowid` de SQLite refleja el orden de envío; cruzado con el log del proxy o con observaciones de `consumido`, la k-ésima respuesta es la del k-ésimo envío | **Al cerrar, las respuestas se reinsertan barajadas** (`SystemRandom`) con identificadores nuevos, y `PRAGMA secure_delete = ON` sobrescribe las filas originales (`_barajar_respuestas`). El cierre es atómico (`UPDATE` condicional bajo cerrojo de escritura): dos cierres no barajan dos veces y ningún envío entra después del barajado con su orden de llegada |
+
+Propiedad resultante, una vez **cerrada** la encuesta, sobre la base de datos en uso: aunque el gestor anote a qué alumno entregó cada código, haya observado la API durante toda la ventana y lea la base de datos completa, solo puede saber **qué alumnos participaron**, nunca **qué contestó cada uno**.
+
+Límite explícito: quien tenga acceso de lectura **continuo** a la base de datos **mientras la encuesta está abierta** puede ver aparecer cada respuesta junto con el código consumido. Ningún diseño que guarde la respuesta en el momento del envío lo evita; la alternativa (retener respuestas en memoria y escribirlas por lotes) pierde datos ante un reinicio. v1 lo trata como control de acceso a la base de datos, no como propiedad del esquema: decisión D1 en [DECISIONES.md](../../docs/DECISIONES.md).
+
+Tests que fijan estas propiedades (`backend/tests/`):
+
+- `test_anonimato.py`: sin FK, marca temporal ni identificador secuencial entre las tablas de identidad y de contenido; el cierre invierte el orden de llegada (barajado determinista en el test), renueva todos los identificadores y activa `secure_delete`.
+- `test_encuestas.py::test_sin_resultados_en_vivo_para_nadie`: 409 en resultados con la encuesta abierta, también para el gestor.
 
 ## Riesgos residuales (no los resuelve el esquema)
 
 | Riesgo | Mecanismo | Mitigación |
 |---|---|---|
-| Grupos pequeños | Con 2-3 respuestas, el agregado identifica | Umbral mínimo por encuesta: por debajo no se devuelve contenido a nadie, gestor incluido; no se puede abrir una encuesta con menos códigos que el umbral |
+| Grupos pequeños | Con 2-3 respuestas, el agregado identifica | Umbral mínimo por encuesta: por debajo no se devuelve contenido a nadie, gestor incluido; no se puede abrir una encuesta con menos códigos que el umbral. Sin suelo técnico todavía: un umbral 1 publica una respuesta individual (D3) |
 | Texto libre | Estilo, datos personales mencionados | Aviso en el formulario; textos devueltos en orden aleatorio; se publican solo sobre el umbral. Moderación previa: decisión pendiente (D5) |
 | Logs de acceso | El proxy registra IP y hora de cada `POST /enviar` | No vinculan con el contenido (la respuesta no tiene hora con la que cruzarlos), pero revelan quién participó si la IP es atribuible. No registrar cuerpos de petición; rotación corta de logs |
-| Orden físico en SQLite | El `rowid` interno de las filas refleja orden de inserción | Sin marca temporal externa con que cruzarlo, no vincula código y respuesta (el código no guarda orden de consumo). Mitigable en v2 con inserción por lotes al cierre si se considera necesario |
+| Copias fuera del fichero | `secure_delete` limpia las páginas del fichero, no el journal de rollback (`pulso.db-journal`, borrado con `unlink` tras el commit: su contenido puede quedar en bloques libres del disco) ni copias de seguridad o snapshots tomados con la encuesta abierta | Copias de seguridad y snapshots con el mismo control de acceso que la base de datos; cifrado del disco si el modelo de amenaza incluye acceso físico |
+| Encuesta vencida que nadie consulta | Sigue Abierta y conserva el orden de llegada hasta la primera consulta | Tarea periódica `python -m app.tareas` (timer de systemd en el README) |
+| Lectura continua de la BD con la encuesta abierta | Ver la fila nueva junto al código consumido | Control de acceso a la base de datos (ver límite explícito arriba) |
 | Encuesta con un solo profesor | El profesor sabe a quién entregó códigos | No afecta a la desvinculación; solo revela participación, igual que en cualquier sistema con control de participación |
 | Distribución del código | Quien recibe un código puede cederlo | Aceptado en v1 (sin censo). En v2 el censo del ERP limita a matriculados |
 

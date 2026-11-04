@@ -5,6 +5,6 @@ Borrador : añadir preguntas
 Borrador --> Publicada : publicar [>= 1 pregunta]
 Publicada : inmutable
 Publicada --> Archivada : archivar
-Publicada --> [*] : nueva versión\n(crea otra Plantilla en Borrador)
-Archivada --> [*] : nueva versión
+Publicada : nueva versión: crea otra Plantilla\nen Borrador; esta sigue Publicada
+Archivada : nueva versión: ídem
 @enduml

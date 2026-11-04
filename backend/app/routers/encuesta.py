@@ -100,4 +100,5 @@ def ver_resultados(
 ):
     encuesta = encuestas.obtener(db, encuesta_id)
     encuestas.comprobar_acceso(usuario, encuesta, catalogo)
+    encuestas.comprobar_resultados(encuesta)
     return resultados.agregar(db, encuesta)

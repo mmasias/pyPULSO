@@ -17,6 +17,8 @@ class PreguntaIn(BaseModel):
             raise ValueError("solo opcion_unica admite opciones")
         if any(not o.strip() or len(o) > 200 for o in self.opciones):
             raise ValueError("opciones vacias o de mas de 200 caracteres")
+        if len({o.strip().casefold() for o in self.opciones}) != len(self.opciones):
+            raise ValueError("opciones repetidas")
         return self
 
 

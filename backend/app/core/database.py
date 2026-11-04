@@ -1,14 +1,28 @@
 from datetime import UTC
 
-from sqlalchemy import create_engine
+import sqlite3
+
+from sqlalchemy import Engine, create_engine, event
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.types import DateTime, TypeDecorator
 
 from app.core.config import get_settings
 
+_url = get_settings().database_url
+_es_sqlite = _url.startswith("sqlite")
 engine = create_engine(
-    get_settings().database_url, connect_args={"check_same_thread": False}
+    _url, connect_args={"check_same_thread": False} if _es_sqlite else {}
 )
+
+
+
+@event.listens_for(Engine, "connect")
+def _pragmas(conexion, _):
+    # Toda conexion SQLite (tambien la de los tests): las filas borradas al
+    # barajar respuestas (services/encuestas.py) se sobrescriben con ceros en
+    # lugar de quedar recuperables en paginas libres del fichero.
+    if isinstance(conexion, sqlite3.Connection):
+        conexion.execute("PRAGMA secure_delete = ON")
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 
