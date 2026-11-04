@@ -8,6 +8,7 @@ class PreguntaIn(BaseModel):
     tipo: TipoPregunta
     obligatoria: bool = True
     opciones: list[str] = Field(default_factory=list, max_length=20)
+    seccion: str | None = Field(default=None, max_length=300)
 
     @model_validator(mode="after")
     def _opciones_coherentes(self):
@@ -31,6 +32,7 @@ class PreguntaOut(BaseModel):
     tipo: TipoPregunta
     obligatoria: bool
     opciones: list[str]
+    seccion: str | None = None
 
 
 class PlantillaIn(BaseModel):

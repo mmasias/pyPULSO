@@ -6,9 +6,10 @@ class ResultadoPregunta(BaseModel):
     orden: int
     enunciado: str
     tipo: str
+    seccion: str | None = None
     n: int
     media: float | None = None
-    # likert5: claves "1".."5"; opcion_unica: etiqueta de la opcion.
+    # escalas: claves "1".."N"; opcion_unica: etiqueta de la opcion.
     distribucion: dict[str, int] | None = None
     # texto_libre: orden aleatorio, sin identificador de respuesta.
     textos: list[str] | None = None

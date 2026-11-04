@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api, post } from "../api/cliente";
-import type { Encuesta as TEncuesta, Participacion, Resultados } from "../api/tipos";
+import { porSeccion, type Encuesta as TEncuesta, type Participacion, type Resultados } from "../api/tipos";
 import { useUsuario } from "../sesion";
 
 export default function Encuesta() {
@@ -105,7 +105,10 @@ export default function Encuesta() {
               {res.respuestas} respuestas, por debajo del umbral ({res.umbral_minimo}). No se muestra ningún resultado.
             </p>
           ) : (
-            res.preguntas.map((p) => (
+            porSeccion(res.preguntas).map((bloque, i) => (
+              <section key={i}>
+                {bloque.seccion && <h3 className="seccion">{bloque.seccion}</h3>}
+                {bloque.elementos.map((p) => (
               <div key={p.pregunta_id}>
                 <h4>{p.orden}. {p.enunciado} <span className="tenue">(n={p.n})</span></h4>
                 {p.media !== null && <p>Media: {p.media}</p>}
@@ -120,6 +123,8 @@ export default function Encuesta() {
                 )}
                 {p.textos && <ul>{p.textos.map((t, i) => <li key={i}>{t}</li>)}</ul>}
               </div>
+                ))}
+              </section>
             ))
           )}
         </div>

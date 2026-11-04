@@ -1,4 +1,22 @@
-export type TipoPregunta = "likert5" | "opcion_unica" | "texto_libre";
+export type TipoPregunta = "likert5" | "likert7" | "opcion_unica" | "texto_libre";
+
+/** Escalas: maximo y rotulos de los extremos (el minimo es 1). */
+export const ESCALAS: Partial<Record<TipoPregunta, { max: number; min_txt: string; max_txt: string }>> = {
+  likert5: { max: 5, min_txt: "muy en desacuerdo", max_txt: "muy de acuerdo" },
+  likert7: { max: 7, min_txt: "nada satisfecho o en total desacuerdo", max_txt: "totalmente satisfecho o en total acuerdo" },
+};
+
+/** Agrupa elementos consecutivos con la misma seccion. */
+export function porSeccion<T extends { seccion?: string | null }>(lista: T[]): { seccion: string | null; elementos: T[] }[] {
+  const bloques: { seccion: string | null; elementos: T[] }[] = [];
+  for (const e of lista) {
+    const s = e.seccion ?? null;
+    const ultimo = bloques[bloques.length - 1];
+    if (ultimo && ultimo.seccion === s) ultimo.elementos.push(e);
+    else bloques.push({ seccion: s, elementos: [e] });
+  }
+  return bloques;
+}
 
 export interface Pregunta {
   id: number;
@@ -7,6 +25,7 @@ export interface Pregunta {
   tipo: TipoPregunta;
   obligatoria: boolean;
   opciones: string[];
+  seccion: string | null;
 }
 
 export interface Plantilla {
@@ -36,6 +55,7 @@ export interface Formulario {
   programa_nombre: string;
   curso_academico_etiqueta: string;
   plantilla_nombre: string;
+  plantilla_descripcion: string;
   preguntas: Pregunta[];
 }
 
@@ -44,6 +64,7 @@ export interface ResultadoPregunta {
   orden: number;
   enunciado: string;
   tipo: TipoPregunta;
+  seccion: string | null;
   n: number;
   media: number | null;
   distribucion: Record<string, number> | null;

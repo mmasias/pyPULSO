@@ -12,6 +12,7 @@ class FormularioOut(BaseModel):
     programa_nombre: str
     curso_academico_etiqueta: str
     plantilla_nombre: str
+    plantilla_descripcion: str = ""
     preguntas: list[PreguntaOut]
 
 

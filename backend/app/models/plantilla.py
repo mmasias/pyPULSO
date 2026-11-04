@@ -16,6 +16,7 @@ class EstadoPlantilla(StrEnum):
 
 class TipoPregunta(StrEnum):
     LIKERT5 = "likert5"
+    LIKERT7 = "likert7"
     OPCION_UNICA = "opcion_unica"
     TEXTO_LIBRE = "texto_libre"
 
@@ -52,6 +53,10 @@ class Plantilla(Base):
         return self.estado == EstadoPlantilla.BORRADOR
 
 
+# Valor maximo de cada escala (el minimo es siempre 1).
+ESCALAS = {TipoPregunta.LIKERT5: 5, TipoPregunta.LIKERT7: 7}
+
+
 class Pregunta(Base):
     __tablename__ = "preguntas"
 
@@ -61,6 +66,9 @@ class Pregunta(Base):
     enunciado: Mapped[str] = mapped_column(Text)
     tipo: Mapped[str] = mapped_column(String(20))
     obligatoria: Mapped[bool] = mapped_column(default=True)
+    # Titulo del bloque al que pertenece (p. ej. "Atencion al estudiante").
+    # Las preguntas consecutivas con la misma seccion forman un bloque.
+    seccion: Mapped[str | None] = mapped_column(String(300), nullable=True)
     # Lista JSON de etiquetas; solo para opcion_unica.
     opciones_json: Mapped[str] = mapped_column(Text, default="[]")
 
