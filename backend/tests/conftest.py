@@ -4,6 +4,12 @@ from datetime import UTC, datetime, timedelta
 os.environ["PULSO_ENV"] = "dev"
 os.environ["GESTORES_EMAILS"] = "calidad@example.edu"
 os.environ["DATABASE_URL"] = "sqlite://"
+os.environ["ACCESO_USUARIO"] = "Cuenta Pruebas"
+CLAVE_PRUEBAS = "clave-de-pruebas"
+from app.core.claves import generar as _generar  # noqa: E402
+
+os.environ["ACCESO_CLAVE_HASH"] = _generar(CLAVE_PRUEBAS, iteraciones=1000)
+os.environ["CELDA_STUB_PATH"] = str(__import__("pathlib").Path(__file__).parent / "celda_test.json")
 
 import pytest
 from fastapi.testclient import TestClient
@@ -12,7 +18,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from app.core.database import Base, get_db
-from app.core.limites import limitador_codigos
+from app.core.limites import limitador_codigos, limitador_login
 from app.main import app
 
 GESTOR = {"X-Dev-User": "calidad@example.edu"}
@@ -43,6 +49,7 @@ def client(db_session):
 
     app.dependency_overrides[get_db] = _get_db
     limitador_codigos.reiniciar()
+    limitador_login.reiniciar()
     yield TestClient(app)
     app.dependency_overrides.clear()
 

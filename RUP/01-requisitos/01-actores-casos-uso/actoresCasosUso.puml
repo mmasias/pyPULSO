@@ -7,6 +7,8 @@ actor "Director de programa" as D
 actor "CELDA" as C <<sistema>>
 
 rectangle "PULSO v1" {
+  usecase "iniciarSesion" as UC0
+  usecase "cerrarSesion" as UC00
   usecase "crearPlantilla" as UC1
   usecase "añadirPregunta" as UC2
   usecase "publicarPlantilla" as UC3
@@ -24,6 +26,12 @@ rectangle "PULSO v1" {
   usecase "consultarEncuestas" as UC15
 }
 
+G --> UC0
+G --> UC00
+P --> UC0
+P --> UC00
+D --> UC0
+D --> UC00
 G --> UC1
 G --> UC2
 G --> UC3

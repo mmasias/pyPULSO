@@ -16,12 +16,15 @@ router = APIRouter(prefix="/api/participacion", tags=["participacion"])
 @router.post("/acceder", response_model=FormularioOut)
 def acceder(datos: AccederIn, request: Request, db: Session = Depends(get_db)):
     ip = ip_cliente(request)
-    limitador_codigos.comprobar(ip)
+    limitador_codigos.reservar(ip)
     try:
         encuesta = participacion.acceder(db, datos.codigo)
     except CodigoRechazado:
-        limitador_codigos.registrar_fallo(ip)
+        raise  # el fallo reservado se queda
+    except Exception:
+        limitador_codigos.liberar(ip)
         raise
+    limitador_codigos.liberar(ip)
     return FormularioOut(
         asignatura_nombre=encuesta.asignatura_nombre,
         programa_nombre=encuesta.programa_nombre,
@@ -34,9 +37,12 @@ def acceder(datos: AccederIn, request: Request, db: Session = Depends(get_db)):
 @router.post("/enviar", status_code=status.HTTP_204_NO_CONTENT)
 def enviar(datos: EnviarIn, request: Request, db: Session = Depends(get_db)) -> None:
     ip = ip_cliente(request)
-    limitador_codigos.comprobar(ip)
+    limitador_codigos.reservar(ip)
     try:
         participacion.enviar(db, datos)
     except CodigoRechazado:
-        limitador_codigos.registrar_fallo(ip)
+        raise  # el fallo reservado se queda
+    except Exception:
+        limitador_codigos.liberar(ip)
         raise
+    limitador_codigos.liberar(ip)

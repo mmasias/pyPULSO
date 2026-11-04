@@ -12,7 +12,7 @@
 
 | Actor | Identificación v1 | Ámbito |
 |---|---|---|
-| Gestor de calidad | Email en `GESTORES_EMAILS` | Todo: plantillas, encuestas, códigos, ciclo de vida, participación y resultados sobre el umbral |
+| Gestor de calidad | Sesión con la cuenta de acceso (`ACCESO_USUARIO`) | Todo: plantillas, encuestas, códigos, ciclo de vida, participación y resultados sobre el umbral |
 | Profesor | Imparte la asignatura en ese curso según CELDA | Resultados de encuestas **publicadas** de sus asignaturas |
 | Director de programa | Dirige el programa según CELDA | Resultados de encuestas **publicadas** de su programa |
 | Alumno | Ninguna: código de invitación | Responder una vez |
@@ -22,6 +22,8 @@
 
 | Caso de uso | Actor | Endpoint |
 |---|---|---|
+| iniciarSesion | Gestor (v1: una cuenta con contraseña); Profesor y Director pendientes de OAuth | `POST /api/auth/login` |
+| cerrarSesion | Gestor (Profesor y Director cuando tengan login) | `POST /api/auth/logout` |
 | crearPlantilla | Gestor | `POST /api/plantillas` |
 | añadirPregunta | Gestor | `POST /api/plantillas/{id}/preguntas` |
 | publicarPlantilla | Gestor | `POST /api/plantillas/{id}/publicar` |

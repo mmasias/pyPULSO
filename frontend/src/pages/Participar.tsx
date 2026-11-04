@@ -15,7 +15,7 @@ export default function Participar() {
     e.preventDefault();
     setError("");
     try {
-      setFormulario(await post<Formulario>("/api/participacion/acceder", { codigo }, false));
+      setFormulario(await post<Formulario>("/api/participacion/acceder", { codigo }));
     } catch (err) {
       setError((err as Error).message);
     }
@@ -32,7 +32,7 @@ export default function Participar() {
           : { pregunta_id: p.id, valor_entero: valores[p.id].entero },
       );
     try {
-      await post("/api/participacion/enviar", { codigo, items }, false);
+      await post("/api/participacion/enviar", { codigo, items });
       setEnviado(true);
       setCodigo("");
     } catch (err) {
@@ -45,7 +45,7 @@ export default function Participar() {
   if (enviado) {
     return (
       <div className="tarjeta">
-        <h2>Respuesta registrada</h2>
+        <h2>Gracias por su participación</h2>
         <p>El código ha quedado inutilizado. La respuesta se guarda sin ningún dato que la relacione con el código ni con usted.</p>
       </div>
     );
@@ -54,11 +54,13 @@ export default function Participar() {
   if (!formulario) {
     return (
       <form className="tarjeta" onSubmit={acceder}>
-        <h2>Encuesta docente</h2>
-        <p className="tenue">Introduzca el código de invitación que le ha facilitado su profesor o el gabinete de calidad.</p>
+        <h2>Acceso con código</h2>
+        <p className="tenue">Introduzca el código de invitación que ha recibido.</p>
         <label htmlFor="codigo">Código</label>
-        <input id="codigo" value={codigo} onChange={(e) => setCodigo(e.target.value)} autoComplete="off" maxLength={32} />
-        <button type="submit">Acceder</button>
+        <div className="fila-acciones">
+          <input id="codigo" value={codigo} onChange={(e) => setCodigo(e.target.value)} autoComplete="off" maxLength={32} />
+          <button type="submit">Acceder</button>
+        </div>
         {error && <p className="error">{error}</p>}
       </form>
     );
@@ -98,12 +100,15 @@ function CampoPregunta({ pregunta, valor, onCambio }: { pregunta: Pregunta; valo
           <span className="tenue">1 = muy en desacuerdo · 5 = muy de acuerdo</span>
         </div>
       )}
-      {pregunta.tipo === "opcion_unica" &&
-        pregunta.opciones.map((op, i) => (
-          <label key={i}>
-            <input type="radio" name={nombre} checked={valor?.entero === i} onChange={() => onCambio({ entero: i })} /> {op}
-          </label>
-        ))}
+      {pregunta.tipo === "opcion_unica" && (
+        <div className="opciones">
+          {pregunta.opciones.map((op, i) => (
+            <label key={i}>
+              <input type="radio" name={nombre} checked={valor?.entero === i} onChange={() => onCambio({ entero: i })} /> {op}
+            </label>
+          ))}
+        </div>
+      )}
       {pregunta.tipo === "texto_libre" && (
         <>
           <textarea rows={4} maxLength={2000} value={valor?.texto ?? ""} onChange={(e) => onCambio({ texto: e.target.value })} />

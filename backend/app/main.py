@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from app import models  # noqa: F401 -- registra las clases en Base.metadata
 from app.core.config import get_settings
 from app.core.database import Base, engine, get_db
-from app.routers import catalogo, encuesta, participacion, plantilla, yo
+from app.routers import auth, catalogo, encuesta, participacion, plantilla, yo
 from app.services.errores import ErrorDominio
 
 Base.metadata.create_all(bind=engine)
@@ -35,6 +35,14 @@ MAX_CUERPO = 256 * 1024
 
 @app.middleware("http")
 async def cabeceras_y_limites(request: Request, call_next):
+    # CSRF: un navegador moderno marca el origen de cada peticion. Se
+    # rechazan escrituras iniciadas desde otro sitio, incluidos subdominios
+    # hermanos (SameSite=Lax no los cubre). Clientes sin la cabecera (curl,
+    # tests) no se ven afectados: no llevan la cookie de un navegador.
+    if request.method not in ("GET", "HEAD", "OPTIONS") and request.headers.get(
+        "sec-fetch-site", "same-origin"
+    ) not in ("same-origin", "none"):
+        return JSONResponse({"detail": "Origen no permitido"}, status_code=403)
     longitud = request.headers.get("content-length")
     if longitud is not None and (not longitud.isdigit() or int(longitud) > MAX_CUERPO):
         return JSONResponse({"detail": "Cuerpo demasiado grande"}, status_code=413)
@@ -57,6 +65,7 @@ def health(db: Session = Depends(get_db)) -> dict[str, str]:
     return {"status": "ok"}
 
 
+app.include_router(auth.router)
 app.include_router(yo.router)
 app.include_router(catalogo.router)
 app.include_router(plantilla.router)

@@ -31,6 +31,10 @@ class LimitadorFallos:
             cola.popleft()
         return cola
 
+    def _olvidar_si_vacia(self, clave: str) -> None:
+        if not self._fallos.get(clave):
+            self._fallos.pop(clave, None)
+
     def comprobar(self, clave: str) -> None:
         ahora = time.monotonic()
         with self._lock:
@@ -42,6 +46,33 @@ class LimitadorFallos:
                     "Demasiados intentos fallidos",
                     headers={"Retry-After": str(reintento)},
                 )
+            self._olvidar_si_vacia(clave)
+
+    def reservar(self, clave: str) -> None:
+        """Comprueba y cuenta el intento como fallo en un solo paso.
+
+        Para verificaciones lentas (PBKDF2): si se comprobara antes y se
+        contara despues, todas las peticiones concurrentes pasarian la
+        comprobacion. Si el intento acierta, `liberar` retira la marca."""
+        ahora = time.monotonic()
+        with self._lock:
+            cola = self._purgar(clave, ahora)
+            if len(cola) >= self.max_fallos:
+                reintento = int(self.ventana - (ahora - cola[0])) + 1
+                raise HTTPException(
+                    status.HTTP_429_TOO_MANY_REQUESTS,
+                    "Demasiados intentos fallidos",
+                    headers={"Retry-After": str(reintento)},
+                )
+            cola.append(ahora)
+
+    def liberar(self, clave: str) -> None:
+        with self._lock:
+            cola = self._fallos.get(clave)
+            if cola:
+                cola.pop()
+            if not cola:
+                self._fallos.pop(clave, None)
 
     def registrar_fallo(self, clave: str) -> None:
         with self._lock:
@@ -53,6 +84,7 @@ class LimitadorFallos:
 
 
 limitador_codigos = LimitadorFallos()
+limitador_login = LimitadorFallos()
 
 
 def ip_cliente(request: Request) -> str:

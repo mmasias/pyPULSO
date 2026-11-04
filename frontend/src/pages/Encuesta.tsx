@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api, post } from "../api/cliente";
-import type { Encuesta as TEncuesta, Participacion, Resultados, Yo } from "../api/tipos";
+import type { Encuesta as TEncuesta, Participacion, Resultados } from "../api/tipos";
+import { useUsuario } from "../sesion";
 
 export default function Encuesta() {
   const { id } = useParams();
   const base = `/api/encuestas/${id}`;
-  const [yo, setYo] = useState<Yo | null>(null);
+  const yo = useUsuario();
   const [encuesta, setEncuesta] = useState<TEncuesta | null>(null);
   const [part, setPart] = useState<Participacion | null>(null);
   const [res, setRes] = useState<Resultados | null>(null);
@@ -15,11 +16,11 @@ export default function Encuesta() {
   const [error, setError] = useState("");
 
   async function cargar() {
-    const y = await api<Yo>("/api/yo");
-    setYo(y);
-    setEncuesta(await api<TEncuesta>(base));
-    if (y.es_gestor) setPart(await api<Participacion>(`${base}/participacion`));
-    setRes(await api<Resultados>(`${base}/resultados`));
+    const e = await api<TEncuesta>(base);
+    setEncuesta(e);
+    if (yo.es_gestor) setPart(await api<Participacion>(`${base}/participacion`));
+    // Sin resultados mientras la encuesta admite respuestas (anonimato.md).
+    setRes(e.estado === "Cerrada" || e.estado === "Publicada" ? await api<Resultados>(`${base}/resultados`) : null);
   }
 
   useEffect(() => {
@@ -52,7 +53,7 @@ export default function Encuesta() {
       <div className="tarjeta">
         <h2>{encuesta.asignatura_nombre}</h2>
         <p className="tenue">
-          {encuesta.programa_nombre} · {encuesta.curso_academico_etiqueta} · {encuesta.estado}
+          {encuesta.programa_nombre} · {encuesta.curso_academico_etiqueta} · <span className={`etiqueta ${encuesta.estado}`}>{encuesta.estado}</span>
           <br />
           {new Date(encuesta.apertura).toLocaleString()} - {new Date(encuesta.cierre).toLocaleString()} · umbral {encuesta.umbral_minimo}
         </p>
@@ -67,7 +68,7 @@ export default function Encuesta() {
             <span className={part.alcanza_umbral ? "ok" : "error"}>{part.alcanza_umbral ? "alcanza" : "no alcanza"} el umbral</span>
           </p>
           {(encuesta.estado === "Borrador" || encuesta.estado === "Abierta") && (
-            <p>
+            <p className="fila-acciones">
               <input type="number" min={1} max={1000} value={cantidad} onChange={(e) => setCantidad(e.target.value)} />
               <button onClick={() => accion(async () => setCodigos((await post<{ codigos: string[] }>(`${base}/codigos`, { cantidad: Number(cantidad) })).codigos))}>
                 Emitir códigos
@@ -84,8 +85,15 @@ export default function Encuesta() {
         <div className="tarjeta">
           <h3>Códigos emitidos ({codigos.length})</h3>
           <p className="error">Se muestran solo ahora: el sistema no los guarda en claro. Descárguelos antes de salir.</p>
-          <button onClick={descargar}>Descargar .txt</button>
+          <button className="secundario" onClick={descargar}>Descargar .txt</button>
           <div className="codigos">{codigos.map((c) => <div key={c}>{c}</div>)}</div>
+        </div>
+      )}
+
+      {!res && (encuesta.estado === "Borrador" || encuesta.estado === "Abierta") && (
+        <div className="tarjeta">
+          <h3>Resultados</h3>
+          <p className="tenue">Se mostrarán al cerrar la encuesta. Con resultados en vivo, comparar dos consultas aislaría cada respuesta nueva.</p>
         </div>
       )}
 

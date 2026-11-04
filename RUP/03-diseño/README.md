@@ -1,5 +1,19 @@
 # Diseño
 
+## Identidad visual
+
+Estética de UNIB tomada de unib.org: verde `#006d68` (oscuro `#005d58`), dorado `#cdb380`, casi negro `#2b2926`, extraídos de `themes/unini/css/global.min.css`; tipografías Roboto (títulos, botones) y Open Sans (texto); barra superior verde, cabecera blanca con el logo (`frontend/public/logo-unib.svg`, copia local) y filete dorado, botones en mayúsculas de esquinas casi rectas. Variables en `frontend/src/estilos.css`.
+
+## Navegación
+
+| Ruta | Acceso | Contenido |
+|---|---|---|
+| `/` | Pública | Entrada: login del personal y acceso del alumno. Con sesión abierta redirige a `/app` |
+| `/participar` | Pública | Participación con código |
+| `/app` | Sesión | Encuestas visibles para el usuario |
+| `/app/encuestas/:id` | Sesión | Participación (gestor) y resultados |
+| `/app/plantillas`, `/app/encuestas/nueva` | Sesión + Gestor | Gestión |
+
 ## Arquitectura
 
 | Capa | Tecnología | Ubicación |
@@ -13,7 +27,7 @@ Estructura del backend, misma división que pyCelda: `models/` (entidades y regl
 
 ## Integración con CELDA
 
-CELDA no expone hoy una API para satélites. El puerto `CatalogoCelda` (`app/celda/catalogo.py`) define exactamente lo que PULSO necesita: programas, asignaturas, cursos académicos, `imparte(email, asignatura, curso)` y `dirige(email, programa)`. La implementación real sustituirá al stub sin cambios en servicios ni routers.
+CELDA no expone hoy una API para satélites, y UNIB no está aún en CELDA. El stub de desarrollo contiene el catálogo público de UNIB (20 programas, 783 asignaturas con código y créditos), regenerable con `python3 -I scripts/generar_catalogo_unib.py > app/data/celda_stub.json`. Profesores y director son identidades ficticias de desarrollo. El puerto `CatalogoCelda` (`app/celda/catalogo.py`) define exactamente lo que PULSO necesita: programas, asignaturas, cursos académicos, `imparte(email, asignatura, curso)` y `dirige(email, programa)`. La implementación real sustituirá al stub sin cambios en servicios ni routers.
 
 `Encuesta` guarda el identificador CELDA y una copia de la etiqueta legible (`*_nombre`, `curso_academico_etiqueta`): el dato sigue teniendo un único dueño, y el histórico de resultados sigue siendo legible si CELDA renombra o archiva.
 
@@ -21,7 +35,8 @@ CELDA no expone hoy una API para satélites. El puerto `CatalogoCelda` (`app/cel
 
 | Quién | v1 | Pendiente |
 |---|---|---|
-| Personal | Cabecera `X-Dev-User`, solo con `PULSO_ENV=dev`; fuera de dev, 401 | Google OAuth institucional como pyCelda |
+| Personal | Página de entrada con usuario y contraseña. Una cuenta, configurada por entorno (`ACCESO_USUARIO`, `ACCESO_CLAVE_HASH` en PBKDF2-SHA256, 600 000 iteraciones), con rol Gestor de calidad. Mismo error para usuario y contraseña incorrectos; 5 fallos / 15 min / IP. Sesión en cookie `pulso_sesion` firmada con HMAC-SHA256 (`SESSION_SECRET`), httpOnly, SameSite=Lax, Secure fuera de dev, 8 h | Google OAuth institucional como pyCelda (sustituye al endpoint de login, no a la cookie); cuentas para profesores y directores |
+| Herramientas (tests, curl) | Cabecera `X-Dev-User`, solo en dev | Se mantiene solo en dev |
 | Alumno | Código de invitación | v2: censo del ERP |
 
 ## Seguridad
@@ -35,9 +50,15 @@ CELDA no expone hoy una API para satélites. El puerto `CatalogoCelda` (`app/cel
 | Validación | Server-side completa de cada respuesta contra la plantilla |
 | Cabeceras | `nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, `Cache-Control: no-store`; CORS restringido a `FRONTEND_URL` |
 | Documentación OpenAPI | Solo en dev |
-| Secretos | `.env` ignorado; `.env.example` sin valores |
+| Secretos | `.env` ignorado; `.env.example` sin valores y con `PULSO_ENV=prod` |
+| Orden de llegada | Respuestas reinsertadas en orden aleatorio al cerrar; `PRAGMA secure_delete = ON` en toda conexión SQLite |
+| Cierre | Transición Abierta -> Cerrada con `UPDATE` condicional que toma el cerrojo de escritura antes de leer: dos cierres simultáneos no duplican respuestas; un envío concurrente re-comprueba el estado dentro de su escritura |
+| Resultados en vivo | Ninguno hasta el cierre (ataque diferencial) |
+| Login | 5 fallos / 15 min / IP (`limitador_login`); el intento se reserva antes de verificar el hash (ráfagas concurrentes no eluden el límite); mismo error y mismo coste para usuario y contraseña incorrectos; cookie httpOnly |
+| Suplantación en dev | `X-Dev-User` nunca adopta la cuenta de acceso: esa identidad solo se obtiene con contraseña |
+| CSRF | Cookie SameSite=Lax y rechazo de escrituras con `Sec-Fetch-Site` distinto de `same-origin` (cubre subdominios hermanos) |
 
-Límites conocidos: el limitador vive en memoria de un proceso (con varios workers hay que moverlo a almacén compartido); el límite de tamaño no cubre peticiones `chunked` sin `Content-Length` (lo cubre el proxy en despliegue); CSP y HSTS corresponden al proxy (Caddy), aún no configurado.
+Límites conocidos: la sesión no tiene estado en servidor (una cookie copiada vale hasta caducar, también tras cambiar la contraseña; solo rotar `SESSION_SECRET` las invalida); el limitador vive en memoria de un proceso (con varios workers hay que moverlo a almacén compartido) y es por IP, sin límite por cuenta; el límite de tamaño no cubre peticiones `chunked` sin `Content-Length` (lo cubre Caddy); CSP y HSTS los pone Caddy (configuración en el [README](../../README.md#despliegue-en-servidor)).
 
 ## Configuración
 
@@ -45,12 +66,14 @@ Variables en [`backend/.env.example`](../../backend/.env.example):
 
 | Variable | Uso |
 |---|---|
-| `PULSO_ENV` | `dev` habilita `X-Dev-User` y `/api/docs` |
+| `PULSO_ENV` | `dev` habilita `X-Dev-User` y `/api/docs`. Ausente = producción |
 | `DATABASE_URL` | URL SQLAlchemy |
 | `CODIGO_PEPPER` | Secreto HMAC de los códigos. Cambiarlo invalida todos los códigos emitidos |
-| `GESTORES_EMAILS` | Emails con rol Gestor de calidad, separados por comas |
+| `ACCESO_USUARIO`, `ACCESO_CLAVE_HASH` | Cuenta de acceso. El hash se genera con `python3 -m app.core.claves`; la contraseña no se guarda en ningún fichero |
+| `SESSION_SECRET` | Firma de la cookie de sesión; obligatorio (>= 32 caracteres) fuera de dev. Cambiarlo cierra todas las sesiones |
+| `GESTORES_EMAILS` | Emails con rol Gestor de calidad, separados por comas. Solo tiene efecto a través de `X-Dev-User` en dev; las sesiones solo se emiten para `ACCESO_USUARIO` |
 | `FRONTEND_URL` | Origen permitido por CORS |
-| `CELDA_STUB_PATH` | JSON del catálogo CELDA simulado |
+| `CELDA_STUB_PATH` | JSON del catálogo simulado. Por defecto, el catálogo de UNIB generado por `scripts/generar_catalogo_unib.py`; los tests usan `tests/celda_test.json` |
 
 ## Modelo de datos
 
