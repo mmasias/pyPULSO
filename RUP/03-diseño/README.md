@@ -27,7 +27,7 @@ Estructura del backend, misma división que pyCelda: `models/` (entidades y regl
 
 ## Integración con CELDA
 
-CELDA no expone hoy una API para satélites, y UNIB no está aún en CELDA. El stub de desarrollo contiene el catálogo público de UNIB (20 programas, 783 asignaturas con código y créditos), regenerable con `python3 -I scripts/generar_catalogo_unib.py > app/data/celda_stub.json`. Profesores y director son identidades ficticias de desarrollo. El puerto `CatalogoCelda` (`app/celda/catalogo.py`) define exactamente lo que PULSO necesita: programas, asignaturas, cursos académicos, `imparte(email, asignatura, curso)` y `dirige(email, programa)`. La implementación real sustituirá al stub sin cambios en servicios ni routers.
+CELDA no expone hoy una API para satélites, y UNIB no está aún en CELDA. El stub de desarrollo contiene el catálogo público de UNIB (20 programas, 783 asignaturas con código y créditos), más los programas internos PAS y FACULTAD (ids fijos 9001 y 9002) y una asignatura `ENC ENCUESTA` por programa (id programa * 1000 + 999), regenerable con `python3 -I scripts/generar_catalogo_unib.py > app/data/celda_stub.json`. Profesores y director son identidades ficticias de desarrollo. El puerto `CatalogoCelda` (`app/celda/catalogo.py`) define exactamente lo que PULSO necesita: programas, asignaturas, cursos académicos, `imparte(email, asignatura, curso)` y `dirige(email, programa)`. La implementación real sustituirá al stub sin cambios en servicios ni routers.
 
 `Encuesta` guarda el identificador CELDA y una copia de la etiqueta legible (`*_nombre`, `curso_academico_etiqueta`): el dato sigue teniendo un único dueño, y el histórico de resultados sigue siendo legible si CELDA renombra o archiva.
 
@@ -85,4 +85,4 @@ Variables en [`backend/.env.example`](../../backend/.env.example):
 
 </div>
 
-Sin migraciones en v1 (`create_all` al arrancar). Antes de la primera instalación con datos reales hay que introducir Alembic.
+Sin migraciones completas en v1: `create_all` al arrancar y, para columnas nuevas anulables sobre una base existente, `python -m app.cargar_plantillas --migrar` (`ALTER TABLE ADD COLUMN`). Cambios de mayor calado con datos reales requieren Alembic.
