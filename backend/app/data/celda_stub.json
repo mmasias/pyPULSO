@@ -1,5 +1,5 @@
 {
- "_nota": "Catalogo de UNIB extraido de los planes de estudio publicados en https://www.unib.org/ el 2026-11-03 por scripts/generar_catalogo_unib.py. Profesores y directores: identidades de desarrollo ficticias (@example.edu).",
+ "_nota": "Catalogo de UNIB extraido de los planes de estudio publicados en https://www.unib.org/ el 2026-11-03 por scripts/generar_catalogo_unib.py, mas programas internos (PROGRAMAS_INTERNOS: PAS, FACULTAD) y una asignatura ENC ENCUESTA por programa para las encuestas del programa. Profesores y directores: identidades de desarrollo ficticias (@example.edu).",
  "cursos_academicos": [
   {
    "id": 1,
@@ -173,6 +173,22 @@
    "nivel": "Doctorado",
    "departamento": null,
    "url": "https://www.unib.org/a/doctorados/doctorado-en-proyectos-con-especialidad-en-investigacion",
+   "directores": []
+  },
+  {
+   "id": 9001,
+   "nombre": "PAS",
+   "nivel": "Institucional",
+   "departamento": null,
+   "url": null,
+   "directores": []
+  },
+  {
+   "id": 9002,
+   "nombre": "FACULTAD",
+   "nivel": "Institucional",
+   "departamento": null,
+   "url": null,
    "directores": []
   }
  ],
@@ -598,6 +614,13 @@
    "creditos": 3.0
   },
   {
+   "id": 1999,
+   "programa_id": 1,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
    "id": 2001,
    "programa_id": 2,
    "codigo": "CDS001",
@@ -988,6 +1011,13 @@
    "codigo": "SN290",
    "nombre": "Orientación psicológica en la consulta dietético-nutricional",
    "creditos": 3.0
+  },
+  {
+   "id": 2999,
+   "programa_id": 2,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
   },
   {
    "id": 3001,
@@ -1583,6 +1613,13 @@
    "codigo": "FP092",
    "nombre": "Metodología de la investigación científica",
    "creditos": 3.0
+  },
+  {
+   "id": 3999,
+   "programa_id": 3,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
   },
   {
    "id": 4001,
@@ -2530,6 +2567,13 @@
    "creditos": 3.0
   },
   {
+   "id": 4999,
+   "programa_id": 4,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
    "id": 5001,
    "programa_id": 5,
    "codigo": "TR026",
@@ -2866,6 +2910,13 @@
    "creditos": 3.0
   },
   {
+   "id": 5999,
+   "programa_id": 5,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
    "id": 6001,
    "programa_id": 6,
    "codigo": "TR026",
@@ -3167,6 +3218,13 @@
    "creditos": 3.0
   },
   {
+   "id": 6999,
+   "programa_id": 6,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
    "id": 7001,
    "programa_id": 7,
    "codigo": "FP017",
@@ -3293,6 +3351,13 @@
    "creditos": 5.0
   },
   {
+   "id": 7999,
+   "programa_id": 7,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
    "id": 8001,
    "programa_id": 8,
    "codigo": "FP003",
@@ -3417,6 +3482,13 @@
    "codigo": "FP034",
    "nombre": "Practicum",
    "creditos": 5.0
+  },
+  {
+   "id": 8999,
+   "programa_id": 8,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
   },
   {
    "id": 9001,
@@ -3550,6 +3622,13 @@
    "codigo": "FP116",
    "nombre": "Portafolio III",
    "creditos": 2.0
+  },
+  {
+   "id": 9999,
+   "programa_id": 9,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
   },
   {
    "id": 10001,
@@ -3692,6 +3771,13 @@
    "creditos": 10.0
   },
   {
+   "id": 10999,
+   "programa_id": 10,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
    "id": 11001,
    "programa_id": 11,
    "codigo": "FP101",
@@ -3832,6 +3918,13 @@
    "creditos": 10.0
   },
   {
+   "id": 11999,
+   "programa_id": 11,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
    "id": 12001,
    "programa_id": 12,
    "codigo": "FP101",
@@ -3970,6 +4063,13 @@
    "codigo": "FPEEE01",
    "nombre": "Proyecto Final de Maestría",
    "creditos": 10.0
+  },
+  {
+   "id": 12999,
+   "programa_id": 12,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
   },
   {
    "id": 13001,
@@ -4145,6 +4245,13 @@
    "codigo": "FP092",
    "nombre": "Metodología de la investigación científica",
    "creditos": 3.0
+  },
+  {
+   "id": 13999,
+   "programa_id": 13,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
   },
   {
    "id": 14001,
@@ -4511,6 +4618,13 @@
    "creditos": null
   },
   {
+   "id": 14999,
+   "programa_id": 14,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
    "id": 15001,
    "programa_id": 15,
    "codigo": "SP027",
@@ -4733,6 +4847,13 @@
    "codigo": "DO016",
    "nombre": "Metodología de la investigación científica",
    "creditos": 3.0
+  },
+  {
+   "id": 15999,
+   "programa_id": 15,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
   },
   {
    "id": 16001,
@@ -4973,6 +5094,13 @@
    "creditos": 3.0
   },
   {
+   "id": 16999,
+   "programa_id": 16,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
    "id": 17001,
    "programa_id": 17,
    "codigo": "DD050",
@@ -5167,6 +5295,13 @@
    "codigo": "FP092",
    "nombre": "Metodología de la investigación científica",
    "creditos": 3.0
+  },
+  {
+   "id": 17999,
+   "programa_id": 17,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
   },
   {
    "id": 18001,
@@ -5365,6 +5500,13 @@
    "creditos": 3.0
   },
   {
+   "id": 18999,
+   "programa_id": 18,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
    "id": 19001,
    "programa_id": 19,
    "codigo": "DO005",
@@ -5496,6 +5638,13 @@
    "codigo": "DO010",
    "nombre": "Disertación de la tesis",
    "creditos": 10.0
+  },
+  {
+   "id": 19999,
+   "programa_id": 19,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
   },
   {
    "id": 20001,
@@ -5657,6 +5806,27 @@
    "codigo": "DO010",
    "nombre": "Disertación de la tesis",
    "creditos": 10.0
+  },
+  {
+   "id": 20999,
+   "programa_id": 20,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
+   "id": 9001999,
+   "programa_id": 9001,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
+  },
+  {
+   "id": 9002999,
+   "programa_id": 9002,
+   "codigo": "ENC",
+   "nombre": "ENCUESTA",
+   "creditos": null
   }
  ],
  "imparticiones": [

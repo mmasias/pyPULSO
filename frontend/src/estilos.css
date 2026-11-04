@@ -125,3 +125,10 @@ tbody tr:nth-child(even) td { background: var(--unib-verde-fondo); }
 .usuario button { margin: 0; padding: 0.4rem 0.8rem; }
 @media (prefers-color-scheme: dark) { .usuario span { color: #333; } .usuario small { color: #6e6d72; } }
 button:disabled { opacity: 0.6; cursor: default; }
+
+/* Secciones de plantilla */
+h3.seccion, h4.seccion { color: var(--acento); border-bottom: 2px solid var(--unib-dorado); padding-bottom: 0.25rem; margin: 1.6rem 0 0.8rem; font-weight: 500; }
+.instruccion { background: var(--superficie); border-left: 4px solid var(--unib-dorado); padding: 0.7rem 1rem; }
+.extremos { font-size: 0.85rem; margin: 0.4rem 0 0; }
+.aviso-ambito { font-size: 0.9rem; background: var(--unib-verde-fondo); border-left: 4px solid var(--acento); padding: 0.5rem 0.75rem; margin-top: 0.6rem; }
+button.borrar { font-size: 0.75rem; padding: 0.3rem 0.7rem; margin-top: 0.5rem; }

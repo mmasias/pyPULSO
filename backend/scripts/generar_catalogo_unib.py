@@ -43,6 +43,25 @@ PROGRAMAS = [
     ("doctorados/doctorado-en-proyectos-con-especialidad-en-investigacion", "Doctorado", None),
 ]
 
+# Asignatura ficticia que cada programa recibe para colgar de ella las
+# encuestas del programa entero (p. ej. satisfaccion de estudiantes con la
+# titulacion), en lugar de lanzarlas en cada asignatura real. Sin profesores:
+# sus resultados los ven el gestor y la direccion del programa. Id fijo
+# (programa * 1000 + 999) para que no cambie si la web anade asignaturas.
+ASIGNATURA_ENCUESTA = {"codigo": "ENC", "nombre": "ENCUESTA", "creditos": None}
+ID_ENCUESTA = 999
+
+# Programas internos, sin pagina en unib.org: contenedores para encuestas
+# institucionales. Solo reciben la asignatura ENCUESTA; sin director ni
+# profesores, sus resultados solo los ve el gestor de calidad.
+# Id fijo, fuera del rango de los programas de la web (1..N por posicion):
+# si la web anade programas, los internos no se desplazan y una encuesta de
+# PAS nunca pasa a apuntar a un programa real con director.
+PROGRAMAS_INTERNOS = [
+    {"id": 9001, "nombre": "PAS", "nivel": "Institucional", "departamento": None},
+    {"id": 9002, "nombre": "FACULTAD", "nivel": "Institucional", "departamento": None},
+]
+
 CODIGO = re.compile(r"^[A-Z][A-Z0-9_/\-]{1,24}$")
 
 
@@ -138,8 +157,25 @@ def main() -> None:
             "url": BASE + ruta,
             "directores": [],
         })
+        if len(asigs) >= ID_ENCUESTA:
+            raise SystemExit(f"Demasiadas asignaturas para el esquema de ids: {ruta}")
         for k, a in enumerate(asigs, start=1):
             asignaturas.append({"id": n * 1000 + k, "programa_id": n, **a})
+        asignaturas.append({"id": n * 1000 + ID_ENCUESTA, "programa_id": n, **ASIGNATURA_ENCUESTA})
+
+    if len(programas) >= min(i["id"] for i in PROGRAMAS_INTERNOS):
+        raise SystemExit("Los ids de la web alcanzan los de los programas internos")
+    for interno in PROGRAMAS_INTERNOS:
+        n = interno["id"]
+        programas.append({
+            "id": n,
+            "nombre": interno["nombre"],
+            "nivel": interno["nivel"],
+            "departamento": interno["departamento"],
+            "url": None,
+            "directores": [],
+        })
+        asignaturas.append({"id": n * 1000 + ID_ENCUESTA, "programa_id": n, **ASIGNATURA_ENCUESTA})
 
     # Identidades de desarrollo, ficticias: permiten probar los roles.
     mdeti = next(p for p in programas if "Tecnologías de la Información" in p["nombre"])
@@ -154,7 +190,9 @@ def main() -> None:
     salida = {
         "_nota": (
             f"Catalogo de UNIB extraido de los planes de estudio publicados en https://www.unib.org/ "
-            f"el {date.today().isoformat()} por scripts/generar_catalogo_unib.py. "
+            f"el {date.today().isoformat()} por scripts/generar_catalogo_unib.py, "
+            "mas programas internos (PROGRAMAS_INTERNOS: PAS, FACULTAD) y una asignatura "
+            "ENC ENCUESTA por programa para las encuestas del programa. "
             "Profesores y directores: identidades de desarrollo ficticias (@example.edu)."
         ),
         "cursos_academicos": [
