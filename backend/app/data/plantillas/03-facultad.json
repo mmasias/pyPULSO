@@ -1,0 +1,253 @@
+{
+ "_fuente": "UNIB, 'Encuestas de satisfacción' (Encuestas-satisfaccion-Esp_v0r1), 3. Encuestas de satisfacción de la facultad, págs. 9-12. Texto literal salvo la corrección anotada.",
+ "_notas": [
+  "Escala de valoración del instrumento: 1 'nada satisfecho o en total desacuerdo', 7 'totalmente satisfecho o en total acuerdo' (tipo likert7).",
+  "Cabecera 'Curso académico' y 'Titulación': no son preguntas; los aporta el contexto de la encuesta.",
+  "CORRECCIÓN del original: la pregunta 35 decía 'Universidad Europea del Atlántico' (errata de copia); se carga 'Universidad Internacional Iberoamericana'.",
+  "Datos generales opcionales. Se lanza en el programa interno FACULTAD (resultados solo para el gestor): por programa, el director vería resultados de pocos docentes, identificables por sexo y edad, sobre su propia dirección y el clima laboral."
+ ],
+ "nombre": "Encuesta de satisfacción de la facultad",
+ "descripcion": "Valore los siguientes aspectos del 1 al 7, siendo: 1 \"nada satisfecho o en total desacuerdo\" y 7 \"totalmente satisfecho o en total acuerdo\".",
+ "preguntas": [
+  {
+   "seccion": "Datos generales",
+   "tipo": "opcion_unica",
+   "enunciado": "Sexo",
+   "opciones": [
+    "Hombre",
+    "Mujer"
+   ],
+   "obligatoria": false
+  },
+  {
+   "seccion": "Datos generales",
+   "tipo": "opcion_unica",
+   "enunciado": "Edad",
+   "opciones": [
+    "<25",
+    "25 - 35",
+    "35 - 45",
+    "45 - 55",
+    "55 - 65",
+    ">65"
+   ],
+   "obligatoria": false
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "La información sobre el título (competencias, plan de estudios, etc.) disponible en la página web es clara y de fácil acceso.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "Las competencias y los resultados de aprendizaje de sus asignaturas son factibles y coherentes con el perfil de egreso del título.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "La organización secuencial de las asignaturas es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "El material didáctico en el marco de cada una de sus asignaturas favorece la consecución de los resultados de aprendizaje.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "La distribución entre crédito/trabajo del alumno en sus asignaturas es proporcional.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "Las guías docentes son revisadas y actualizadas anualmente.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "La comunicación y organización entre docente y dirección/coordinación de programa es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "Las actividades formativas de sus asignaturas favorecen el aprendizaje de los contenidos.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "La coordinación entre las actividades formativas de diferentes asignaturas es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "Los criterios de evaluación son coherentes con los resultados de aprendizaje que se persiguen en sus asignaturas.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "El número de estudiantes es adecuado.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Estructura y calidad del programa",
+   "tipo": "likert7",
+   "enunciado": "Valoración de la titulación.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Gestión y resultados de la docencia",
+   "tipo": "likert7",
+   "enunciado": "Los conocimientos previos de los estudiantes para sus asignaturas son adecuados.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Gestión y resultados de la docencia",
+   "tipo": "likert7",
+   "enunciado": "El alumnado suele implicarse en todas las actividades propuestas, incluidas las no evaluables.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Gestión y resultados de la docencia",
+   "tipo": "likert7",
+   "enunciado": "La comunicación con el alumnado es eficaz.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Gestión y resultados de la docencia",
+   "tipo": "likert7",
+   "enunciado": "Los conocimientos adquiridos y competencias desarrolladas por el alumnado en sus asignaturas son adecuados.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Gestión y resultados de la docencia",
+   "tipo": "likert7",
+   "enunciado": "La carga docente asignada es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Gestión y resultados de la docencia",
+   "tipo": "likert7",
+   "enunciado": "Su formación académica y experiencia profesional está vinculada con las asignaturas que tiene a su cargo.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Gestión y resultados de la docencia",
+   "tipo": "likert7",
+   "enunciado": "Sus metodologías docentes son aplicadas en relación con las competencias y los resultados de aprendizaje de sus asignaturas.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Gestión y resultados de la docencia",
+   "tipo": "likert7",
+   "enunciado": "Sus tutorías al alumnado son eficaces.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Gestión y resultados de la docencia",
+   "tipo": "likert7",
+   "enunciado": "El cumplimiento del programa formativo (impartición de contenidos) en sus asignaturas es adecuado.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Gestión y resultados de la docencia",
+   "tipo": "likert7",
+   "enunciado": "Su satisfacción global con su labor como docente es adecuada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Instalaciones, infraestructuras y servicios",
+   "tipo": "likert7",
+   "enunciado": "La calidad de los recursos disponibles en la biblioteca es apropiada.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Instalaciones, infraestructuras y servicios",
+   "tipo": "likert7",
+   "enunciado": "Los procesos de trabajo están bien definidos.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Instalaciones, infraestructuras y servicios",
+   "tipo": "likert7",
+   "enunciado": "La actualización de las funcionalidades del SG ha respondido a las necesidades del trabajo.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Instalaciones, infraestructuras y servicios",
+   "tipo": "likert7",
+   "enunciado": "El campus virtual posee una interfaz atractiva y de fácil manejo.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Instalaciones, infraestructuras y servicios",
+   "tipo": "likert7",
+   "enunciado": "El grado de satisfacción global con los recursos y servicios que ofrece la universidad es adecuado.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Soporte a la docencia",
+   "tipo": "likert7",
+   "enunciado": "La colaboración del PAS (soporte técnico, secretaría académica) en el soporte a la docencia es satisfactoria.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Soporte a la docencia",
+   "tipo": "likert7",
+   "enunciado": "El clima laboral es satisfactorio.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Soporte a la docencia",
+   "tipo": "likert7",
+   "enunciado": "Existen canales de comunicación efectivos para trasladar las quejas y sugerencias.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Soporte a la docencia",
+   "tipo": "likert7",
+   "enunciado": "Las acciones de actualización y mejora docente promovidas por la universidad responden a las necesidades de formación del profesorado.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "La universidad proporciona información sobre temas que afectan a mi trabajo.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "La universidad me ofrece oportunidades para desarrollar mi carrera profesional.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "El trabajo que realizo es reconocido por la universidad.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Motivación y satisfacción",
+   "tipo": "likert7",
+   "enunciado": "Me siento satisfecho de manera general con la Universidad Internacional Iberoamericana.",
+   "obligatoria": true
+  },
+  {
+   "seccion": "Observaciones",
+   "tipo": "texto_libre",
+   "obligatoria": false,
+   "enunciado": "Observaciones: añada brevemente cualquier otra opinión que quiera manifestar en relación a lo evaluado en la encuesta."
+  }
+ ]
+}
