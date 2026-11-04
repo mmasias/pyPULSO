@@ -7,7 +7,7 @@ def test_flujo_completo(client):
     encuesta, codigos = crear_encuesta_abierta(client)
     form = client.post("/api/participacion/acceder", json={"codigo": codigos[0].lower()})
     assert form.status_code == 200
-    assert form.json()["asignatura_nombre"] == "Ingenieria del Software I"
+    assert form.json()["asignatura_nombre"] == "IS101 Ingenieria del Software I"
     assert responder(client, codigos[0], form.json()).status_code == 204
     p = client.get(f"/api/encuestas/{encuesta['id']}/participacion", headers=GESTOR).json()
     assert p["respuestas"] == 1 and p["codigos_emitidos"] == 5

@@ -32,7 +32,7 @@ class Encuesta(Base):
     celda_asignatura_id: Mapped[int] = mapped_column()
     celda_curso_academico_id: Mapped[int] = mapped_column()
     programa_nombre: Mapped[str] = mapped_column(String(200))
-    asignatura_nombre: Mapped[str] = mapped_column(String(200))
+    asignatura_nombre: Mapped[str] = mapped_column(String(300))
     curso_academico_etiqueta: Mapped[str] = mapped_column(String(20))
 
     apertura: Mapped[datetime] = mapped_column(DateTimeUTC)

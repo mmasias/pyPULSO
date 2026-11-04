@@ -1,0 +1,80 @@
+{
+ "_nota": "Catalogo ficticio SOLO para tests: independiza la suite del catalogo real de app/data.",
+ "cursos_academicos": [
+  {
+   "id": 1,
+   "etiqueta": "2025-2026",
+   "activo": false
+  },
+  {
+   "id": 2,
+   "etiqueta": "2026-2027",
+   "activo": true
+  }
+ ],
+ "programas": [
+  {
+   "id": 10,
+   "nombre": "Grado en Ingenieria Informatica",
+   "directores": [
+    "directora.gii@example.edu"
+   ],
+   "nivel": "Grado",
+   "departamento": null
+  },
+  {
+   "id": 20,
+   "nombre": "Grado en Administracion y Direccion de Empresas",
+   "directores": [
+    "director.gade@example.edu"
+   ],
+   "nivel": "Grado",
+   "departamento": null
+  }
+ ],
+ "asignaturas": [
+  {
+   "id": 101,
+   "programa_id": 10,
+   "nombre": "Ingenieria del Software I",
+   "codigo": "IS101",
+   "creditos": 6
+  },
+  {
+   "id": 102,
+   "programa_id": 10,
+   "nombre": "Bases de Datos",
+   "codigo": "BD102",
+   "creditos": 6
+  },
+  {
+   "id": 201,
+   "programa_id": 20,
+   "nombre": "Contabilidad Financiera",
+   "codigo": "CF201",
+   "creditos": 6
+  }
+ ],
+ "imparticiones": [
+  {
+   "profesor_email": "profesor.a@example.edu",
+   "asignatura_id": 101,
+   "curso_academico_id": 2
+  },
+  {
+   "profesor_email": "profesor.a@example.edu",
+   "asignatura_id": 101,
+   "curso_academico_id": 1
+  },
+  {
+   "profesor_email": "profesor.b@example.edu",
+   "asignatura_id": 102,
+   "curso_academico_id": 2
+  },
+  {
+   "profesor_email": "profesor.c@example.edu",
+   "asignatura_id": 201,
+   "curso_academico_id": 2
+  }
+ ]
+}

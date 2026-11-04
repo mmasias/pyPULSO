@@ -1,22 +1,5679 @@
 {
-  "_nota": "Catalogo CELDA simulado para v1. Misma forma que consumira el adaptador real. Datos ficticios.",
-  "cursos_academicos": [
-    {"id": 1, "etiqueta": "2025-2026", "activo": false},
-    {"id": 2, "etiqueta": "2026-2027", "activo": true}
-  ],
-  "programas": [
-    {"id": 10, "nombre": "Grado en Ingenieria Informatica", "directores": ["directora.gii@example.edu"]},
-    {"id": 20, "nombre": "Grado en Administracion y Direccion de Empresas", "directores": ["director.gade@example.edu"]}
-  ],
-  "asignaturas": [
-    {"id": 101, "programa_id": 10, "nombre": "Ingenieria del Software I"},
-    {"id": 102, "programa_id": 10, "nombre": "Bases de Datos"},
-    {"id": 201, "programa_id": 20, "nombre": "Contabilidad Financiera"}
-  ],
-  "imparticiones": [
-    {"profesor_email": "profesor.a@example.edu", "asignatura_id": 101, "curso_academico_id": 2},
-    {"profesor_email": "profesor.a@example.edu", "asignatura_id": 101, "curso_academico_id": 1},
-    {"profesor_email": "profesor.b@example.edu", "asignatura_id": 102, "curso_academico_id": 2},
-    {"profesor_email": "profesor.c@example.edu", "asignatura_id": 201, "curso_academico_id": 2}
-  ]
+ "_nota": "Catalogo de UNIB extraido de los planes de estudio publicados en https://www.unib.org/ el 2026-11-03 por scripts/generar_catalogo_unib.py. Profesores y directores: identidades de desarrollo ficticias (@example.edu).",
+ "cursos_academicos": [
+  {
+   "id": 1,
+   "etiqueta": "2025-2026",
+   "activo": false
+  },
+  {
+   "id": 2,
+   "etiqueta": "2026-2027",
+   "activo": true
+  }
+ ],
+ "programas": [
+  {
+   "id": 1,
+   "nombre": "Bachillerato en Artes con concentración en Psicología",
+   "nivel": "Bachillerato",
+   "departamento": null,
+   "url": "https://www.unib.org/a/bachilleratos/bachillerato-artes-concentracion-psicologia",
+   "directores": []
+  },
+  {
+   "id": 2,
+   "nombre": "Bachillerato en Ciencias en Nutrición y Dietética",
+   "nivel": "Bachillerato",
+   "departamento": null,
+   "url": "https://www.unib.org/a/bachilleratos/bachillerato-ciencias-nutricion-dietetica",
+   "directores": []
+  },
+  {
+   "id": 3,
+   "nombre": "Maestría en Gestión y Auditorías Ambientales",
+   "nivel": "Maestría",
+   "departamento": "Medio Ambiente y Sostenibilidad",
+   "url": "https://www.unib.org/a/maestrias/maestria-gestion-y-auditorias-ambientales",
+   "directores": []
+  },
+  {
+   "id": 4,
+   "nombre": "Maestría en Dirección Estratégica con Especialidad en Gerencia",
+   "nivel": "Maestría",
+   "departamento": "Innovación, Negocios y Nuevas Tecnologías",
+   "url": "https://www.unib.org/a/maestrias/maestria-en-direccion-estrategica-con-especialidad-en-gerencia",
+   "directores": []
+  },
+  {
+   "id": 5,
+   "nombre": "Maestría en Dirección Estratégica con Especialidad en Tecnologías de la Información",
+   "nivel": "Maestría",
+   "departamento": "Innovación, Negocios y Nuevas Tecnologías",
+   "url": "https://www.unib.org/a/maestrias/maestria-direccion-estrategica-tecnologias-informacion",
+   "directores": [
+    "director.programa@example.edu"
+   ]
+  },
+  {
+   "id": 6,
+   "nombre": "Maestría en Dirección Estratégica con Especialidad en Telecomunicaciones",
+   "nivel": "Maestría",
+   "departamento": "Innovación, Negocios y Nuevas Tecnologías",
+   "url": "https://www.unib.org/a/maestrias/maestria-en-direccion-estrategica-con-especialidad-en-telecomunicaciones",
+   "directores": []
+  },
+  {
+   "id": 7,
+   "nombre": "Maestría en Formación de Profesores de Español como Lengua Extranjera",
+   "nivel": "Maestría",
+   "departamento": "Ciencias de Lenguaje, Educación y Comunicaciones",
+   "url": "https://www.unib.org/a/maestrias/maestria-formacion-profesores-espanol-como-lengua-extranjera",
+   "directores": []
+  },
+  {
+   "id": 8,
+   "nombre": "Master in Teaching English as a Foreign Language",
+   "nivel": "Maestría",
+   "departamento": "Ciencias de Lenguaje, Educación y Comunicaciones",
+   "url": "https://www.unib.org/a/maestrias/master-teaching-english-foreign-language",
+   "directores": []
+  },
+  {
+   "id": 9,
+   "nombre": "Maestría en Educación con especialidad en Educación Superior",
+   "nivel": "Maestría",
+   "departamento": "Ciencias de Lenguaje, Educación y Comunicaciones",
+   "url": "https://www.unib.org/a/maestrias/maestria-en-educacion-con-especialidad-en-educacion-superior",
+   "directores": []
+  },
+  {
+   "id": 10,
+   "nombre": "Maestría en Educación con especialidad en Organización y Gestión de Centros Educativos",
+   "nivel": "Maestría",
+   "departamento": "Ciencias de Lenguaje, Educación y Comunicaciones",
+   "url": "https://www.unib.org/a/maestrias/maestria-en-educacion-con-especialidad-en-organizacion-y-gestion-de-centros-educativos",
+   "directores": []
+  },
+  {
+   "id": 11,
+   "nombre": "Maestría en Educación con especialidad en las TIC´s en la Educación",
+   "nivel": "Maestría",
+   "departamento": "Ciencias de Lenguaje, Educación y Comunicaciones",
+   "url": "https://www.unib.org/a/maestrias/maestria-en-educacion-con-especialidad-en-las-tic-en-la-eduacion",
+   "directores": []
+  },
+  {
+   "id": 12,
+   "nombre": "Maestría en Educación con Especialidad en Formación del Profesorado",
+   "nivel": "Maestría",
+   "departamento": "Ciencias de Lenguaje, Educación y Comunicaciones",
+   "url": "https://www.unib.org/a/maestrias/maestria-en-educacion-con-especialidad-en-formacion-del-profesorado",
+   "directores": []
+  },
+  {
+   "id": 13,
+   "nombre": "Maestría en Actividad Física: Entrenamiento y Gestión Deportiva",
+   "nivel": "Maestría",
+   "departamento": "Ciencias de la Salud",
+   "url": "https://www.unib.org/a/maestrias/maestria-actividad-fisica-entrenamiento-gestion-deportiva",
+   "directores": []
+  },
+  {
+   "id": 14,
+   "nombre": "Maestría en Ciencias Naturopáticas",
+   "nivel": "Maestría",
+   "departamento": "Ciencias de la Salud",
+   "url": "https://www.unib.org/a/maestrias/maestria-en-ciencias-naturopaticas",
+   "directores": []
+  },
+  {
+   "id": 15,
+   "nombre": "Maestría en Salud Pública",
+   "nivel": "Maestría",
+   "departamento": "Ciencias de la Salud",
+   "url": "https://www.unib.org/a/maestrias/maestria-en-salud-publica",
+   "directores": []
+  },
+  {
+   "id": 16,
+   "nombre": "Maestría en Diseño, Gestión y Dirección de Proyectos",
+   "nivel": "Maestría",
+   "departamento": "Proyectos",
+   "url": "https://www.unib.org/a/maestrias/maestria-en-diseno-gestion-y-direccion-proyectos",
+   "directores": []
+  },
+  {
+   "id": 17,
+   "nombre": "Maestría en Diseño, Gestión y Dirección de Proyectos con especialidad en Innovación y Producto",
+   "nivel": "Maestría",
+   "departamento": "Proyectos",
+   "url": "https://www.unib.org/a/maestrias/maestria-en-diseno-gestion-y-direccion-de-proyectos-con-especialidad-en-innovacion-y-producto",
+   "directores": []
+  },
+  {
+   "id": 18,
+   "nombre": "Maestría en Diseño, Gestión y Dirección de Proyectos con Especialidad en Arquitectura y Urbanismo",
+   "nivel": "Maestría",
+   "departamento": "Proyectos",
+   "url": "https://www.unib.org/a/maestrias/maestria-en-diseno-gestion-y-direccion-de-proyectos-con-especialidad-en-arquitectura-y-urbanismo",
+   "directores": []
+  },
+  {
+   "id": 19,
+   "nombre": "Doctorado en Educación con especialidad en Investigación (DODE)",
+   "nivel": "Doctorado",
+   "departamento": null,
+   "url": "https://www.unib.org/a/doctorados/doctorado-en-educacion-con-especialidad-en-investigacion",
+   "directores": []
+  },
+  {
+   "id": 20,
+   "nombre": "Doctorado en Proyectos con especialidad en Investigación (DODP)",
+   "nivel": "Doctorado",
+   "departamento": null,
+   "url": "https://www.unib.org/a/doctorados/doctorado-en-proyectos-con-especialidad-en-investigacion",
+   "directores": []
+  }
+ ],
+ "asignaturas": [
+  {
+   "id": 1001,
+   "programa_id": 1,
+   "codigo": "LG001",
+   "nombre": "Estrategias de aprendizaje y competencias TIC",
+   "creditos": 3.0
+  },
+  {
+   "id": 1002,
+   "programa_id": 1,
+   "codigo": "CSJ025",
+   "nombre": "Psicología de la Motivación",
+   "creditos": 3.0
+  },
+  {
+   "id": 1003,
+   "programa_id": 1,
+   "codigo": "CSJ023",
+   "nombre": "Historia de la Psicología",
+   "creditos": 3.0
+  },
+  {
+   "id": 1004,
+   "programa_id": 1,
+   "codigo": "CSJ026",
+   "nombre": "Psicología del Aprendizaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 1005,
+   "programa_id": 1,
+   "codigo": "SP027",
+   "nombre": "Redacción, lectura y comprensión de textos escritos",
+   "creditos": 3.0
+  },
+  {
+   "id": 1006,
+   "programa_id": 1,
+   "codigo": "CDS013",
+   "nombre": "Fundamentos de Psicobiología",
+   "creditos": 3.0
+  },
+  {
+   "id": 1007,
+   "programa_id": 1,
+   "codigo": "CSJ014",
+   "nombre": "Comunicación interpersonal",
+   "creditos": 3.0
+  },
+  {
+   "id": 1008,
+   "programa_id": 1,
+   "codigo": "CSJ028",
+   "nombre": "Psicología Social",
+   "creditos": 3.0
+  },
+  {
+   "id": 1009,
+   "programa_id": 1,
+   "codigo": "DD041",
+   "nombre": "Equipos de trabajo y toma de decisiones",
+   "creditos": 3.0
+  },
+  {
+   "id": 1010,
+   "programa_id": 1,
+   "codigo": "CSJ027",
+   "nombre": "Psicología de la Emoción",
+   "creditos": 3.0
+  },
+  {
+   "id": 1011,
+   "programa_id": 1,
+   "codigo": "CSJ057",
+   "nombre": "Psicología de la Personalidad y las Diferencias Individuales",
+   "creditos": 3.0
+  },
+  {
+   "id": 1012,
+   "programa_id": 1,
+   "codigo": "CSJ024",
+   "nombre": "Estadística",
+   "creditos": 3.0
+  },
+  {
+   "id": 1013,
+   "programa_id": 1,
+   "codigo": "CDS015",
+   "nombre": "Psicología del Desarrollo I: Infancia y Adolescencia",
+   "creditos": 3.0
+  },
+  {
+   "id": 1014,
+   "programa_id": 1,
+   "codigo": "CSJ058",
+   "nombre": "Metodología de la Investigación en Psicología I",
+   "creditos": 3.0
+  },
+  {
+   "id": 1015,
+   "programa_id": 1,
+   "codigo": "CDS031",
+   "nombre": "Procesos cognitivos: Percepción, Atención y Memoria",
+   "creditos": 3.0
+  },
+  {
+   "id": 1016,
+   "programa_id": 1,
+   "codigo": "CDS014",
+   "nombre": "Psicofisiología",
+   "creditos": 3.0
+  },
+  {
+   "id": 1017,
+   "programa_id": 1,
+   "codigo": "IDI001",
+   "nombre": "Inglés I",
+   "creditos": 3.0
+  },
+  {
+   "id": 1018,
+   "programa_id": 1,
+   "codigo": "CDS030",
+   "nombre": "Psicología del Desarrollo II: Juventud, Madurez y Vejez",
+   "creditos": 3.0
+  },
+  {
+   "id": 1019,
+   "programa_id": 1,
+   "codigo": "CDS034",
+   "nombre": "Procesos Cognitivos: Pensamiento y Lenguaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 1020,
+   "programa_id": 1,
+   "codigo": "CDS032",
+   "nombre": "Psicometría",
+   "creditos": 3.0
+  },
+  {
+   "id": 1021,
+   "programa_id": 1,
+   "codigo": "CDS033",
+   "nombre": "Neuropsicología",
+   "creditos": 3.0
+  },
+  {
+   "id": 1022,
+   "programa_id": 1,
+   "codigo": "IDI002",
+   "nombre": "Inglés II",
+   "creditos": 3.0
+  },
+  {
+   "id": 1023,
+   "programa_id": 1,
+   "codigo": "CSJ098",
+   "nombre": "Psicología de los Grupos",
+   "creditos": 3.0
+  },
+  {
+   "id": 1024,
+   "programa_id": 1,
+   "codigo": "CDS045",
+   "nombre": "Psicología de la Educación",
+   "creditos": 3.0
+  },
+  {
+   "id": 1025,
+   "programa_id": 1,
+   "codigo": "CDS046",
+   "nombre": "Psicopatología",
+   "creditos": 3.0
+  },
+  {
+   "id": 1026,
+   "programa_id": 1,
+   "codigo": "IDI003",
+   "nombre": "Inglés III",
+   "creditos": 3.0
+  },
+  {
+   "id": 1027,
+   "programa_id": 1,
+   "codigo": "CSJ100",
+   "nombre": "Psicología de las Organizaciones",
+   "creditos": 3.0
+  },
+  {
+   "id": 1028,
+   "programa_id": 1,
+   "codigo": "CDS048",
+   "nombre": "Psicología Clínica",
+   "creditos": 3.0
+  },
+  {
+   "id": 1029,
+   "programa_id": 1,
+   "codigo": "CDS047",
+   "nombre": "Diagnóstico Psicológico",
+   "creditos": 3.0
+  },
+  {
+   "id": 1030,
+   "programa_id": 1,
+   "codigo": "IDI004",
+   "nombre": "Inglés IV",
+   "creditos": 3.0
+  },
+  {
+   "id": 1031,
+   "programa_id": 1,
+   "codigo": "CSJ134",
+   "nombre": "Resolución de Conflictos y Mediación",
+   "creditos": 3.0
+  },
+  {
+   "id": 1032,
+   "programa_id": 1,
+   "codigo": "CDS058",
+   "nombre": "Intervención Psicológica",
+   "creditos": 3.0
+  },
+  {
+   "id": 1033,
+   "programa_id": 1,
+   "codigo": "PP_PSGPSI/SEM_PSGPSI",
+   "nombre": "Práctica/Seminario",
+   "creditos": 3.0
+  },
+  {
+   "id": 1034,
+   "programa_id": 1,
+   "codigo": "PF3",
+   "nombre": "Proyecto Final",
+   "creditos": 6.0
+  },
+  {
+   "id": 1035,
+   "programa_id": 1,
+   "codigo": "CDS111",
+   "nombre": "Psicología de la Salud",
+   "creditos": 3.0
+  },
+  {
+   "id": 1036,
+   "programa_id": 1,
+   "codigo": "DD344",
+   "nombre": "Actualidad sobre psicopatología en psicología: Fundamentos de Psicofarmacología",
+   "creditos": 3.0
+  },
+  {
+   "id": 1037,
+   "programa_id": 1,
+   "codigo": "DD323",
+   "nombre": "Métodos y técnicas de intervención en psicoterapia",
+   "creditos": 3.0
+  },
+  {
+   "id": 1038,
+   "programa_id": 1,
+   "codigo": "DD351",
+   "nombre": "Diagnóstico e intervención en conductas de riesgo y adicciones",
+   "creditos": 3.0
+  },
+  {
+   "id": 1039,
+   "programa_id": 1,
+   "codigo": "CDS002",
+   "nombre": "Fundamentos de la Actividad Física y Motricidad Humana",
+   "creditos": 3.0
+  },
+  {
+   "id": 1040,
+   "programa_id": 1,
+   "codigo": "DP032",
+   "nombre": "Sociología del Deporte",
+   "creditos": 3.0
+  },
+  {
+   "id": 1041,
+   "programa_id": 1,
+   "codigo": "CSJ046",
+   "nombre": "Análisis de la Conducta Deportiva",
+   "creditos": 3.0
+  },
+  {
+   "id": 1042,
+   "programa_id": 1,
+   "codigo": "CSJ171",
+   "nombre": "Psicología del Deporte",
+   "creditos": 3.0
+  },
+  {
+   "id": 1043,
+   "programa_id": 1,
+   "codigo": "CSJ076",
+   "nombre": "Organización de Empresas",
+   "creditos": 3.0
+  },
+  {
+   "id": 1044,
+   "programa_id": 1,
+   "codigo": "TR046",
+   "nombre": "Gestión Estratégica de los Recursos Humanos",
+   "creditos": 3.0
+  },
+  {
+   "id": 1045,
+   "programa_id": 1,
+   "codigo": "CSJ037",
+   "nombre": "Dirección Estratégica y Competencias Directivas",
+   "creditos": 3.0
+  },
+  {
+   "id": 1046,
+   "programa_id": 1,
+   "codigo": "CSJ063",
+   "nombre": "Comunicación Corporativa e Institucional",
+   "creditos": 3.0
+  },
+  {
+   "id": 1047,
+   "programa_id": 1,
+   "codigo": "CSJ163",
+   "nombre": "Sociología de la Educación: Cambios Sociales, Educativos y Multiculturalidad",
+   "creditos": 3.0
+  },
+  {
+   "id": 1048,
+   "programa_id": 1,
+   "codigo": "PS016",
+   "nombre": "Interculturalidad y educación",
+   "creditos": 3.0
+  },
+  {
+   "id": 1049,
+   "programa_id": 1,
+   "codigo": "FP104",
+   "nombre": "Organización y gestión de centros educativos",
+   "creditos": 3.0
+  },
+  {
+   "id": 1050,
+   "programa_id": 1,
+   "codigo": "PS017",
+   "nombre": "Orientación educativa y tutoría",
+   "creditos": 3.0
+  },
+  {
+   "id": 1051,
+   "programa_id": 1,
+   "codigo": "CSJ103",
+   "nombre": "Creación Publicitaria (TV, Radio, Impresos)",
+   "creditos": 3.0
+  },
+  {
+   "id": 1052,
+   "programa_id": 1,
+   "codigo": "CSJ105",
+   "nombre": "Diseño y Planificación de Campañas",
+   "creditos": 3.0
+  },
+  {
+   "id": 1053,
+   "programa_id": 1,
+   "codigo": "CSJ102",
+   "nombre": "Investigación de Mercados",
+   "creditos": 3.0
+  },
+  {
+   "id": 1054,
+   "programa_id": 1,
+   "codigo": "DD2865",
+   "nombre": "Dirección de Marketing",
+   "creditos": 3.0
+  },
+  {
+   "id": 1055,
+   "programa_id": 1,
+   "codigo": "CSJ059",
+   "nombre": "Metodología de la Investigación en Piscología II",
+   "creditos": 3.0
+  },
+  {
+   "id": 1056,
+   "programa_id": 1,
+   "codigo": "CDS059",
+   "nombre": "Evaluación de Programas e Intervenciones en Diferentes Contextos",
+   "creditos": 3.0
+  },
+  {
+   "id": 1057,
+   "programa_id": 1,
+   "codigo": "CSJ118",
+   "nombre": "Economía de la Empresa y Emprendedores",
+   "creditos": 3.0
+  },
+  {
+   "id": 1058,
+   "programa_id": 1,
+   "codigo": "CDS060",
+   "nombre": "Coaching",
+   "creditos": 3.0
+  },
+  {
+   "id": 1059,
+   "programa_id": 1,
+   "codigo": "DD350",
+   "nombre": "Intervención en crisis, catástrofes y emergencias: primeros auxilios psicológicos",
+   "creditos": 3.0
+  },
+  {
+   "id": 1060,
+   "programa_id": 1,
+   "codigo": "PS005",
+   "nombre": "Parentalidad positiva: promoción del desarrollo psicológico saludable desde las prácticas parentales",
+   "creditos": 3.0
+  },
+  {
+   "id": 2001,
+   "programa_id": 2,
+   "codigo": "CDS001",
+   "nombre": "Biología Humana I: Anatomía",
+   "creditos": 3.0
+  },
+  {
+   "id": 2002,
+   "programa_id": 2,
+   "codigo": "IYA012",
+   "nombre": "Química",
+   "creditos": 3.0
+  },
+  {
+   "id": 2003,
+   "programa_id": 2,
+   "codigo": "CDS062",
+   "nombre": "Biología Celular y Molecular",
+   "creditos": 3.0
+  },
+  {
+   "id": 2004,
+   "programa_id": 2,
+   "codigo": "SP027",
+   "nombre": "Redacción, lectura y comprensión de textos escritos",
+   "creditos": 3.0
+  },
+  {
+   "id": 2005,
+   "programa_id": 2,
+   "codigo": "LG001",
+   "nombre": "Estrategias de aprendizaje y competencias TIC",
+   "creditos": 3.0
+  },
+  {
+   "id": 2006,
+   "programa_id": 2,
+   "codigo": "CDS005",
+   "nombre": "Biología Humana II: Fisiología",
+   "creditos": 3.0
+  },
+  {
+   "id": 2007,
+   "programa_id": 2,
+   "codigo": "IYA055",
+   "nombre": "Química orgánica",
+   "creditos": 3.0
+  },
+  {
+   "id": 2008,
+   "programa_id": 2,
+   "codigo": "IYA009",
+   "nombre": "Matemáticas",
+   "creditos": 3.0
+  },
+  {
+   "id": 2009,
+   "programa_id": 2,
+   "codigo": "CDS012",
+   "nombre": "Microbiología y parasitología",
+   "creditos": 3.0
+  },
+  {
+   "id": 2010,
+   "programa_id": 2,
+   "codigo": "MM015",
+   "nombre": "Herramientas y técnicas para una comunicación eficaz en internet",
+   "creditos": 3.0
+  },
+  {
+   "id": 2011,
+   "programa_id": 2,
+   "codigo": "SN403",
+   "nombre": "Nutrición y dietética",
+   "creditos": 3.0
+  },
+  {
+   "id": 2012,
+   "programa_id": 2,
+   "codigo": "CDS061",
+   "nombre": "Biología Humana III: Fisiología",
+   "creditos": 3.0
+  },
+  {
+   "id": 2013,
+   "programa_id": 2,
+   "codigo": "CSJ024",
+   "nombre": "Estadística I",
+   "creditos": 4.0
+  },
+  {
+   "id": 2014,
+   "programa_id": 2,
+   "codigo": "CDS008",
+   "nombre": "Bioquímica",
+   "creditos": 3.0
+  },
+  {
+   "id": 2015,
+   "programa_id": 2,
+   "codigo": "CSJ018",
+   "nombre": "Historia y antropología de la alimentación",
+   "creditos": 3.0
+  },
+  {
+   "id": 2016,
+   "programa_id": 2,
+   "codigo": "SN405",
+   "nombre": "Valoración del estado nutricional y composición corporal",
+   "creditos": 3.0
+  },
+  {
+   "id": 2017,
+   "programa_id": 2,
+   "codigo": "CDS025",
+   "nombre": "Biología Humana IV: Fisiopatología y farmacología",
+   "creditos": 3.0
+  },
+  {
+   "id": 2018,
+   "programa_id": 2,
+   "codigo": "CDS010",
+   "nombre": "Nutrición y metabolismo",
+   "creditos": 3.0
+  },
+  {
+   "id": 2019,
+   "programa_id": 2,
+   "codigo": "LG002",
+   "nombre": "Ciencia de los alimentos I",
+   "creditos": 3.0
+  },
+  {
+   "id": 2020,
+   "programa_id": 2,
+   "codigo": "SN271",
+   "nombre": "Salud Pública aplicada a la Nutrición",
+   "creditos": 3.0
+  },
+  {
+   "id": 2021,
+   "programa_id": 2,
+   "codigo": "SN406",
+   "nombre": "Dietética Aplicada I",
+   "creditos": 3.0
+  },
+  {
+   "id": 2022,
+   "programa_id": 2,
+   "codigo": "SN328",
+   "nombre": "Higiene y seguridad alimentaria",
+   "creditos": 3.0
+  },
+  {
+   "id": 2023,
+   "programa_id": 2,
+   "codigo": "CDS065",
+   "nombre": "Biología Humana V: Fisiopatología y farmacología",
+   "creditos": 3.0
+  },
+  {
+   "id": 2024,
+   "programa_id": 2,
+   "codigo": "LG003",
+   "nombre": "Ciencia de los alimentos II",
+   "creditos": 3.0
+  },
+  {
+   "id": 2025,
+   "programa_id": 2,
+   "codigo": "SN327",
+   "nombre": "Epidemiología y nutrición comunitaria",
+   "creditos": 3.0
+  },
+  {
+   "id": 2026,
+   "programa_id": 2,
+   "codigo": "SN407",
+   "nombre": "Dietética Aplicada II",
+   "creditos": 3.0
+  },
+  {
+   "id": 2027,
+   "programa_id": 2,
+   "codigo": "CDS091",
+   "nombre": "Sistemas de Servicios de Alimentos I",
+   "creditos": 3.0
+  },
+  {
+   "id": 2028,
+   "programa_id": 2,
+   "codigo": "SN404",
+   "nombre": "Técnicas culinarias y gastronomía",
+   "creditos": 3.0
+  },
+  {
+   "id": 2029,
+   "programa_id": 2,
+   "codigo": "CSJ014",
+   "nombre": "Comunicación interpersonal",
+   "creditos": 2.0
+  },
+  {
+   "id": 2030,
+   "programa_id": 2,
+   "codigo": "SN400",
+   "nombre": "Dietética Clínica I",
+   "creditos": 3.0
+  },
+  {
+   "id": 2031,
+   "programa_id": 2,
+   "codigo": "SN399",
+   "nombre": "Sistemas de Servicios de Alimentos II",
+   "creditos": 3.0
+  },
+  {
+   "id": 2032,
+   "programa_id": 2,
+   "codigo": "SN199",
+   "nombre": "Metodología de Investigación Científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 2033,
+   "programa_id": 2,
+   "codigo": "BT009",
+   "nombre": "Bioética general",
+   "creditos": 3.0
+  },
+  {
+   "id": 2034,
+   "programa_id": 2,
+   "codigo": "SN401",
+   "nombre": "Dietética Clínica II",
+   "creditos": 3.0
+  },
+  {
+   "id": 2035,
+   "programa_id": 2,
+   "codigo": "CSJ130",
+   "nombre": "Educación nutricional",
+   "creditos": 3.0
+  },
+  {
+   "id": 2036,
+   "programa_id": 2,
+   "codigo": "SN398",
+   "nombre": "Deontología y legislación alimentaria internacional y de Puerto Rico",
+   "creditos": 3.0
+  },
+  {
+   "id": 2037,
+   "programa_id": 2,
+   "codigo": "CSJ020",
+   "nombre": "Sociedad Contemporánea",
+   "creditos": 3.0
+  },
+  {
+   "id": 2038,
+   "programa_id": 2,
+   "codigo": "SN402",
+   "nombre": "Dietética Clínica III",
+   "creditos": 3.0
+  },
+  {
+   "id": 2039,
+   "programa_id": 2,
+   "codigo": "SNGND_SP_PR",
+   "nombre": "Seminario de Integración y Fundamentos en la Profesión del Nutricionista-Dietista",
+   "creditos": 6.0
+  },
+  {
+   "id": 2040,
+   "programa_id": 2,
+   "codigo": "SNPF3",
+   "nombre": "Proyecto Final",
+   "creditos": 6.0
+  },
+  {
+   "id": 2041,
+   "programa_id": 2,
+   "codigo": "PP_SNGND3",
+   "nombre": "Práctica Profesional",
+   "creditos": 3.0
+  },
+  {
+   "id": 2042,
+   "programa_id": 2,
+   "codigo": "IDI001",
+   "nombre": "Inglés I",
+   "creditos": 3.0
+  },
+  {
+   "id": 2043,
+   "programa_id": 2,
+   "codigo": "SN347",
+   "nombre": "Alergias e intolerancias alimentarias: prevención, diagnóstico y tratamiento",
+   "creditos": 3.0
+  },
+  {
+   "id": 2044,
+   "programa_id": 2,
+   "codigo": "CSJ025",
+   "nombre": "Psicología de la Motivación",
+   "creditos": 3.0
+  },
+  {
+   "id": 2045,
+   "programa_id": 2,
+   "codigo": "SN306",
+   "nombre": "Nutrición Práctica Deportiva",
+   "creditos": 3.0
+  },
+  {
+   "id": 2046,
+   "programa_id": 2,
+   "codigo": "SN338",
+   "nombre": "Seguridad alimentaria y nutrición",
+   "creditos": 3.0
+  },
+  {
+   "id": 2047,
+   "programa_id": 2,
+   "codigo": "IDI002",
+   "nombre": "Inglés II",
+   "creditos": 3.0
+  },
+  {
+   "id": 2048,
+   "programa_id": 2,
+   "codigo": "CDS040",
+   "nombre": "Ayudas Ergogénicas",
+   "creditos": 3.0
+  },
+  {
+   "id": 2049,
+   "programa_id": 2,
+   "codigo": "CDS081",
+   "nombre": "Higiene en la Industria Alimentaria",
+   "creditos": 3.0
+  },
+  {
+   "id": 2050,
+   "programa_id": 2,
+   "codigo": "SN333",
+   "nombre": "Lactancia materna y alimentación complementaria del lactante",
+   "creditos": 3.0
+  },
+  {
+   "id": 2051,
+   "programa_id": 2,
+   "codigo": "RH020",
+   "nombre": "Marketing online para servicios de salud",
+   "creditos": 3.0
+  },
+  {
+   "id": 2052,
+   "programa_id": 2,
+   "codigo": "IYA046",
+   "nombre": "Diseño e innovación en alimentación",
+   "creditos": 3.0
+  },
+  {
+   "id": 2053,
+   "programa_id": 2,
+   "codigo": "CDS050",
+   "nombre": "Promoción y Prescripción de Actividad Física para la Salud",
+   "creditos": 3.0
+  },
+  {
+   "id": 2054,
+   "programa_id": 2,
+   "codigo": "SN374",
+   "nombre": "Análisis Sensorial de los Alimentos",
+   "creditos": 3.0
+  },
+  {
+   "id": 2055,
+   "programa_id": 2,
+   "codigo": "CSJ134",
+   "nombre": "Resolución de Conflictos y Mediación",
+   "creditos": 3.0
+  },
+  {
+   "id": 2056,
+   "programa_id": 2,
+   "codigo": "SN290",
+   "nombre": "Orientación psicológica en la consulta dietético-nutricional",
+   "creditos": 3.0
+  },
+  {
+   "id": 3001,
+   "programa_id": 3,
+   "codigo": "MA001",
+   "nombre": "Introducción al desarrollo sostenible",
+   "creditos": 2.0
+  },
+  {
+   "id": 3002,
+   "programa_id": 3,
+   "codigo": "MA002",
+   "nombre": "Ecología",
+   "creditos": 1.0
+  },
+  {
+   "id": 3003,
+   "programa_id": 3,
+   "codigo": "MA003",
+   "nombre": "Tratamiento de aguas",
+   "creditos": 4.0
+  },
+  {
+   "id": 3004,
+   "programa_id": 3,
+   "codigo": "MA004",
+   "nombre": "Gestión de residuos",
+   "creditos": 4.0
+  },
+  {
+   "id": 3005,
+   "programa_id": 3,
+   "codigo": "MA005",
+   "nombre": "Contaminación atmosférica",
+   "creditos": 3.0
+  },
+  {
+   "id": 3006,
+   "programa_id": 3,
+   "codigo": "MA006",
+   "nombre": "Climatología y medio ambiente",
+   "creditos": 1.0
+  },
+  {
+   "id": 3007,
+   "programa_id": 3,
+   "codigo": "MA007",
+   "nombre": "Contaminación acústica",
+   "creditos": 1.0
+  },
+  {
+   "id": 3008,
+   "programa_id": 3,
+   "codigo": "MA008",
+   "nombre": "Recursos naturales",
+   "creditos": 3.0
+  },
+  {
+   "id": 3009,
+   "programa_id": 3,
+   "codigo": "MA009",
+   "nombre": "Contaminación de suelos",
+   "creditos": 3.0
+  },
+  {
+   "id": 3010,
+   "programa_id": 3,
+   "codigo": "MA010",
+   "nombre": "Gestión ambiental de la empresa",
+   "creditos": 4.0
+  },
+  {
+   "id": 3011,
+   "programa_id": 3,
+   "codigo": "MA011",
+   "nombre": "Auditorías medioambientales",
+   "creditos": 2.0
+  },
+  {
+   "id": 3012,
+   "programa_id": 3,
+   "codigo": "MA012",
+   "nombre": "Evaluación de impacto ambiental",
+   "creditos": 3.0
+  },
+  {
+   "id": 3013,
+   "programa_id": 3,
+   "codigo": "MA013",
+   "nombre": "Economía y medio ambiente",
+   "creditos": 1.0
+  },
+  {
+   "id": 3014,
+   "programa_id": 3,
+   "codigo": "MA014",
+   "nombre": "Derecho ambiental",
+   "creditos": 1.0
+  },
+  {
+   "id": 3015,
+   "programa_id": 3,
+   "codigo": "MA092",
+   "nombre": "Fundamentos de la ingeniería ambiental",
+   "creditos": 7.0
+  },
+  {
+   "id": 3016,
+   "programa_id": 3,
+   "codigo": "MA316",
+   "nombre": "La Tierra Dinámica",
+   "creditos": 2.0
+  },
+  {
+   "id": 3017,
+   "programa_id": 3,
+   "codigo": "MA317",
+   "nombre": "El litoral y la erosión marina",
+   "creditos": 2.0
+  },
+  {
+   "id": 3018,
+   "programa_id": 3,
+   "codigo": "MA318",
+   "nombre": "Sedimentos marinos e influencia glacial en los mares",
+   "creditos": 2.0
+  },
+  {
+   "id": 3019,
+   "programa_id": 3,
+   "codigo": "MA019",
+   "nombre": "Instalaciones y tratamientos de depuración de aguas residuales I",
+   "creditos": 7.0
+  },
+  {
+   "id": 3020,
+   "programa_id": 3,
+   "codigo": "MA108",
+   "nombre": "Explotación Pesquera",
+   "creditos": 2.0
+  },
+  {
+   "id": 3021,
+   "programa_id": 3,
+   "codigo": "MA109",
+   "nombre": "Cultivos Marinos",
+   "creditos": 2.0
+  },
+  {
+   "id": 3022,
+   "programa_id": 3,
+   "codigo": "MA110",
+   "nombre": "Navegación y Transporte Marino",
+   "creditos": 2.0
+  },
+  {
+   "id": 3023,
+   "programa_id": 3,
+   "codigo": "MA111",
+   "nombre": "Recursos Minerales y Energéticos",
+   "creditos": 2.0
+  },
+  {
+   "id": 3024,
+   "programa_id": 3,
+   "codigo": "MA102",
+   "nombre": "Ecología marina básica",
+   "creditos": 1.0
+  },
+  {
+   "id": 3025,
+   "programa_id": 3,
+   "codigo": "MA103",
+   "nombre": "Organismos Marinos",
+   "creditos": 2.0
+  },
+  {
+   "id": 3026,
+   "programa_id": 3,
+   "codigo": "MA104",
+   "nombre": "Comunidades Marinas",
+   "creditos": 3.0
+  },
+  {
+   "id": 3027,
+   "programa_id": 3,
+   "codigo": "MA105",
+   "nombre": "El agua de mar",
+   "creditos": 2.0
+  },
+  {
+   "id": 3028,
+   "programa_id": 3,
+   "codigo": "MA106",
+   "nombre": "Circulación de las aguas",
+   "creditos": 2.0
+  },
+  {
+   "id": 3029,
+   "programa_id": 3,
+   "codigo": "MA107",
+   "nombre": "Química del agua de mar",
+   "creditos": 2.0
+  },
+  {
+   "id": 3030,
+   "programa_id": 3,
+   "codigo": "MA098",
+   "nombre": "Gestión ambiental de la empresa: ISO 14001",
+   "creditos": 7.0
+  },
+  {
+   "id": 3031,
+   "programa_id": 3,
+   "codigo": "MA015",
+   "nombre": "Introducción a la gestión integral del agua",
+   "creditos": 2.0
+  },
+  {
+   "id": 3032,
+   "programa_id": 3,
+   "codigo": "MA016",
+   "nombre": "El ciclo del agua",
+   "creditos": 2.0
+  },
+  {
+   "id": 3033,
+   "programa_id": 3,
+   "codigo": "MA017",
+   "nombre": "Gestión del agua",
+   "creditos": 3.0
+  },
+  {
+   "id": 3034,
+   "programa_id": 3,
+   "codigo": "MA018",
+   "nombre": "Análisis y caracterización de las aguas",
+   "creditos": 3.0
+  },
+  {
+   "id": 3035,
+   "programa_id": 3,
+   "codigo": "MA021",
+   "nombre": "Agua y educación ambiental",
+   "creditos": 0.0
+  },
+  {
+   "id": 3036,
+   "programa_id": 3,
+   "codigo": "MA209",
+   "nombre": "Instalaciones y tratamiento del agua",
+   "creditos": 10.0
+  },
+  {
+   "id": 3037,
+   "programa_id": 3,
+   "codigo": "MA081",
+   "nombre": "Residuos sólidos urbanos",
+   "creditos": 7.0
+  },
+  {
+   "id": 3038,
+   "programa_id": 3,
+   "codigo": "MA082",
+   "nombre": "Residuos industriales",
+   "creditos": 6.0
+  },
+  {
+   "id": 3039,
+   "programa_id": 3,
+   "codigo": "MA083",
+   "nombre": "Residuos rurales",
+   "creditos": 3.0
+  },
+  {
+   "id": 3040,
+   "programa_id": 3,
+   "codigo": "MA084",
+   "nombre": "Residuos sanitarios",
+   "creditos": 4.0
+  },
+  {
+   "id": 3041,
+   "programa_id": 3,
+   "codigo": "MA085",
+   "nombre": "La educación ambiental y los RSU",
+   "creditos": 0.0
+  },
+  {
+   "id": 3042,
+   "programa_id": 3,
+   "codigo": "MA057",
+   "nombre": "Introducción de energías renovables",
+   "creditos": 3.0
+  },
+  {
+   "id": 3043,
+   "programa_id": 3,
+   "codigo": "MA059",
+   "nombre": "Energía solar térmica",
+   "creditos": 3.0
+  },
+  {
+   "id": 3044,
+   "programa_id": 3,
+   "codigo": "MA060",
+   "nombre": "Energía solar fotovoltaica",
+   "creditos": 3.0
+  },
+  {
+   "id": 3045,
+   "programa_id": 3,
+   "codigo": "MA061",
+   "nombre": "Energía hidráulica",
+   "creditos": 3.0
+  },
+  {
+   "id": 3046,
+   "programa_id": 3,
+   "codigo": "MA062",
+   "nombre": "Energía eólica",
+   "creditos": 3.0
+  },
+  {
+   "id": 3047,
+   "programa_id": 3,
+   "codigo": "MA063",
+   "nombre": "Energía geotérmica",
+   "creditos": 1.0
+  },
+  {
+   "id": 3048,
+   "programa_id": 3,
+   "codigo": "MA064",
+   "nombre": "Energía biomasa",
+   "creditos": 2.0
+  },
+  {
+   "id": 3049,
+   "programa_id": 3,
+   "codigo": "MA065",
+   "nombre": "Energía del mar",
+   "creditos": 2.0
+  },
+  {
+   "id": 3050,
+   "programa_id": 3,
+   "codigo": "MA073",
+   "nombre": "Áreas naturales en el contexto de sociedades",
+   "creditos": 2.0
+  },
+  {
+   "id": 3051,
+   "programa_id": 3,
+   "codigo": "MA074",
+   "nombre": "Biodiversidad",
+   "creditos": 3.0
+  },
+  {
+   "id": 3052,
+   "programa_id": 3,
+   "codigo": "MA075",
+   "nombre": "Los espacios naturales: tipología y procesos",
+   "creditos": 3.0
+  },
+  {
+   "id": 3053,
+   "programa_id": 3,
+   "codigo": "MA076",
+   "nombre": "Usos de los espacios naturales",
+   "creditos": 3.0
+  },
+  {
+   "id": 3054,
+   "programa_id": 3,
+   "codigo": "MA077",
+   "nombre": "La conservación de especies y de áreas naturales",
+   "creditos": 3.0
+  },
+  {
+   "id": 3055,
+   "programa_id": 3,
+   "codigo": "MA078",
+   "nombre": "La gestión de espacios naturales",
+   "creditos": 4.0
+  },
+  {
+   "id": 3056,
+   "programa_id": 3,
+   "codigo": "MA079",
+   "nombre": "Restauración ecológica y paisajismo",
+   "creditos": 2.0
+  },
+  {
+   "id": 3057,
+   "programa_id": 3,
+   "codigo": "MA080",
+   "nombre": "Casos prácticos de gestión y conservación de los espacios naturales",
+   "creditos": 0.0
+  },
+  {
+   "id": 3058,
+   "programa_id": 3,
+   "codigo": "MA087",
+   "nombre": "Evolución del ambiente y desarrollo sostenible",
+   "creditos": 2.0
+  },
+  {
+   "id": 3059,
+   "programa_id": 3,
+   "codigo": "MA088",
+   "nombre": "Evolución histórica de la educación ambiental",
+   "creditos": 2.0
+  },
+  {
+   "id": 3060,
+   "programa_id": 3,
+   "codigo": "MA194",
+   "nombre": "Conceptos generales básicos de educación ambiental",
+   "creditos": 2.0
+  },
+  {
+   "id": 3061,
+   "programa_id": 3,
+   "codigo": "MA195",
+   "nombre": "Educación ambiental en educación formal",
+   "creditos": 3.0
+  },
+  {
+   "id": 3062,
+   "programa_id": 3,
+   "codigo": "MA090",
+   "nombre": "Gestión ambiental y desarrollo sostenible",
+   "creditos": 2.0
+  },
+  {
+   "id": 3063,
+   "programa_id": 3,
+   "codigo": "MA091",
+   "nombre": "Gestión de riesgos y educación ambiental",
+   "creditos": 2.0
+  },
+  {
+   "id": 3064,
+   "programa_id": 3,
+   "codigo": "MA243",
+   "nombre": "Gestión de los contaminantes acuáticos",
+   "creditos": 4.0
+  },
+  {
+   "id": 3065,
+   "programa_id": 3,
+   "codigo": "MA136",
+   "nombre": "Tecnología en acuicultura marina: hacia una acuicultura sostenible",
+   "creditos": 3.0
+  },
+  {
+   "id": 3066,
+   "programa_id": 3,
+   "codigo": "MA140",
+   "nombre": "Gestión de pesquerías",
+   "creditos": 3.0
+  },
+  {
+   "id": 3067,
+   "programa_id": 3,
+   "codigo": "MA139",
+   "nombre": "Gestión de áreas naturales marinas protegidas",
+   "creditos": 3.0
+  },
+  {
+   "id": 3068,
+   "programa_id": 3,
+   "codigo": "MA137",
+   "nombre": "Gestión de la contaminación biológica",
+   "creditos": 4.0
+  },
+  {
+   "id": 3069,
+   "programa_id": 3,
+   "codigo": "MA028",
+   "nombre": "Ecosistemas marinos potencialmente contaminados",
+   "creditos": 2.0
+  },
+  {
+   "id": 3070,
+   "programa_id": 3,
+   "codigo": "MA029",
+   "nombre": "Factores ambientales que afectan a los contaminantes",
+   "creditos": 2.0
+  },
+  {
+   "id": 3071,
+   "programa_id": 3,
+   "codigo": "MA030",
+   "nombre": "Agentes contaminantes",
+   "creditos": 2.0
+  },
+  {
+   "id": 3072,
+   "programa_id": 3,
+   "codigo": "MA031",
+   "nombre": "Toxicología",
+   "creditos": 1.0
+  },
+  {
+   "id": 3073,
+   "programa_id": 3,
+   "codigo": "MA095",
+   "nombre": "Tratamiento de efluentes gaseosos",
+   "creditos": 7.0
+  },
+  {
+   "id": 3074,
+   "programa_id": 3,
+   "codigo": "MA143",
+   "nombre": "Valorización energética",
+   "creditos": 7.0
+  },
+  {
+   "id": 3075,
+   "programa_id": 3,
+   "codigo": "MA039",
+   "nombre": "Tratamiento de aguas residuales industriales",
+   "creditos": 13.0
+  },
+  {
+   "id": 3076,
+   "programa_id": 3,
+   "codigo": "MA093",
+   "nombre": "Ingeniería de valorización y tratamiento de residuos",
+   "creditos": 13.0
+  },
+  {
+   "id": 3077,
+   "programa_id": 3,
+   "codigo": "MA142",
+   "nombre": "Recuperación de suelos contaminados",
+   "creditos": 7.0
+  },
+  {
+   "id": 3078,
+   "programa_id": 3,
+   "codigo": "MA208",
+   "nombre": "Minería y medio ambiente",
+   "creditos": 13.0
+  },
+  {
+   "id": 3079,
+   "programa_id": 3,
+   "codigo": "MA245",
+   "nombre": "Acuerdos, negociaciones e instrumentos sobre cambio climático",
+   "creditos": 8.0
+  },
+  {
+   "id": 3080,
+   "programa_id": 3,
+   "codigo": "MA246",
+   "nombre": "Vulnerabilidad y adaptación al cambio climático",
+   "creditos": 9.0
+  },
+  {
+   "id": 3081,
+   "programa_id": 3,
+   "codigo": "MA248",
+   "nombre": "Ciencia y política del cambio climático",
+   "creditos": 7.0
+  },
+  {
+   "id": 3082,
+   "programa_id": 3,
+   "codigo": "MA249",
+   "nombre": "Análisis de ciclo de vida del producto y huella de carbono",
+   "creditos": 3.0
+  },
+  {
+   "id": 3083,
+   "programa_id": 3,
+   "codigo": "MA282",
+   "nombre": "Mitigación del cambio climático",
+   "creditos": 8.0
+  },
+  {
+   "id": 3084,
+   "programa_id": 3,
+   "codigo": "MA097",
+   "nombre": "Recuperación de suelos contaminados",
+   "creditos": 7.0
+  },
+  {
+   "id": 3085,
+   "programa_id": 3,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 4001,
+   "programa_id": 4,
+   "codigo": "TR026",
+   "nombre": "Administración y dirección de empresas",
+   "creditos": 3.0
+  },
+  {
+   "id": 4002,
+   "programa_id": 4,
+   "codigo": "DD002",
+   "nombre": "Control y gestión de costes",
+   "creditos": 2.0
+  },
+  {
+   "id": 4003,
+   "programa_id": 4,
+   "codigo": "TR047",
+   "nombre": "Dirección financiera",
+   "creditos": 3.0
+  },
+  {
+   "id": 4004,
+   "programa_id": 4,
+   "codigo": "DD004",
+   "nombre": "Marketing",
+   "creditos": 3.0
+  },
+  {
+   "id": 4005,
+   "programa_id": 4,
+   "codigo": "DD152",
+   "nombre": "Economía",
+   "creditos": 2.0
+  },
+  {
+   "id": 4006,
+   "programa_id": 4,
+   "codigo": "DD118",
+   "nombre": "Estadística básica",
+   "creditos": 2.0
+  },
+  {
+   "id": 4007,
+   "programa_id": 4,
+   "codigo": "DD120",
+   "nombre": "Matemáticas financieras",
+   "creditos": 1.0
+  },
+  {
+   "id": 4008,
+   "programa_id": 4,
+   "codigo": "DD124",
+   "nombre": "Contabilidad de gestión",
+   "creditos": 2.0
+  },
+  {
+   "id": 4009,
+   "programa_id": 4,
+   "codigo": "TR046",
+   "nombre": "Gestión estratégica de los recursos humanos",
+   "creditos": 2.0
+  },
+  {
+   "id": 4010,
+   "programa_id": 4,
+   "codigo": "DD040",
+   "nombre": "Técnicas de resolución de conflictos y negociación",
+   "creditos": 2.0
+  },
+  {
+   "id": 4011,
+   "programa_id": 4,
+   "codigo": "DD032",
+   "nombre": "Evaluación de desempeño y gestión por competencias",
+   "creditos": 2.0
+  },
+  {
+   "id": 4012,
+   "programa_id": 4,
+   "codigo": "TR024",
+   "nombre": "Técnicas de dirección y liderazgo organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 4013,
+   "programa_id": 4,
+   "codigo": "DD090",
+   "nombre": "Ética empresarial y responsabilidad social corporativa",
+   "creditos": 3.0
+  },
+  {
+   "id": 4014,
+   "programa_id": 4,
+   "codigo": "DD041",
+   "nombre": "Técnicas de dirección de equipos de trabajo",
+   "creditos": 2.0
+  },
+  {
+   "id": 4015,
+   "programa_id": 4,
+   "codigo": "DD076",
+   "nombre": "Gestión sin distancias",
+   "creditos": 1.0
+  },
+  {
+   "id": 4016,
+   "programa_id": 4,
+   "codigo": "DD026",
+   "nombre": "Entornos virtuales de trabajo colaborativo",
+   "creditos": 1.0
+  },
+  {
+   "id": 4017,
+   "programa_id": 4,
+   "codigo": "DD042",
+   "nombre": "Gestión del tiempo y dirección de reuniones",
+   "creditos": 2.0
+  },
+  {
+   "id": 4018,
+   "programa_id": 4,
+   "codigo": "DD043",
+   "nombre": "Estrés y burnout",
+   "creditos": 2.0
+  },
+  {
+   "id": 4019,
+   "programa_id": 4,
+   "codigo": "DD044",
+   "nombre": "Técnicas de presentación en público",
+   "creditos": 1.0
+  },
+  {
+   "id": 4020,
+   "programa_id": 4,
+   "codigo": "IP082",
+   "nombre": "Gestión de la calidad: ISO 9001",
+   "creditos": 3.0
+  },
+  {
+   "id": 4021,
+   "programa_id": 4,
+   "codigo": "DD133",
+   "nombre": "Prevención de riesgos laborales: ISO 45001",
+   "creditos": 2.0
+  },
+  {
+   "id": 4022,
+   "programa_id": 4,
+   "codigo": "MA098",
+   "nombre": "Gestión ambiental de la empresa ISO 14001",
+   "creditos": 3.0
+  },
+  {
+   "id": 4023,
+   "programa_id": 4,
+   "codigo": "DD012",
+   "nombre": "Gestión y dirección de operaciones",
+   "creditos": 2.0
+  },
+  {
+   "id": 4024,
+   "programa_id": 4,
+   "codigo": "DD013",
+   "nombre": "Logística",
+   "creditos": 2.0
+  },
+  {
+   "id": 4025,
+   "programa_id": 4,
+   "codigo": "DD014",
+   "nombre": "Dirección y planificación estratégica",
+   "creditos": 3.0
+  },
+  {
+   "id": 4026,
+   "programa_id": 4,
+   "codigo": "TR038",
+   "nombre": "Planificación y gestión de proyectos",
+   "creditos": 3.0
+  },
+  {
+   "id": 4027,
+   "programa_id": 4,
+   "codigo": "TI013",
+   "nombre": "Reingeniería, estrategia y dirección de sistemas y TIC",
+   "creditos": 3.0
+  },
+  {
+   "id": 4028,
+   "programa_id": 4,
+   "codigo": "TI025",
+   "nombre": "E-business y su integración con los sistemas corporativos de gestión",
+   "creditos": 3.0
+  },
+  {
+   "id": 4029,
+   "programa_id": 4,
+   "codigo": "TI017",
+   "nombre": "Integración de los sistemas de gestión empresarial",
+   "creditos": 5.0
+  },
+  {
+   "id": 4030,
+   "programa_id": 4,
+   "codigo": "DD162",
+   "nombre": "Desarrollo de estrategias de marketing",
+   "creditos": 2.0
+  },
+  {
+   "id": 4031,
+   "programa_id": 4,
+   "codigo": "TI030",
+   "nombre": "Gestión y seguridad de redes",
+   "creditos": 3.0
+  },
+  {
+   "id": 4032,
+   "programa_id": 4,
+   "codigo": "TI011",
+   "nombre": "Sociedad de la información y del cambio",
+   "creditos": 3.0
+  },
+  {
+   "id": 4033,
+   "programa_id": 4,
+   "codigo": "DD068",
+   "nombre": "Gestión del conocimiento y aprendizaje organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 4034,
+   "programa_id": 4,
+   "codigo": "TI004/DD163",
+   "nombre": "Marketing y comercio internacional",
+   "creditos": 4.0
+  },
+  {
+   "id": 4035,
+   "programa_id": 4,
+   "codigo": "TI014",
+   "nombre": "Comercio y marketing electrónico",
+   "creditos": 4.0
+  },
+  {
+   "id": 4036,
+   "programa_id": 4,
+   "codigo": "TI023",
+   "nombre": "Estudio y resolución de casos (I, II, III)",
+   "creditos": 10.0
+  },
+  {
+   "id": 4037,
+   "programa_id": 4,
+   "codigo": "DD372",
+   "nombre": "Liderazgo Organizacional y Coaching",
+   "creditos": 5.0
+  },
+  {
+   "id": 4038,
+   "programa_id": 4,
+   "codigo": "DD159",
+   "nombre": "Introducción al nuevo marketing",
+   "creditos": 2.0
+  },
+  {
+   "id": 4039,
+   "programa_id": 4,
+   "codigo": "DD160",
+   "nombre": "Investigación de mercadeo",
+   "creditos": 2.0
+  },
+  {
+   "id": 4040,
+   "programa_id": 4,
+   "codigo": "DD161",
+   "nombre": "Comportamiento del consumidor-comprador",
+   "creditos": 2.0
+  },
+  {
+   "id": 4041,
+   "programa_id": 4,
+   "codigo": "DD164",
+   "nombre": "Marketing relacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 4042,
+   "programa_id": 4,
+   "codigo": "DD165",
+   "nombre": "Auditorías de marketing",
+   "creditos": 1.0
+  },
+  {
+   "id": 4043,
+   "programa_id": 4,
+   "codigo": "DD166",
+   "nombre": "Política de gestión del producto y marca",
+   "creditos": 3.0
+  },
+  {
+   "id": 4044,
+   "programa_id": 4,
+   "codigo": "DD167",
+   "nombre": "Políticas de gestión del precio",
+   "creditos": 3.0
+  },
+  {
+   "id": 4045,
+   "programa_id": 4,
+   "codigo": "DD168",
+   "nombre": "Políticas de gestión de la distribución",
+   "creditos": 3.0
+  },
+  {
+   "id": 4046,
+   "programa_id": 4,
+   "codigo": "DD169",
+   "nombre": "Políticas de gestión de la comunicación",
+   "creditos": 3.0
+  },
+  {
+   "id": 4047,
+   "programa_id": 4,
+   "codigo": "DD170",
+   "nombre": "Marketing de servicios",
+   "creditos": 2.0
+  },
+  {
+   "id": 4048,
+   "programa_id": 4,
+   "codigo": "DD171",
+   "nombre": "El plan de marketing y control",
+   "creditos": 2.0
+  },
+  {
+   "id": 4049,
+   "programa_id": 4,
+   "codigo": "DD153",
+   "nombre": "Valorización financiera para las NIC",
+   "creditos": 2.0
+  },
+  {
+   "id": 4050,
+   "programa_id": 4,
+   "codigo": "DD122",
+   "nombre": "Normas internacionales de contabilidad",
+   "creditos": 4.5
+  },
+  {
+   "id": 4051,
+   "programa_id": 4,
+   "codigo": "DD121",
+   "nombre": "Financiación y tributación internacional",
+   "creditos": 1.5
+  },
+  {
+   "id": 4052,
+   "programa_id": 4,
+   "codigo": "DD123",
+   "nombre": "Análisis de estados financieros",
+   "creditos": 2.0
+  },
+  {
+   "id": 4053,
+   "programa_id": 4,
+   "codigo": "DD128",
+   "nombre": "Planificación y administración de la auditoría",
+   "creditos": 1.0
+  },
+  {
+   "id": 4054,
+   "programa_id": 4,
+   "codigo": "DD154",
+   "nombre": "Control interno",
+   "creditos": 2.0
+  },
+  {
+   "id": 4055,
+   "programa_id": 4,
+   "codigo": "DD155",
+   "nombre": "Documentación, pruebas y riesgos de auditorías",
+   "creditos": 2.0
+  },
+  {
+   "id": 4056,
+   "programa_id": 4,
+   "codigo": "DD130",
+   "nombre": "Procedimientos de auditoría por área",
+   "creditos": 5.0
+  },
+  {
+   "id": 4057,
+   "programa_id": 4,
+   "codigo": "DD131",
+   "nombre": "Informes de auditoría",
+   "creditos": 1.0
+  },
+  {
+   "id": 4058,
+   "programa_id": 4,
+   "codigo": "DD119",
+   "nombre": "Muestreo estadístico",
+   "creditos": 2.0
+  },
+  {
+   "id": 4059,
+   "programa_id": 4,
+   "codigo": "DD125",
+   "nombre": "Costes totales de la calidad",
+   "creditos": 2.0
+  },
+  {
+   "id": 4060,
+   "programa_id": 4,
+   "codigo": "DD126",
+   "nombre": "Contabilidad pública y presupuestaria",
+   "creditos": 3.0
+  },
+  {
+   "id": 4061,
+   "programa_id": 4,
+   "codigo": "TR043",
+   "nombre": "Fundamentos del turismo",
+   "creditos": 3.0
+  },
+  {
+   "id": 4062,
+   "programa_id": 4,
+   "codigo": "TR037",
+   "nombre": "Las TIC's en la industria turística",
+   "creditos": 4.0
+  },
+  {
+   "id": 4063,
+   "programa_id": 4,
+   "codigo": "TR022",
+   "nombre": "Dirección de empresas de hostelería",
+   "creditos": 4.5
+  },
+  {
+   "id": 4064,
+   "programa_id": 4,
+   "codigo": "TR023",
+   "nombre": "Dirección de alimentos y bebidas",
+   "creditos": 4.5
+  },
+  {
+   "id": 4065,
+   "programa_id": 4,
+   "codigo": "TR027",
+   "nombre": "Turismo y patrimonio cultural",
+   "creditos": 3.0
+  },
+  {
+   "id": 4066,
+   "programa_id": 4,
+   "codigo": "TR008",
+   "nombre": "El territorio como recursos turístico",
+   "creditos": 3.0
+  },
+  {
+   "id": 4067,
+   "programa_id": 4,
+   "codigo": "TR028",
+   "nombre": "Impacto ambiental en las actividades turísticas",
+   "creditos": 3.0
+  },
+  {
+   "id": 4068,
+   "programa_id": 4,
+   "codigo": "TR030",
+   "nombre": "Turismo rural y desarrollo sostenible",
+   "creditos": 3.0
+  },
+  {
+   "id": 4069,
+   "programa_id": 4,
+   "codigo": "TR031",
+   "nombre": "Turismo alternativo y ecoturismo",
+   "creditos": 3.0
+  },
+  {
+   "id": 4070,
+   "programa_id": 4,
+   "codigo": "TR036",
+   "nombre": "Estrategias y negocios turísticos en Internet",
+   "creditos": 3.0
+  },
+  {
+   "id": 4071,
+   "programa_id": 4,
+   "codigo": "TR049",
+   "nombre": "Análisis cuantitativo del turismo",
+   "creditos": 4.0
+  },
+  {
+   "id": 4072,
+   "programa_id": 4,
+   "codigo": "DD108",
+   "nombre": "Concepto y características de la empresa familiar",
+   "creditos": 2.0
+  },
+  {
+   "id": 4073,
+   "programa_id": 4,
+   "codigo": "DD109",
+   "nombre": "Sucesión y continuidad en la empresa familiar",
+   "creditos": 2.0
+  },
+  {
+   "id": 4074,
+   "programa_id": 4,
+   "codigo": "DD110",
+   "nombre": "El enfoque sistémico aplicado al conflicto en la empresa familiar",
+   "creditos": 2.0
+  },
+  {
+   "id": 4075,
+   "programa_id": 4,
+   "codigo": "DD111",
+   "nombre": "La profesionalización de la empresa familiar",
+   "creditos": 2.0
+  },
+  {
+   "id": 4076,
+   "programa_id": 4,
+   "codigo": "DD112",
+   "nombre": "Estructura y órganos de gobierno",
+   "creditos": 2.0
+  },
+  {
+   "id": 4077,
+   "programa_id": 4,
+   "codigo": "DD113",
+   "nombre": "El protocolo familiar",
+   "creditos": 2.0
+  },
+  {
+   "id": 4078,
+   "programa_id": 4,
+   "codigo": "DD114",
+   "nombre": "La gestión de la propiedad en la empresa familiar",
+   "creditos": 1.0
+  },
+  {
+   "id": 4079,
+   "programa_id": 4,
+   "codigo": "DD115",
+   "nombre": "Factores clave para el éxito de la empresa familiar",
+   "creditos": 1.0
+  },
+  {
+   "id": 4080,
+   "programa_id": 4,
+   "codigo": "DD116",
+   "nombre": "Creación e internacionalización de la empresa familiar",
+   "creditos": 2.0
+  },
+  {
+   "id": 4081,
+   "programa_id": 4,
+   "codigo": "DD143",
+   "nombre": "Aspectos legales básicos de la empresa familiar",
+   "creditos": 3.0
+  },
+  {
+   "id": 4082,
+   "programa_id": 4,
+   "codigo": "IP059",
+   "nombre": "Fundamentos de la prevención de riesgos laborales",
+   "creditos": 2.0
+  },
+  {
+   "id": 4083,
+   "programa_id": 4,
+   "codigo": "IP060",
+   "nombre": "Seguridad laboral",
+   "creditos": 4.0
+  },
+  {
+   "id": 4084,
+   "programa_id": 4,
+   "codigo": "IP003",
+   "nombre": "Higiene industrial",
+   "creditos": 5.0
+  },
+  {
+   "id": 4085,
+   "programa_id": 4,
+   "codigo": "IP062",
+   "nombre": "Ergonomía",
+   "creditos": 3.0
+  },
+  {
+   "id": 4086,
+   "programa_id": 4,
+   "codigo": "IP071",
+   "nombre": "Psicología aplicada",
+   "creditos": 2.0
+  },
+  {
+   "id": 4087,
+   "programa_id": 4,
+   "codigo": "IP078",
+   "nombre": "Antecedentes y situación actual de la gestión Integrada",
+   "creditos": 3.0
+  },
+  {
+   "id": 4088,
+   "programa_id": 4,
+   "codigo": "IP9001",
+   "nombre": "Introducción y fundamentos de los sistemas de gestión integrada",
+   "creditos": 2.0
+  },
+  {
+   "id": 4089,
+   "programa_id": 4,
+   "codigo": "IP9002",
+   "nombre": "Ventajas y dificultades de la integración de sistemas, Grados, modos y modelos de integración de sistemas",
+   "creditos": 3.0
+  },
+  {
+   "id": 4090,
+   "programa_id": 4,
+   "codigo": "IP9003",
+   "nombre": "Integración de los sistemas de gestión basada en estándares y basada en procesos",
+   "creditos": 2.0
+  },
+  {
+   "id": 4091,
+   "programa_id": 4,
+   "codigo": "IP9004",
+   "nombre": "Implementación del sistema de gestión integrada",
+   "creditos": 2.0
+  },
+  {
+   "id": 4092,
+   "programa_id": 4,
+   "codigo": "IP051",
+   "nombre": "Gestión del agua: principios básicos",
+   "creditos": 5.0
+  },
+  {
+   "id": 4093,
+   "programa_id": 4,
+   "codigo": "IP052",
+   "nombre": "Fundamentos de la gestión de residuos",
+   "creditos": 3.0
+  },
+  {
+   "id": 4094,
+   "programa_id": 4,
+   "codigo": "IP053",
+   "nombre": "Tratamiento de la contaminación atmosférica",
+   "creditos": 5.0
+  },
+  {
+   "id": 4095,
+   "programa_id": 4,
+   "codigo": "IP054",
+   "nombre": "Tratamiento de suelos contaminados",
+   "creditos": 4.0
+  },
+  {
+   "id": 4096,
+   "programa_id": 4,
+   "codigo": "IP002",
+   "nombre": "Seguridad en el trabajo",
+   "creditos": 7.0
+  },
+  {
+   "id": 4097,
+   "programa_id": 4,
+   "codigo": "IP076",
+   "nombre": "Higiene en el trabajo",
+   "creditos": 7.0
+  },
+  {
+   "id": 4098,
+   "programa_id": 4,
+   "codigo": "IP073",
+   "nombre": "Ergonomía y psicología aplicada",
+   "creditos": 7.0
+  },
+  {
+   "id": 4099,
+   "programa_id": 4,
+   "codigo": "IP064",
+   "nombre": "Formación y comunicación",
+   "creditos": 1.0
+  },
+  {
+   "id": 4100,
+   "programa_id": 4,
+   "codigo": "IP004",
+   "nombre": "Medicina del trabajo",
+   "creditos": 2.0
+  },
+  {
+   "id": 4101,
+   "programa_id": 4,
+   "codigo": "DD1004",
+   "nombre": "Economía de la salud",
+   "creditos": 5.0
+  },
+  {
+   "id": 4102,
+   "programa_id": 4,
+   "codigo": "DD1007",
+   "nombre": "Planificación sanitaria",
+   "creditos": 4.0
+  },
+  {
+   "id": 4103,
+   "programa_id": 4,
+   "codigo": "DD1008",
+   "nombre": "Gestión de servicios de salud",
+   "creditos": 3.0
+  },
+  {
+   "id": 4104,
+   "programa_id": 4,
+   "codigo": "DD1009",
+   "nombre": "Marketing en salud",
+   "creditos": 3.0
+  },
+  {
+   "id": 4105,
+   "programa_id": 4,
+   "codigo": "DD1010",
+   "nombre": "Calidad asistencial y seguridad de los pacientes",
+   "creditos": 4.0
+  },
+  {
+   "id": 4106,
+   "programa_id": 4,
+   "codigo": "DD1012",
+   "nombre": "Sistemas de salud",
+   "creditos": 4.0
+  },
+  {
+   "id": 4107,
+   "programa_id": 4,
+   "codigo": "DD1013",
+   "nombre": "Epidemiología clínica",
+   "creditos": 5.0
+  },
+  {
+   "id": 4108,
+   "programa_id": 4,
+   "codigo": "DD1014",
+   "nombre": "Bioestadística",
+   "creditos": 5.0
+  },
+  {
+   "id": 4109,
+   "programa_id": 4,
+   "codigo": "DD022",
+   "nombre": "Estructura y cambio organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 4110,
+   "programa_id": 4,
+   "codigo": "DD024",
+   "nombre": "Cultura y clima organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 4111,
+   "programa_id": 4,
+   "codigo": "DD030",
+   "nombre": "Análisis, descripción y valoración de puesto",
+   "creditos": 2.0
+  },
+  {
+   "id": 4112,
+   "programa_id": 4,
+   "codigo": "DD031",
+   "nombre": "Reclutamiento, selección y promoción",
+   "creditos": 2.0
+  },
+  {
+   "id": 4113,
+   "programa_id": 4,
+   "codigo": "DD034",
+   "nombre": "Formación y planes de carrera",
+   "creditos": 2.0
+  },
+  {
+   "id": 4114,
+   "programa_id": 4,
+   "codigo": "DD033",
+   "nombre": "Retribución e incentivos",
+   "creditos": 2.0
+  },
+  {
+   "id": 4115,
+   "programa_id": 4,
+   "codigo": "DD036",
+   "nombre": "Auditoria de recursos humanos",
+   "creditos": 1.0
+  },
+  {
+   "id": 4116,
+   "programa_id": 4,
+   "codigo": "DD039",
+   "nombre": "Técnicas de comunicación interpersonal",
+   "creditos": 1.0
+  },
+  {
+   "id": 4117,
+   "programa_id": 4,
+   "codigo": "DD045",
+   "nombre": "Inteligencia emocional",
+   "creditos": 1.0
+  },
+  {
+   "id": 4118,
+   "programa_id": 4,
+   "codigo": "DD046",
+   "nombre": "Marketing personal",
+   "creditos": 1.0
+  },
+  {
+   "id": 4119,
+   "programa_id": 4,
+   "codigo": "DD047",
+   "nombre": "Capital intelectual",
+   "creditos": 1.0
+  },
+  {
+   "id": 4120,
+   "programa_id": 4,
+   "codigo": "DD048",
+   "nombre": "La calidad como herramienta de gestión de RRHH",
+   "creditos": 1.0
+  },
+  {
+   "id": 4121,
+   "programa_id": 4,
+   "codigo": "DD049",
+   "nombre": "Programación neurolingüística",
+   "creditos": 1.0
+  },
+  {
+   "id": 4122,
+   "programa_id": 4,
+   "codigo": "DD091/DD092",
+   "nombre": "Teoría del conflicto",
+   "creditos": 5.0
+  },
+  {
+   "id": 4123,
+   "programa_id": 4,
+   "codigo": "DD093/DD094",
+   "nombre": "Emoción, comunicación y conflicto",
+   "creditos": 4.0
+  },
+  {
+   "id": 4124,
+   "programa_id": 4,
+   "codigo": "DD138",
+   "nombre": "Principios y procesos de resolución/transformación de conflictos",
+   "creditos": 5.0
+  },
+  {
+   "id": 4125,
+   "programa_id": 4,
+   "codigo": "DD097/DD098",
+   "nombre": "La mediación",
+   "creditos": 4.0
+  },
+  {
+   "id": 4126,
+   "programa_id": 4,
+   "codigo": "DD099",
+   "nombre": "Legislación nacional e internacional sobre mediación y otros procedimientos de resolución de conflictos",
+   "creditos": 3.0
+  },
+  {
+   "id": 4127,
+   "programa_id": 4,
+   "codigo": "DD100",
+   "nombre": "Resolución/Transformación de conflictos en el ámbito escolar",
+   "creditos": 2.0
+  },
+  {
+   "id": 4128,
+   "programa_id": 4,
+   "codigo": "DD101",
+   "nombre": "Resolución/Transformación de conflictos en el ámbito familiar",
+   "creditos": 2.0
+  },
+  {
+   "id": 4129,
+   "programa_id": 4,
+   "codigo": "DD102",
+   "nombre": "Resolución/Transformación de conflictos en el ámbito comunitario",
+   "creditos": 2.0
+  },
+  {
+   "id": 4130,
+   "programa_id": 4,
+   "codigo": "DD103",
+   "nombre": "Resolución/Transformación de conflictos en el ámbito organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 4131,
+   "programa_id": 4,
+   "codigo": "DD104",
+   "nombre": "Resolución/Transformación de conflictos en el ámbito penal",
+   "creditos": 2.0
+  },
+  {
+   "id": 4132,
+   "programa_id": 4,
+   "codigo": "DD105",
+   "nombre": "Resolución/Transformación de conflictos en el ámbito sanitario",
+   "creditos": 1.0
+  },
+  {
+   "id": 4133,
+   "programa_id": 4,
+   "codigo": "DD106",
+   "nombre": "Resolución/Transformación de conflictos en el ámbito internacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 4134,
+   "programa_id": 4,
+   "codigo": "DD107",
+   "nombre": "Resolución de conflictos en línea (RDL)",
+   "creditos": 1.0
+  },
+  {
+   "id": 4135,
+   "programa_id": 4,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 5001,
+   "programa_id": 5,
+   "codigo": "TR026",
+   "nombre": "Administración y dirección de empresas",
+   "creditos": 3.0
+  },
+  {
+   "id": 5002,
+   "programa_id": 5,
+   "codigo": "DD002",
+   "nombre": "Control y gestión de costes",
+   "creditos": 2.0
+  },
+  {
+   "id": 5003,
+   "programa_id": 5,
+   "codigo": "TR047",
+   "nombre": "Dirección financiera",
+   "creditos": 3.0
+  },
+  {
+   "id": 5004,
+   "programa_id": 5,
+   "codigo": "DD004",
+   "nombre": "Marketing",
+   "creditos": 3.0
+  },
+  {
+   "id": 5005,
+   "programa_id": 5,
+   "codigo": "DD152",
+   "nombre": "Economía",
+   "creditos": 2.0
+  },
+  {
+   "id": 5006,
+   "programa_id": 5,
+   "codigo": "DD118",
+   "nombre": "Estadística básica",
+   "creditos": 2.0
+  },
+  {
+   "id": 5007,
+   "programa_id": 5,
+   "codigo": "DD120",
+   "nombre": "Matemáticas financieras",
+   "creditos": 1.0
+  },
+  {
+   "id": 5008,
+   "programa_id": 5,
+   "codigo": "DD124",
+   "nombre": "Contabilidad de gestión",
+   "creditos": 2.0
+  },
+  {
+   "id": 5009,
+   "programa_id": 5,
+   "codigo": "TR046",
+   "nombre": "Gestión estratégica de los recursos humanos",
+   "creditos": 2.0
+  },
+  {
+   "id": 5010,
+   "programa_id": 5,
+   "codigo": "DD040",
+   "nombre": "Técnicas de resolución de conflictos y negociación",
+   "creditos": 2.0
+  },
+  {
+   "id": 5011,
+   "programa_id": 5,
+   "codigo": "DD032",
+   "nombre": "Evaluación de desempeño y gestión por competencias",
+   "creditos": 2.0
+  },
+  {
+   "id": 5012,
+   "programa_id": 5,
+   "codigo": "TR024",
+   "nombre": "Técnicas de dirección y liderazgo organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 5013,
+   "programa_id": 5,
+   "codigo": "DD090",
+   "nombre": "Ética empresarial y responsabilidad social corporativa",
+   "creditos": 3.0
+  },
+  {
+   "id": 5014,
+   "programa_id": 5,
+   "codigo": "DD041",
+   "nombre": "Técnicas de dirección de equipos de trabajo",
+   "creditos": 2.0
+  },
+  {
+   "id": 5015,
+   "programa_id": 5,
+   "codigo": "DD076",
+   "nombre": "Gestión sin distancias",
+   "creditos": 1.0
+  },
+  {
+   "id": 5016,
+   "programa_id": 5,
+   "codigo": "DD026",
+   "nombre": "Entornos virtuales de trabajo colaborativo",
+   "creditos": 1.0
+  },
+  {
+   "id": 5017,
+   "programa_id": 5,
+   "codigo": "DD042",
+   "nombre": "Gestión del tiempo y dirección de reuniones",
+   "creditos": 2.0
+  },
+  {
+   "id": 5018,
+   "programa_id": 5,
+   "codigo": "DD043",
+   "nombre": "Estrés y burnout",
+   "creditos": 2.0
+  },
+  {
+   "id": 5019,
+   "programa_id": 5,
+   "codigo": "DD044",
+   "nombre": "Técnicas de presentación en público",
+   "creditos": 1.0
+  },
+  {
+   "id": 5020,
+   "programa_id": 5,
+   "codigo": "IP082",
+   "nombre": "Gestión de la calidad: ISO 9001",
+   "creditos": 3.0
+  },
+  {
+   "id": 5021,
+   "programa_id": 5,
+   "codigo": "DD133",
+   "nombre": "Prevención de riesgos laborales: OHSAS 18001",
+   "creditos": 2.0
+  },
+  {
+   "id": 5022,
+   "programa_id": 5,
+   "codigo": "MA098",
+   "nombre": "Gestión ambiental de la empresa ISO 14001",
+   "creditos": 3.0
+  },
+  {
+   "id": 5023,
+   "programa_id": 5,
+   "codigo": "DD012",
+   "nombre": "Gestión y dirección de operaciones",
+   "creditos": 2.0
+  },
+  {
+   "id": 5024,
+   "programa_id": 5,
+   "codigo": "DD013",
+   "nombre": "Logística",
+   "creditos": 2.0
+  },
+  {
+   "id": 5025,
+   "programa_id": 5,
+   "codigo": "DD014",
+   "nombre": "Dirección y planificación estratégica",
+   "creditos": 3.0
+  },
+  {
+   "id": 5026,
+   "programa_id": 5,
+   "codigo": "TR038",
+   "nombre": "Planificación y gestión de proyectos",
+   "creditos": 3.0
+  },
+  {
+   "id": 5027,
+   "programa_id": 5,
+   "codigo": "TI013",
+   "nombre": "Reingeniería, estrategia y dirección de sistemas y TIC",
+   "creditos": 3.0
+  },
+  {
+   "id": 5028,
+   "programa_id": 5,
+   "codigo": "TI025",
+   "nombre": "E-business y su integración con los sistemas corporativos de gestión",
+   "creditos": 3.0
+  },
+  {
+   "id": 5029,
+   "programa_id": 5,
+   "codigo": "TI017",
+   "nombre": "Integración de los sistemas de gestión empresarial",
+   "creditos": 5.0
+  },
+  {
+   "id": 5030,
+   "programa_id": 5,
+   "codigo": "DD162",
+   "nombre": "Desarrollo de estrategias de marketing",
+   "creditos": 2.0
+  },
+  {
+   "id": 5031,
+   "programa_id": 5,
+   "codigo": "TI030",
+   "nombre": "Gestión y seguridad de redes",
+   "creditos": 3.0
+  },
+  {
+   "id": 5032,
+   "programa_id": 5,
+   "codigo": "TI011",
+   "nombre": "Sociedad de la información y del cambio",
+   "creditos": 3.0
+  },
+  {
+   "id": 5033,
+   "programa_id": 5,
+   "codigo": "DD068",
+   "nombre": "Gestión del conocimiento y aprendizaje organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 5034,
+   "programa_id": 5,
+   "codigo": "TI004/DD163/DD163",
+   "nombre": "Marketing y comercio internacional",
+   "creditos": 4.0
+  },
+  {
+   "id": 5035,
+   "programa_id": 5,
+   "codigo": "TI014",
+   "nombre": "Comercio y marketing electrónico",
+   "creditos": 4.0
+  },
+  {
+   "id": 5036,
+   "programa_id": 5,
+   "codigo": "TI023",
+   "nombre": "Estudio y resolución de casos (I, II, III)",
+   "creditos": 10.0
+  },
+  {
+   "id": 5037,
+   "programa_id": 5,
+   "codigo": "TI015",
+   "nombre": "Seguridad electrónica y legislación",
+   "creditos": 4.0
+  },
+  {
+   "id": 5038,
+   "programa_id": 5,
+   "codigo": "TI016",
+   "nombre": "Business Intelligence y gestión documental",
+   "creditos": 4.0
+  },
+  {
+   "id": 5039,
+   "programa_id": 5,
+   "codigo": "TI018",
+   "nombre": "Innovación, cultura y gestión del trabajo en la sociedad de la comunicación",
+   "creditos": 2.0
+  },
+  {
+   "id": 5040,
+   "programa_id": 5,
+   "codigo": "TI043",
+   "nombre": "Dirección y gestión de proyectos TIC",
+   "creditos": 4.0
+  },
+  {
+   "id": 5041,
+   "programa_id": 5,
+   "codigo": "TI034",
+   "nombre": "Lenguajes y paradigmas de programación",
+   "creditos": 2.0
+  },
+  {
+   "id": 5042,
+   "programa_id": 5,
+   "codigo": "TI035",
+   "nombre": "Arquitecturas, redes y sistemas distribuidos",
+   "creditos": 3.0
+  },
+  {
+   "id": 5043,
+   "programa_id": 5,
+   "codigo": "TI036",
+   "nombre": "Tecnología web y web engineering",
+   "creditos": 3.0
+  },
+  {
+   "id": 5044,
+   "programa_id": 5,
+   "codigo": "TI037",
+   "nombre": "Análisis y diseño integral de sistemas y requerimientos",
+   "creditos": 3.0
+  },
+  {
+   "id": 5045,
+   "programa_id": 5,
+   "codigo": "TI038",
+   "nombre": "Modelamiento de datos y diseño de bases de datos",
+   "creditos": 3.0
+  },
+  {
+   "id": 5046,
+   "programa_id": 5,
+   "codigo": "TI040",
+   "nombre": "Gestión de bases de datos y recursos de información",
+   "creditos": 3.0
+  },
+  {
+   "id": 5047,
+   "programa_id": 5,
+   "codigo": "TI041",
+   "nombre": "Proceso de negocio de software",
+   "creditos": 3.0
+  },
+  {
+   "id": 5048,
+   "programa_id": 5,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 6001,
+   "programa_id": 6,
+   "codigo": "TR026",
+   "nombre": "Administración y dirección de empresas",
+   "creditos": 3.0
+  },
+  {
+   "id": 6002,
+   "programa_id": 6,
+   "codigo": "DD002",
+   "nombre": "Control y gestión de costes",
+   "creditos": 2.0
+  },
+  {
+   "id": 6003,
+   "programa_id": 6,
+   "codigo": "TR047",
+   "nombre": "Dirección financiera",
+   "creditos": 3.0
+  },
+  {
+   "id": 6004,
+   "programa_id": 6,
+   "codigo": "DD004",
+   "nombre": "Marketing",
+   "creditos": 3.0
+  },
+  {
+   "id": 6005,
+   "programa_id": 6,
+   "codigo": "DD152",
+   "nombre": "Economía",
+   "creditos": 2.0
+  },
+  {
+   "id": 6006,
+   "programa_id": 6,
+   "codigo": "DD118",
+   "nombre": "Estadística básica",
+   "creditos": 2.0
+  },
+  {
+   "id": 6007,
+   "programa_id": 6,
+   "codigo": "DD120",
+   "nombre": "Matemáticas financieras",
+   "creditos": 1.0
+  },
+  {
+   "id": 6008,
+   "programa_id": 6,
+   "codigo": "DD124",
+   "nombre": "Contabilidad de gestión",
+   "creditos": 2.0
+  },
+  {
+   "id": 6009,
+   "programa_id": 6,
+   "codigo": "TR046",
+   "nombre": "Gestión estratégica de los recursos humanos",
+   "creditos": 2.0
+  },
+  {
+   "id": 6010,
+   "programa_id": 6,
+   "codigo": "DD040",
+   "nombre": "Técnicas de resolución de conflictos y negociación",
+   "creditos": 2.0
+  },
+  {
+   "id": 6011,
+   "programa_id": 6,
+   "codigo": "DD032",
+   "nombre": "Evaluación de desempeño y gestión por competencias",
+   "creditos": 2.0
+  },
+  {
+   "id": 6012,
+   "programa_id": 6,
+   "codigo": "TR024",
+   "nombre": "Técnicas de dirección y liderazgo organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 6013,
+   "programa_id": 6,
+   "codigo": "DD090",
+   "nombre": "Ética empresarial y responsabilidad social corporativa",
+   "creditos": 3.0
+  },
+  {
+   "id": 6014,
+   "programa_id": 6,
+   "codigo": "DD041",
+   "nombre": "Técnicas de dirección de equipos de trabajo",
+   "creditos": 2.0
+  },
+  {
+   "id": 6015,
+   "programa_id": 6,
+   "codigo": "DD076",
+   "nombre": "Gestión sin distancias",
+   "creditos": 1.0
+  },
+  {
+   "id": 6016,
+   "programa_id": 6,
+   "codigo": "DD026",
+   "nombre": "Entornos virtuales de trabajo colaborativo",
+   "creditos": 1.0
+  },
+  {
+   "id": 6017,
+   "programa_id": 6,
+   "codigo": "DD042",
+   "nombre": "Gestión del tiempo y dirección de reuniones",
+   "creditos": 2.0
+  },
+  {
+   "id": 6018,
+   "programa_id": 6,
+   "codigo": "DD043",
+   "nombre": "Estrés y burnout",
+   "creditos": 2.0
+  },
+  {
+   "id": 6019,
+   "programa_id": 6,
+   "codigo": "DD044",
+   "nombre": "Técnicas de presentación en público",
+   "creditos": 1.0
+  },
+  {
+   "id": 6020,
+   "programa_id": 6,
+   "codigo": "IP082",
+   "nombre": "Gestión de la calidad: ISO 9001",
+   "creditos": 3.0
+  },
+  {
+   "id": 6021,
+   "programa_id": 6,
+   "codigo": "DD133",
+   "nombre": "Prevención de riesgos laborales: OHSAS 18001",
+   "creditos": 2.0
+  },
+  {
+   "id": 6022,
+   "programa_id": 6,
+   "codigo": "MA098",
+   "nombre": "Gestión ambiental de la empresa ISO 14001",
+   "creditos": 3.0
+  },
+  {
+   "id": 6023,
+   "programa_id": 6,
+   "codigo": "DD012",
+   "nombre": "Gestión y dirección de operaciones",
+   "creditos": 2.0
+  },
+  {
+   "id": 6024,
+   "programa_id": 6,
+   "codigo": "DD013",
+   "nombre": "Logística",
+   "creditos": 2.0
+  },
+  {
+   "id": 6025,
+   "programa_id": 6,
+   "codigo": "DD014",
+   "nombre": "Dirección y planificación estratégica",
+   "creditos": 3.0
+  },
+  {
+   "id": 6026,
+   "programa_id": 6,
+   "codigo": "TR038",
+   "nombre": "Planificación y gestión de proyectos",
+   "creditos": 3.0
+  },
+  {
+   "id": 6027,
+   "programa_id": 6,
+   "codigo": "TI013",
+   "nombre": "Reingeniería, estrategia y dirección de sistemas y TIC",
+   "creditos": 3.0
+  },
+  {
+   "id": 6028,
+   "programa_id": 6,
+   "codigo": "TI025",
+   "nombre": "E-business y su integración con los sistemas corporativos de gestión",
+   "creditos": 3.0
+  },
+  {
+   "id": 6029,
+   "programa_id": 6,
+   "codigo": "TI017",
+   "nombre": "Integración de los sistemas de gestión empresarial",
+   "creditos": 5.0
+  },
+  {
+   "id": 6030,
+   "programa_id": 6,
+   "codigo": "DD162",
+   "nombre": "Desarrollo de estrategias de marketing",
+   "creditos": 2.0
+  },
+  {
+   "id": 6031,
+   "programa_id": 6,
+   "codigo": "TI030",
+   "nombre": "Gestión y seguridad de redes",
+   "creditos": 3.0
+  },
+  {
+   "id": 6032,
+   "programa_id": 6,
+   "codigo": "TI011",
+   "nombre": "Sociedad de la información y del cambio",
+   "creditos": 3.0
+  },
+  {
+   "id": 6033,
+   "programa_id": 6,
+   "codigo": "DD068",
+   "nombre": "Gestión del conocimiento y aprendizaje organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 6034,
+   "programa_id": 6,
+   "codigo": "TI004/DD163",
+   "nombre": "Marketing y comercio internacional",
+   "creditos": 4.0
+  },
+  {
+   "id": 6035,
+   "programa_id": 6,
+   "codigo": "TI014",
+   "nombre": "Comercio y marketing electrónico",
+   "creditos": 4.0
+  },
+  {
+   "id": 6036,
+   "programa_id": 6,
+   "codigo": "TI026",
+   "nombre": "El mercado de las telecomunicaciones",
+   "creditos": 3.0
+  },
+  {
+   "id": 6037,
+   "programa_id": 6,
+   "codigo": "TI027",
+   "nombre": "Estructura técnico-empresarial de las Telecomunicaciones",
+   "creditos": 3.0
+  },
+  {
+   "id": 6038,
+   "programa_id": 6,
+   "codigo": "TI028",
+   "nombre": "Redes de telecomunicaciones",
+   "creditos": 3.0
+  },
+  {
+   "id": 6039,
+   "programa_id": 6,
+   "codigo": "TI029",
+   "nombre": "Servicios de telecomunicaciones",
+   "creditos": 2.0
+  },
+  {
+   "id": 6040,
+   "programa_id": 6,
+   "codigo": "TI031",
+   "nombre": "Regulación del mercado de telecomunicaciones",
+   "creditos": 2.0
+  },
+  {
+   "id": 6041,
+   "programa_id": 6,
+   "codigo": "TI016",
+   "nombre": "Business Intelligence y gestión documental",
+   "creditos": 4.0
+  },
+  {
+   "id": 6042,
+   "programa_id": 6,
+   "codigo": "TI020",
+   "nombre": "Gerencia de proyectos e-business",
+   "creditos": 4.0
+  },
+  {
+   "id": 6043,
+   "programa_id": 6,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 7001,
+   "programa_id": 7,
+   "codigo": "FP017",
+   "nombre": "Modos de conducir el aula",
+   "creditos": 3.0
+  },
+  {
+   "id": 7002,
+   "programa_id": 7,
+   "codigo": "FP018",
+   "nombre": "Observación e investigación en el aula",
+   "creditos": 3.0
+  },
+  {
+   "id": 7003,
+   "programa_id": 7,
+   "codigo": "FP019",
+   "nombre": "Adquisición de segundas lenguas",
+   "creditos": 3.0
+  },
+  {
+   "id": 7004,
+   "programa_id": 7,
+   "codigo": "FP020",
+   "nombre": "Factores individuales en el aprendizaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 7005,
+   "programa_id": 7,
+   "codigo": "FP021",
+   "nombre": "Estrategias de aprendizaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 7006,
+   "programa_id": 7,
+   "codigo": "FP022",
+   "nombre": "La comunicación y la adecuación pragmalingüística",
+   "creditos": 3.0
+  },
+  {
+   "id": 7007,
+   "programa_id": 7,
+   "codigo": "FP023",
+   "nombre": "Lengua, cultura y bilingüismo",
+   "creditos": 3.0
+  },
+  {
+   "id": 7008,
+   "programa_id": 7,
+   "codigo": "FP038",
+   "nombre": "La gramática del Español para profesores de ELE",
+   "creditos": 3.0
+  },
+  {
+   "id": 7009,
+   "programa_id": 7,
+   "codigo": "FP025",
+   "nombre": "El Español y sus variedades",
+   "creditos": 3.0
+  },
+  {
+   "id": 7010,
+   "programa_id": 7,
+   "codigo": "FP026",
+   "nombre": "La enseñanza del léxico",
+   "creditos": 3.0
+  },
+  {
+   "id": 7011,
+   "programa_id": 7,
+   "codigo": "FP027",
+   "nombre": "Bases metodológicas",
+   "creditos": 3.0
+  },
+  {
+   "id": 7012,
+   "programa_id": 7,
+   "codigo": "FP028",
+   "nombre": "Desarrollo de las destrezas en el aula",
+   "creditos": 3.0
+  },
+  {
+   "id": 7013,
+   "programa_id": 7,
+   "codigo": "FP029",
+   "nombre": "Creación, adaptación y evaluación de materiales y recursos",
+   "creditos": 3.0
+  },
+  {
+   "id": 7014,
+   "programa_id": 7,
+   "codigo": "FP030",
+   "nombre": "Tecnología educativa en el aprendizaje de lenguas",
+   "creditos": 3.0
+  },
+  {
+   "id": 7015,
+   "programa_id": 7,
+   "codigo": "FP031",
+   "nombre": "Proyectos y tareas",
+   "creditos": 3.0
+  },
+  {
+   "id": 7016,
+   "programa_id": 7,
+   "codigo": "FP032",
+   "nombre": "Evaluación del proceso de aprendizaje de las lenguas",
+   "creditos": 3.0
+  },
+  {
+   "id": 7017,
+   "programa_id": 7,
+   "codigo": "FP033",
+   "nombre": "Diseño curricular y programación – teoría y práctica",
+   "creditos": 3.0
+  },
+  {
+   "id": 7018,
+   "programa_id": 7,
+   "codigo": "FP034",
+   "nombre": "Practicum",
+   "creditos": 5.0
+  },
+  {
+   "id": 8001,
+   "programa_id": 8,
+   "codigo": "FP003",
+   "nombre": "Second language acquisition",
+   "creditos": 3.0
+  },
+  {
+   "id": 8002,
+   "programa_id": 8,
+   "codigo": "FP005",
+   "nombre": "Teaching pronunciation",
+   "creditos": 3.0
+  },
+  {
+   "id": 8003,
+   "programa_id": 8,
+   "codigo": "FP004",
+   "nombre": "Individual factors in the learner's development",
+   "creditos": 3.0
+  },
+  {
+   "id": 8004,
+   "programa_id": 8,
+   "codigo": "FP002",
+   "nombre": "Observation and research in the language classroom",
+   "creditos": 3.0
+  },
+  {
+   "id": 8005,
+   "programa_id": 8,
+   "codigo": "FP001",
+   "nombre": "Approaches to language in the classroom context",
+   "creditos": 3.0
+  },
+  {
+   "id": 8006,
+   "programa_id": 8,
+   "codigo": "FP037",
+   "nombre": "Content & language integrated learning",
+   "creditos": 3.0
+  },
+  {
+   "id": 8007,
+   "programa_id": 8,
+   "codigo": "FP006",
+   "nombre": "Methodological approaches",
+   "creditos": 3.0
+  },
+  {
+   "id": 8008,
+   "programa_id": 8,
+   "codigo": "FP008",
+   "nombre": "Developing language skills in the classroom",
+   "creditos": 3.0
+  },
+  {
+   "id": 8009,
+   "programa_id": 8,
+   "codigo": "FP009",
+   "nombre": "Materials and resources in EFL - design, creation, adaptation and evaluation",
+   "creditos": 3.0
+  },
+  {
+   "id": 8010,
+   "programa_id": 8,
+   "codigo": "FP007",
+   "nombre": "Classroom management - techniques and reflections on practice",
+   "creditos": 3.0
+  },
+  {
+   "id": 8011,
+   "programa_id": 8,
+   "codigo": "FP010",
+   "nombre": "Computer assisted language learning",
+   "creditos": 3.0
+  },
+  {
+   "id": 8012,
+   "programa_id": 8,
+   "codigo": "FP036",
+   "nombre": "Teaching English through translation",
+   "creditos": 3.0
+  },
+  {
+   "id": 8013,
+   "programa_id": 8,
+   "codigo": "FP011",
+   "nombre": "Tasks and projects",
+   "creditos": 3.0
+  },
+  {
+   "id": 8014,
+   "programa_id": 8,
+   "codigo": "FP014",
+   "nombre": "Learning strategies",
+   "creditos": 3.0
+  },
+  {
+   "id": 8015,
+   "programa_id": 8,
+   "codigo": "FP013",
+   "nombre": "English in the community",
+   "creditos": 3.0
+  },
+  {
+   "id": 8016,
+   "programa_id": 8,
+   "codigo": "FP012",
+   "nombre": "Assessment and testing in the classroom",
+   "creditos": 3.0
+  },
+  {
+   "id": 8017,
+   "programa_id": 8,
+   "codigo": "FP015",
+   "nombre": "Curriculum and course design - principles and practice",
+   "creditos": 3.0
+  },
+  {
+   "id": 8018,
+   "programa_id": 8,
+   "codigo": "FP034",
+   "nombre": "Practicum",
+   "creditos": 5.0
+  },
+  {
+   "id": 9001,
+   "programa_id": 9,
+   "codigo": "FP101",
+   "nombre": "Teorías del aprendizaje y bases metodológicas de la formación",
+   "creditos": 3.0
+  },
+  {
+   "id": 9002,
+   "programa_id": 9,
+   "codigo": "FP102",
+   "nombre": "Aprendizaje estratégico y desarrollo profesional",
+   "creditos": 3.0
+  },
+  {
+   "id": 9003,
+   "programa_id": 9,
+   "codigo": "FP087",
+   "nombre": "Factores de aprendizaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 9004,
+   "programa_id": 9,
+   "codigo": "FP079",
+   "nombre": "La acción tutorial en el sistema educativo",
+   "creditos": 3.0
+  },
+  {
+   "id": 9005,
+   "programa_id": 9,
+   "codigo": "FP077",
+   "nombre": "Las TIC en el aula. Aplicaciones didácticas y utilización de recursos",
+   "creditos": 3.0
+  },
+  {
+   "id": 9006,
+   "programa_id": 9,
+   "codigo": "FP078",
+   "nombre": "Interculturalidad y educación",
+   "creditos": 3.0
+  },
+  {
+   "id": 9007,
+   "programa_id": 9,
+   "codigo": "FP080",
+   "nombre": "Resolución y transformación de conflictos en el ámbito escolar",
+   "creditos": 3.0
+  },
+  {
+   "id": 9008,
+   "programa_id": 9,
+   "codigo": "FP084",
+   "nombre": "La educación ambiental en la educación formal",
+   "creditos": 3.0
+  },
+  {
+   "id": 9009,
+   "programa_id": 9,
+   "codigo": "FP103",
+   "nombre": "Fundamentos de la educación especial: Procesos de atención a la diversidad",
+   "creditos": 3.0
+  },
+  {
+   "id": 9010,
+   "programa_id": 9,
+   "codigo": "FP104",
+   "nombre": "Organización y gestión de centros educativos",
+   "creditos": 3.0
+  },
+  {
+   "id": 9011,
+   "programa_id": 9,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 9012,
+   "programa_id": 9,
+   "codigo": "FP105",
+   "nombre": "Portafolio I",
+   "creditos": 1.0
+  },
+  {
+   "id": 9013,
+   "programa_id": 9,
+   "codigo": "FP173",
+   "nombre": "Calidad educativa, evaluación e innovación en la educación superior",
+   "creditos": 3.0
+  },
+  {
+   "id": 9014,
+   "programa_id": 9,
+   "codigo": "FP171",
+   "nombre": "Modalidades educativas en el contexto universitario: presencial, semipresencial y a distancia",
+   "creditos": 3.0
+  },
+  {
+   "id": 9015,
+   "programa_id": 9,
+   "codigo": "FP176",
+   "nombre": "Desarrollo profesional y práctica reflexiva del docente universitario",
+   "creditos": 3.0
+  },
+  {
+   "id": 9016,
+   "programa_id": 9,
+   "codigo": "FP179",
+   "nombre": "Metodologías y estrategias docentes en el aula universitaria",
+   "creditos": 2.0
+  },
+  {
+   "id": 9017,
+   "programa_id": 9,
+   "codigo": "FP180",
+   "nombre": "Evaluación de los aprendizajes en el contexto universitario",
+   "creditos": 2.0
+  },
+  {
+   "id": 9018,
+   "programa_id": 9,
+   "codigo": "FP108",
+   "nombre": "Portafolio II",
+   "creditos": 1.0
+  },
+  {
+   "id": 9019,
+   "programa_id": 9,
+   "codigo": "FP116",
+   "nombre": "Portafolio III",
+   "creditos": 2.0
+  },
+  {
+   "id": 10001,
+   "programa_id": 10,
+   "codigo": "FP101",
+   "nombre": "Teorías del aprendizaje y bases metodológicas de la formación",
+   "creditos": 3.0
+  },
+  {
+   "id": 10002,
+   "programa_id": 10,
+   "codigo": "FP102",
+   "nombre": "Aprendizaje estratégico y desarrollo profesional",
+   "creditos": 3.0
+  },
+  {
+   "id": 10003,
+   "programa_id": 10,
+   "codigo": "FP087",
+   "nombre": "Factores de aprendizaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 10004,
+   "programa_id": 10,
+   "codigo": "FP077",
+   "nombre": "Las TIC en el aula. Aplicaciones didácticas y utilización de recursos",
+   "creditos": 3.0
+  },
+  {
+   "id": 10005,
+   "programa_id": 10,
+   "codigo": "FP080",
+   "nombre": "Resolución y transformación de conflictos en el ámbito escolar",
+   "creditos": 3.0
+  },
+  {
+   "id": 10006,
+   "programa_id": 10,
+   "codigo": "FP079",
+   "nombre": "La acción tutorial en el sistema educativo",
+   "creditos": 3.0
+  },
+  {
+   "id": 10007,
+   "programa_id": 10,
+   "codigo": "FP078",
+   "nombre": "Interculturalidad y educación",
+   "creditos": 3.0
+  },
+  {
+   "id": 10008,
+   "programa_id": 10,
+   "codigo": "FP084",
+   "nombre": "La educación ambiental en la educación formal",
+   "creditos": 3.0
+  },
+  {
+   "id": 10009,
+   "programa_id": 10,
+   "codigo": "FP103",
+   "nombre": "Fundamentos de la educación especial: Procesos de atención a la diversidad",
+   "creditos": 3.0
+  },
+  {
+   "id": 10010,
+   "programa_id": 10,
+   "codigo": "FP104",
+   "nombre": "Organización y gestión de centros educativos",
+   "creditos": 3.0
+  },
+  {
+   "id": 10011,
+   "programa_id": 10,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 10012,
+   "programa_id": 10,
+   "codigo": "FP105",
+   "nombre": "Portafolio I",
+   "creditos": 1.0
+  },
+  {
+   "id": 10013,
+   "programa_id": 10,
+   "codigo": "FP082",
+   "nombre": "Planificación y gestión de proyectos",
+   "creditos": 3.0
+  },
+  {
+   "id": 10014,
+   "programa_id": 10,
+   "codigo": "FP081",
+   "nombre": "Planificación y dirección estratégica",
+   "creditos": 3.0
+  },
+  {
+   "id": 10015,
+   "programa_id": 10,
+   "codigo": "FP182",
+   "nombre": "Gestión del conocimiento e Innovación e la educación",
+   "creditos": 3.0
+  },
+  {
+   "id": 10016,
+   "programa_id": 10,
+   "codigo": "FP114",
+   "nombre": "Calidad educativa, evaluación e innovación",
+   "creditos": 2.0
+  },
+  {
+   "id": 10017,
+   "programa_id": 10,
+   "codigo": "FP115",
+   "nombre": "Técnicas de dirección de equipos de trabajo",
+   "creditos": 2.0
+  },
+  {
+   "id": 10018,
+   "programa_id": 10,
+   "codigo": "FP108",
+   "nombre": "Portafolio II",
+   "creditos": 1.0
+  },
+  {
+   "id": 10019,
+   "programa_id": 10,
+   "codigo": "FP116",
+   "nombre": "Portafolio III",
+   "creditos": 2.0
+  },
+  {
+   "id": 10020,
+   "programa_id": 10,
+   "codigo": "FPEE01",
+   "nombre": "Proyecto Final de Máster",
+   "creditos": 10.0
+  },
+  {
+   "id": 11001,
+   "programa_id": 11,
+   "codigo": "FP101",
+   "nombre": "Teorías del aprendizaje y bases metodológicas de la formación",
+   "creditos": 3.0
+  },
+  {
+   "id": 11002,
+   "programa_id": 11,
+   "codigo": "FP102",
+   "nombre": "Aprendizaje estratégico y desarrollo profesional",
+   "creditos": 3.0
+  },
+  {
+   "id": 11003,
+   "programa_id": 11,
+   "codigo": "FP087",
+   "nombre": "Factores de aprendizaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 11004,
+   "programa_id": 11,
+   "codigo": "FP079",
+   "nombre": "La acción tutorial en el sistema educativo",
+   "creditos": 3.0
+  },
+  {
+   "id": 11005,
+   "programa_id": 11,
+   "codigo": "FP077",
+   "nombre": "Las TIC en el aula. Aplicaciones didácticas y utilización de recursos",
+   "creditos": 3.0
+  },
+  {
+   "id": 11006,
+   "programa_id": 11,
+   "codigo": "FP078",
+   "nombre": "Interculturalidad y educación",
+   "creditos": 3.0
+  },
+  {
+   "id": 11007,
+   "programa_id": 11,
+   "codigo": "FP080",
+   "nombre": "Resolución y transformación de conflictos en el ámbito escolar",
+   "creditos": 3.0
+  },
+  {
+   "id": 11008,
+   "programa_id": 11,
+   "codigo": "FP084",
+   "nombre": "La educación ambiental en la educación formal",
+   "creditos": 3.0
+  },
+  {
+   "id": 11009,
+   "programa_id": 11,
+   "codigo": "FP103",
+   "nombre": "Fundamentos de la educación especial: Procesos de atención a la diversidad",
+   "creditos": 3.0
+  },
+  {
+   "id": 11010,
+   "programa_id": 11,
+   "codigo": "FP104",
+   "nombre": "Organización y gestión de centros educativos",
+   "creditos": 3.0
+  },
+  {
+   "id": 11011,
+   "programa_id": 11,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 11012,
+   "programa_id": 11,
+   "codigo": "FP105",
+   "nombre": "Portafolio I",
+   "creditos": 1.0
+  },
+  {
+   "id": 11013,
+   "programa_id": 11,
+   "codigo": "FP109",
+   "nombre": "Las TIC en la educación y las teorías de aprendizaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 11014,
+   "programa_id": 11,
+   "codigo": "FP111",
+   "nombre": "Análisis de recursos tecnológicos y diseño de actividades creativas",
+   "creditos": 3.0
+  },
+  {
+   "id": 11015,
+   "programa_id": 11,
+   "codigo": "FP110",
+   "nombre": "La enseñanza en entornos virtuales de aprendizaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 11016,
+   "programa_id": 11,
+   "codigo": "FP076",
+   "nombre": "Entornos virtuales de trabajo colaborativo",
+   "creditos": 2.0
+  },
+  {
+   "id": 11017,
+   "programa_id": 11,
+   "codigo": "FP112",
+   "nombre": "Diseño y evaluación de propuestas de formación basadas en las TIC",
+   "creditos": 2.0
+  },
+  {
+   "id": 11018,
+   "programa_id": 11,
+   "codigo": "FP108",
+   "nombre": "Portafolio II",
+   "creditos": 1.0
+  },
+  {
+   "id": 11019,
+   "programa_id": 11,
+   "codigo": "FP116",
+   "nombre": "Portafolio III",
+   "creditos": 2.0
+  },
+  {
+   "id": 11020,
+   "programa_id": 11,
+   "codigo": "FPEE01",
+   "nombre": "Proyecto Final de Maestría",
+   "creditos": 10.0
+  },
+  {
+   "id": 12001,
+   "programa_id": 12,
+   "codigo": "FP101",
+   "nombre": "Teorías del aprendizaje y bases metodológicas de la formación",
+   "creditos": 3.0
+  },
+  {
+   "id": 12002,
+   "programa_id": 12,
+   "codigo": "FP102",
+   "nombre": "Aprendizaje estratégico y desarrollo profesional",
+   "creditos": 3.0
+  },
+  {
+   "id": 12003,
+   "programa_id": 12,
+   "codigo": "FP087",
+   "nombre": "Factores de aprendizaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 12004,
+   "programa_id": 12,
+   "codigo": "FP079",
+   "nombre": "La acción tutorial en el sistema educativo",
+   "creditos": 3.0
+  },
+  {
+   "id": 12005,
+   "programa_id": 12,
+   "codigo": "FP077",
+   "nombre": "Las TIC en el aula. Aplicaciones didácticas y utilización de recursos",
+   "creditos": 3.0
+  },
+  {
+   "id": 12006,
+   "programa_id": 12,
+   "codigo": "FP078",
+   "nombre": "Interculturalidad y educación",
+   "creditos": 3.0
+  },
+  {
+   "id": 12007,
+   "programa_id": 12,
+   "codigo": "FP080",
+   "nombre": "Resolución y transformación de conflictos en el ámbito escolar",
+   "creditos": 3.0
+  },
+  {
+   "id": 12008,
+   "programa_id": 12,
+   "codigo": "FP084",
+   "nombre": "La educación ambiental en la educación formal",
+   "creditos": 3.0
+  },
+  {
+   "id": 12009,
+   "programa_id": 12,
+   "codigo": "FP103",
+   "nombre": "Fundamentos de la educación especial: Procesos de atención a la diversidad",
+   "creditos": 3.0
+  },
+  {
+   "id": 12010,
+   "programa_id": 12,
+   "codigo": "FP104",
+   "nombre": "Organización y gestión de centros educativos",
+   "creditos": 3.0
+  },
+  {
+   "id": 12011,
+   "programa_id": 12,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 12012,
+   "programa_id": 12,
+   "codigo": "FP105",
+   "nombre": "Portafolio I",
+   "creditos": 1.0
+  },
+  {
+   "id": 12013,
+   "programa_id": 12,
+   "codigo": "FP106",
+   "nombre": "Diseño curricular, programación y desarrollo de competencias",
+   "creditos": 3.0
+  },
+  {
+   "id": 12014,
+   "programa_id": 12,
+   "codigo": "FP090",
+   "nombre": "Evaluación del aprendizaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 12015,
+   "programa_id": 12,
+   "codigo": "FP107",
+   "nombre": "Metodologías de aprendizaje en el aula",
+   "creditos": 3.0
+  },
+  {
+   "id": 12016,
+   "programa_id": 12,
+   "codigo": "FP088",
+   "nombre": "Creación, adaptación y evaluación de materiales",
+   "creditos": 2.0
+  },
+  {
+   "id": 12017,
+   "programa_id": 12,
+   "codigo": "FP091",
+   "nombre": "Aprendizaje integrado de contenido y lengua",
+   "creditos": 2.0
+  },
+  {
+   "id": 12018,
+   "programa_id": 12,
+   "codigo": "FP108",
+   "nombre": "Portafolio II",
+   "creditos": 1.0
+  },
+  {
+   "id": 12019,
+   "programa_id": 12,
+   "codigo": "FP116",
+   "nombre": "Portafolio III",
+   "creditos": 2.0
+  },
+  {
+   "id": 12020,
+   "programa_id": 12,
+   "codigo": "FPEEE01",
+   "nombre": "Proyecto Final de Maestría",
+   "creditos": 10.0
+  },
+  {
+   "id": 13001,
+   "programa_id": 13,
+   "codigo": "SN039",
+   "nombre": "Estructura y función del cuerpo humano",
+   "creditos": 3.0
+  },
+  {
+   "id": 13002,
+   "programa_id": 13,
+   "codigo": "SN155",
+   "nombre": "Contextualización de actividades físicas y ejercicio en el marco de la salud",
+   "creditos": 3.0
+  },
+  {
+   "id": 13003,
+   "programa_id": 13,
+   "codigo": "SN156",
+   "nombre": "Aspectos psicosociales de la actividad física par a la salud",
+   "creditos": 4.0
+  },
+  {
+   "id": 13004,
+   "programa_id": 13,
+   "codigo": "SN157",
+   "nombre": "Control y prescripción de la actividad física",
+   "creditos": 3.0
+  },
+  {
+   "id": 13005,
+   "programa_id": 13,
+   "codigo": "SN158",
+   "nombre": "La actividad física para la salud en diversas enfermedades",
+   "creditos": 4.0
+  },
+  {
+   "id": 13006,
+   "programa_id": 13,
+   "codigo": "SN159",
+   "nombre": "Actividad física en niños y adolescentes",
+   "creditos": 3.0
+  },
+  {
+   "id": 13007,
+   "programa_id": 13,
+   "codigo": "SN160",
+   "nombre": "Actividad física en personas mayores",
+   "creditos": 4.0
+  },
+  {
+   "id": 13008,
+   "programa_id": 13,
+   "codigo": "SN198",
+   "nombre": "Aspectos básicos de la nutrición",
+   "creditos": 0.0
+  },
+  {
+   "id": 13009,
+   "programa_id": 13,
+   "codigo": "SN048",
+   "nombre": "Teoría y práctica del entrenamiento",
+   "creditos": 4.0
+  },
+  {
+   "id": 13010,
+   "programa_id": 13,
+   "codigo": "SN049",
+   "nombre": "Planificación deportiva",
+   "creditos": 4.0
+  },
+  {
+   "id": 13011,
+   "programa_id": 13,
+   "codigo": "SN050",
+   "nombre": "Psicología del deporte",
+   "creditos": 3.0
+  },
+  {
+   "id": 13012,
+   "programa_id": 13,
+   "codigo": "SN042",
+   "nombre": "Cineantropometría",
+   "creditos": 3.0
+  },
+  {
+   "id": 13013,
+   "programa_id": 13,
+   "codigo": "SN043",
+   "nombre": "Ayudas ergogénicas",
+   "creditos": 3.0
+  },
+  {
+   "id": 13014,
+   "programa_id": 13,
+   "codigo": "SN047",
+   "nombre": "Trastornos alimentarios en el deporte",
+   "creditos": 3.0
+  },
+  {
+   "id": 13015,
+   "programa_id": 13,
+   "codigo": "SN217",
+   "nombre": "Nutrición y deporte",
+   "creditos": 3.0
+  },
+  {
+   "id": 13016,
+   "programa_id": 13,
+   "codigo": "DP004",
+   "nombre": "Técnicas de dirección de equipos deportivos",
+   "creditos": 2.0
+  },
+  {
+   "id": 13017,
+   "programa_id": 13,
+   "codigo": "SN228",
+   "nombre": "Estudio y resolución de casos para el entrenamiento deportivo",
+   "creditos": 4.0
+  },
+  {
+   "id": 13018,
+   "programa_id": 13,
+   "codigo": "DP001",
+   "nombre": "Administración y dirección de entidades deportivas",
+   "creditos": 3.0
+  },
+  {
+   "id": 13019,
+   "programa_id": 13,
+   "codigo": "DP002",
+   "nombre": "Dirección y planificación estratégica de organizaciones deportivas",
+   "creditos": 3.0
+  },
+  {
+   "id": 13020,
+   "programa_id": 13,
+   "codigo": "DP003",
+   "nombre": "Marketing en el deporte. Aplicaciones.",
+   "creditos": 3.0
+  },
+  {
+   "id": 13021,
+   "programa_id": 13,
+   "codigo": "DD1021",
+   "nombre": "Gestión estratégica de recursos humanos",
+   "creditos": 2.0
+  },
+  {
+   "id": 13022,
+   "programa_id": 13,
+   "codigo": "DP006",
+   "nombre": "Técnicas de dirección y liderazgo en el deporte",
+   "creditos": 2.0
+  },
+  {
+   "id": 13023,
+   "programa_id": 13,
+   "codigo": "DP007",
+   "nombre": "Sociedad de información y deportes",
+   "creditos": 3.0
+  },
+  {
+   "id": 13024,
+   "programa_id": 13,
+   "codigo": "SN229",
+   "nombre": "Estudio y resolución de casos para las habilidades directivas",
+   "creditos": 4.0
+  },
+  {
+   "id": 13025,
+   "programa_id": 13,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 14001,
+   "programa_id": 14,
+   "codigo": "SN259",
+   "nombre": "Anatomía y Fisiología Humana",
+   "creditos": 6.0
+  },
+  {
+   "id": 14002,
+   "programa_id": 14,
+   "codigo": "SN260",
+   "nombre": "Química Orgánica",
+   "creditos": 6.0
+  },
+  {
+   "id": 14003,
+   "programa_id": 14,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 14004,
+   "programa_id": 14,
+   "codigo": "SN085",
+   "nombre": "Historia y Fundamentos de Naturopatía",
+   "creditos": 3.0
+  },
+  {
+   "id": 14005,
+   "programa_id": 14,
+   "codigo": "SN086",
+   "nombre": "Visión Biológica de la Disfunción Orgánica",
+   "creditos": 3.0
+  },
+  {
+   "id": 14006,
+   "programa_id": 14,
+   "codigo": "SN017",
+   "nombre": "Bioquímica General",
+   "creditos": 3.0
+  },
+  {
+   "id": 14007,
+   "programa_id": 14,
+   "codigo": "SN101",
+   "nombre": "Tipos Constitucionales en Naturopatía",
+   "creditos": 3.0
+  },
+  {
+   "id": 14008,
+   "programa_id": 14,
+   "codigo": "SN317",
+   "nombre": "Nutrición I: Alimentación y Estilos de Vida Saludables",
+   "creditos": 3.0
+  },
+  {
+   "id": 14009,
+   "programa_id": 14,
+   "codigo": "SN018",
+   "nombre": "Nutrición II: Valoración del Estado Nutricional",
+   "creditos": 3.0
+  },
+  {
+   "id": 14010,
+   "programa_id": 14,
+   "codigo": "SN136",
+   "nombre": "Electroacupuntura de Voll y Biorresonancia",
+   "creditos": 3.0
+  },
+  {
+   "id": 14011,
+   "programa_id": 14,
+   "codigo": "MN012",
+   "nombre": "Nutrición III: Patologías Comunes",
+   "creditos": 3.0
+  },
+  {
+   "id": 14012,
+   "programa_id": 14,
+   "codigo": "SN096",
+   "nombre": "Terapia Ortomolecular y Oligoelementos",
+   "creditos": 3.0
+  },
+  {
+   "id": 14013,
+   "programa_id": 14,
+   "codigo": "SN094",
+   "nombre": "Terapia Antienvejecimiento, Radicales libres y Antiaging",
+   "creditos": 3.0
+  },
+  {
+   "id": 14014,
+   "programa_id": 14,
+   "codigo": "SN099",
+   "nombre": "Hidroterapia de Colon",
+   "creditos": 3.0
+  },
+  {
+   "id": 14015,
+   "programa_id": 14,
+   "codigo": "SN016",
+   "nombre": "Fitoterapia Avanzada",
+   "creditos": 3.0
+  },
+  {
+   "id": 14016,
+   "programa_id": 14,
+   "codigo": "SN088",
+   "nombre": "Aromaterapia",
+   "creditos": 3.0
+  },
+  {
+   "id": 14017,
+   "programa_id": 14,
+   "codigo": "MTC001",
+   "nombre": "Teoría Básica (Parte I)",
+   "creditos": 3.0
+  },
+  {
+   "id": 14018,
+   "programa_id": 14,
+   "codigo": "MTC002",
+   "nombre": "Teoría Básica (Parte II)",
+   "creditos": 3.0
+  },
+  {
+   "id": 14019,
+   "programa_id": 14,
+   "codigo": "MTC003",
+   "nombre": "Diagnóstico",
+   "creditos": 3.0
+  },
+  {
+   "id": 14020,
+   "programa_id": 14,
+   "codigo": "MTC007",
+   "nombre": "Diferenciación de Síndromes",
+   "creditos": 3.0
+  },
+  {
+   "id": 14021,
+   "programa_id": 14,
+   "codigo": "MTC008",
+   "nombre": "Terapéutica de la MTC",
+   "creditos": 3.0
+  },
+  {
+   "id": 14022,
+   "programa_id": 14,
+   "codigo": "MTC009",
+   "nombre": "Auriculoterapia",
+   "creditos": 3.0
+  },
+  {
+   "id": 14023,
+   "programa_id": 14,
+   "codigo": "MTC010",
+   "nombre": "Meridianos y puntos (parte I)",
+   "creditos": 3.0
+  },
+  {
+   "id": 14024,
+   "programa_id": 14,
+   "codigo": "MTC011",
+   "nombre": "Meridianos y puntos (parte II)",
+   "creditos": 3.0
+  },
+  {
+   "id": 14025,
+   "programa_id": 14,
+   "codigo": "MTC012",
+   "nombre": "Técnicas Acupunturales",
+   "creditos": 3.0
+  },
+  {
+   "id": 14026,
+   "programa_id": 14,
+   "codigo": "MTC013",
+   "nombre": "Acupuntura – Medicina Interna",
+   "creditos": 3.0
+  },
+  {
+   "id": 14027,
+   "programa_id": 14,
+   "codigo": "MTC014",
+   "nombre": "Acupuntura – Especialidades",
+   "creditos": 3.0
+  },
+  {
+   "id": 14028,
+   "programa_id": 14,
+   "codigo": "MTC016",
+   "nombre": "Farmacopea 1",
+   "creditos": 3.0
+  },
+  {
+   "id": 14029,
+   "programa_id": 14,
+   "codigo": "MTC017",
+   "nombre": "Farmacopea 2",
+   "creditos": 3.0
+  },
+  {
+   "id": 14030,
+   "programa_id": 14,
+   "codigo": "MTC018",
+   "nombre": "Prescripción",
+   "creditos": 3.0
+  },
+  {
+   "id": 14031,
+   "programa_id": 14,
+   "codigo": "MTC019",
+   "nombre": "Tratamiento de Fitoterapia (MI)",
+   "creditos": 3.0
+  },
+  {
+   "id": 14032,
+   "programa_id": 14,
+   "codigo": "MTC020",
+   "nombre": "Dietética en Medicina Tradicional China",
+   "creditos": 3.0
+  },
+  {
+   "id": 14033,
+   "programa_id": 14,
+   "codigo": "MN005",
+   "nombre": "Bases y Principios Homeopáticos",
+   "creditos": 3.0
+  },
+  {
+   "id": 14034,
+   "programa_id": 14,
+   "codigo": "MN006",
+   "nombre": "Aplicaciones del Método Homeopático",
+   "creditos": 3.0
+  },
+  {
+   "id": 14035,
+   "programa_id": 14,
+   "codigo": "MN007",
+   "nombre": "Materia Médica Homeopática",
+   "creditos": 3.0
+  },
+  {
+   "id": 14036,
+   "programa_id": 14,
+   "codigo": "MN016",
+   "nombre": "Terapéutica Homeopática en Patología Aguda",
+   "creditos": 3.0
+  },
+  {
+   "id": 14037,
+   "programa_id": 14,
+   "codigo": "MN017",
+   "nombre": "Terapéutica Homeopática en Patología Crónica",
+   "creditos": 3.0
+  },
+  {
+   "id": 14038,
+   "programa_id": 14,
+   "codigo": "SN098",
+   "nombre": "Método Kousmine",
+   "creditos": 3.0
+  },
+  {
+   "id": 14039,
+   "programa_id": 14,
+   "codigo": "SN102",
+   "nombre": "Homeopatía y Homotoxicología",
+   "creditos": 3.0
+  },
+  {
+   "id": 14040,
+   "programa_id": 14,
+   "codigo": "SN103",
+   "nombre": "Sofrología",
+   "creditos": 3.0
+  },
+  {
+   "id": 14041,
+   "programa_id": 14,
+   "codigo": "SN105",
+   "nombre": "Spagyria",
+   "creditos": 3.0
+  },
+  {
+   "id": 14042,
+   "programa_id": 14,
+   "codigo": "SN097",
+   "nombre": "Neuralterapia y Neurofocalidad",
+   "creditos": 3.0
+  },
+  {
+   "id": 14043,
+   "programa_id": 14,
+   "codigo": "SN104",
+   "nombre": "Flores de Bach",
+   "creditos": 3.0
+  },
+  {
+   "id": 14044,
+   "programa_id": 14,
+   "codigo": "MN018",
+   "nombre": "Sales de Schüssler",
+   "creditos": 3.0
+  },
+  {
+   "id": 14045,
+   "programa_id": 14,
+   "codigo": "SN100",
+   "nombre": "Hidrología, Aguas Minero-medicinales y Balneoterapia",
+   "creditos": 3.0
+  },
+  {
+   "id": 14046,
+   "programa_id": 14,
+   "codigo": "SN093",
+   "nombre": "Onda Magnética Pulsada e Hipertemia",
+   "creditos": 3.0
+  },
+  {
+   "id": 14047,
+   "programa_id": 14,
+   "codigo": "SN089",
+   "nombre": "Terapias Biológico-Naturistas de Enfermedades Comunes",
+   "creditos": 3.0
+  },
+  {
+   "id": 14048,
+   "programa_id": 14,
+   "codigo": "MN019",
+   "nombre": "Prácticas Presenciales Supervisadas",
+   "creditos": 15.0
+  },
+  {
+   "id": 14049,
+   "programa_id": 14,
+   "codigo": "SNMCN1_SP_PR",
+   "nombre": "Prácticas Clínicas Fundamentos en la Profesión del Naturópata (I)",
+   "creditos": null
+  },
+  {
+   "id": 14050,
+   "programa_id": 14,
+   "codigo": "MN100",
+   "nombre": "Proyecto Final de Maestría",
+   "creditos": 10.0
+  },
+  {
+   "id": 14051,
+   "programa_id": 14,
+   "codigo": "MTC025",
+   "nombre": "“Stage” en Hospital",
+   "creditos": null
+  },
+  {
+   "id": 14052,
+   "programa_id": 14,
+   "codigo": "SNMCN2_SP_PR",
+   "nombre": "Prácticas Clínicas Fundamentos en la Profesión del Naturópata (II)",
+   "creditos": null
+  },
+  {
+   "id": 15001,
+   "programa_id": 15,
+   "codigo": "SP027",
+   "nombre": "Redacción, lectura y comprensión de textos escritos",
+   "creditos": null
+  },
+  {
+   "id": 15002,
+   "programa_id": 15,
+   "codigo": "CI109",
+   "nombre": "Matemática básica",
+   "creditos": null
+  },
+  {
+   "id": 15003,
+   "programa_id": 15,
+   "codigo": "SP026",
+   "nombre": "Conceptos fundamentales en salud pública",
+   "creditos": null
+  },
+  {
+   "id": 15004,
+   "programa_id": 15,
+   "codigo": "SP001",
+   "nombre": "Contextualización de la salud pública",
+   "creditos": 2.0
+  },
+  {
+   "id": 15005,
+   "programa_id": 15,
+   "codigo": "BT009",
+   "nombre": "Bioética general",
+   "creditos": 3.0
+  },
+  {
+   "id": 15006,
+   "programa_id": 15,
+   "codigo": "SP002",
+   "nombre": "Determinantes sociales en salud",
+   "creditos": 2.0
+  },
+  {
+   "id": 15007,
+   "programa_id": 15,
+   "codigo": "SN1013",
+   "nombre": "Epidemiología I",
+   "creditos": 4.0
+  },
+  {
+   "id": 15008,
+   "programa_id": 15,
+   "codigo": "SP003",
+   "nombre": "Demografía y salud pública",
+   "creditos": 2.0
+  },
+  {
+   "id": 15009,
+   "programa_id": 15,
+   "codigo": "SP004",
+   "nombre": "Proceso salud-enfermedad y equidad",
+   "creditos": 3.0
+  },
+  {
+   "id": 15010,
+   "programa_id": 15,
+   "codigo": "DD1012",
+   "nombre": "Sistemas de salud",
+   "creditos": 4.0
+  },
+  {
+   "id": 15011,
+   "programa_id": 15,
+   "codigo": "SN356",
+   "nombre": "Epidemiología II",
+   "creditos": 4.0
+  },
+  {
+   "id": 15012,
+   "programa_id": 15,
+   "codigo": "DD1008",
+   "nombre": "Gestión de servicios de salud",
+   "creditos": 3.0
+  },
+  {
+   "id": 15013,
+   "programa_id": 15,
+   "codigo": "DD1004",
+   "nombre": "Economía de la salud",
+   "creditos": 5.0
+  },
+  {
+   "id": 15014,
+   "programa_id": 15,
+   "codigo": "CSJ024",
+   "nombre": "Estadística I",
+   "creditos": 4.0
+  },
+  {
+   "id": 15015,
+   "programa_id": 15,
+   "codigo": "SP005",
+   "nombre": "Políticas de salud y protección social",
+   "creditos": 4.0
+  },
+  {
+   "id": 15016,
+   "programa_id": 15,
+   "codigo": "SP006",
+   "nombre": "Vigilancia de la salud pública",
+   "creditos": 3.0
+  },
+  {
+   "id": 15017,
+   "programa_id": 15,
+   "codigo": "SP007",
+   "nombre": "Diseño y evaluación de programas en salud pública",
+   "creditos": 3.0
+  },
+  {
+   "id": 15018,
+   "programa_id": 15,
+   "codigo": "SN331",
+   "nombre": "Seminario PF Salud",
+   "creditos": 2.0
+  },
+  {
+   "id": 15019,
+   "programa_id": 15,
+   "codigo": "MA030",
+   "nombre": "Agentes contaminantes en el medio ambiente",
+   "creditos": 2.0
+  },
+  {
+   "id": 15020,
+   "programa_id": 15,
+   "codigo": "SP009",
+   "nombre": "Riesgos ambientales y salud pública",
+   "creditos": 3.0
+  },
+  {
+   "id": 15021,
+   "programa_id": 15,
+   "codigo": "SP010",
+   "nombre": "Toxicología ambiental y salud pública",
+   "creditos": 4.0
+  },
+  {
+   "id": 15022,
+   "programa_id": 15,
+   "codigo": "SN071",
+   "nombre": "Salud pública aplicada a la nutrición",
+   "creditos": 4.0
+  },
+  {
+   "id": 15023,
+   "programa_id": 15,
+   "codigo": "SP018",
+   "nombre": "Herramientas para la elaboración de programas en nutrición comunitaria",
+   "creditos": 2.0
+  },
+  {
+   "id": 15024,
+   "programa_id": 15,
+   "codigo": "SN066",
+   "nombre": "Alimentación, salud y comunicación",
+   "creditos": 3.0
+  },
+  {
+   "id": 15025,
+   "programa_id": 15,
+   "codigo": "IP004",
+   "nombre": "Medicina del trabajo",
+   "creditos": 2.0
+  },
+  {
+   "id": 15026,
+   "programa_id": 15,
+   "codigo": "SP011",
+   "nombre": "Toxicología ocupacional",
+   "creditos": 4.0
+  },
+  {
+   "id": 15027,
+   "programa_id": 15,
+   "codigo": "SP012",
+   "nombre": "Prevención de riesgos laborales específicos",
+   "creditos": 3.0
+  },
+  {
+   "id": 15028,
+   "programa_id": 15,
+   "codigo": "DD1000",
+   "nombre": "Gestión Estratégica de RRHH",
+   "creditos": 2.0
+  },
+  {
+   "id": 15029,
+   "programa_id": 15,
+   "codigo": "DD1019",
+   "nombre": "Técnicas de Dirección de Equipos de Trabajo",
+   "creditos": 2.0
+  },
+  {
+   "id": 15030,
+   "programa_id": 15,
+   "codigo": "DD1018",
+   "nombre": "Técnicas de dirección y liderazgo organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 15031,
+   "programa_id": 15,
+   "codigo": "SP013",
+   "nombre": "Comunicación asistencial",
+   "creditos": 3.0
+  },
+  {
+   "id": 15032,
+   "programa_id": 15,
+   "codigo": "DO016",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 16001,
+   "programa_id": 16,
+   "codigo": "DD050",
+   "nombre": "Introducción de proyectos",
+   "creditos": 1.0
+  },
+  {
+   "id": 16002,
+   "programa_id": 16,
+   "codigo": "DD051",
+   "nombre": "Diseño de sistemas proyectuales",
+   "creditos": 2.0
+  },
+  {
+   "id": 16003,
+   "programa_id": 16,
+   "codigo": "DD052",
+   "nombre": "Análisis de los servicios a prestar",
+   "creditos": 2.0
+  },
+  {
+   "id": 16004,
+   "programa_id": 16,
+   "codigo": "DD053",
+   "nombre": "Análisis funcional en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 16005,
+   "programa_id": 16,
+   "codigo": "DD054",
+   "nombre": "La ergonomía en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 16006,
+   "programa_id": 16,
+   "codigo": "DD055",
+   "nombre": "Seguridad y fiabilidad en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 16007,
+   "programa_id": 16,
+   "codigo": "DD056",
+   "nombre": "El medio ambiente en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 16008,
+   "programa_id": 16,
+   "codigo": "DD057",
+   "nombre": "Las especificaciones en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 16009,
+   "programa_id": 16,
+   "codigo": "DD058",
+   "nombre": "Elaboración del anteproyecto",
+   "creditos": 3.0
+  },
+  {
+   "id": 16010,
+   "programa_id": 16,
+   "codigo": "DD070",
+   "nombre": "Introducción a la gestión de proyectos",
+   "creditos": 1.0
+  },
+  {
+   "id": 16011,
+   "programa_id": 16,
+   "codigo": "TR038",
+   "nombre": "Planificación y gestión de proyectos",
+   "creditos": 3.0
+  },
+  {
+   "id": 16012,
+   "programa_id": 16,
+   "codigo": "DD072",
+   "nombre": "Herramientas informáticas de gestión de proyectos",
+   "creditos": 2.0
+  },
+  {
+   "id": 16013,
+   "programa_id": 16,
+   "codigo": "DD073",
+   "nombre": "Seguimiento y control del proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 16014,
+   "programa_id": 16,
+   "codigo": "DD074",
+   "nombre": "Evaluación de proyectos",
+   "creditos": 2.0
+  },
+  {
+   "id": 16015,
+   "programa_id": 16,
+   "codigo": "DD075",
+   "nombre": "Gestión de la confianza: riesgo y calidad",
+   "creditos": 2.0
+  },
+  {
+   "id": 16016,
+   "programa_id": 16,
+   "codigo": "TR046",
+   "nombre": "Gestión estratégica de los recursos humanos",
+   "creditos": 2.0
+  },
+  {
+   "id": 16017,
+   "programa_id": 16,
+   "codigo": "DD133",
+   "nombre": "Prevención de riesgos laborales: ISO 45001",
+   "creditos": 2.0
+  },
+  {
+   "id": 16018,
+   "programa_id": 16,
+   "codigo": "DD077",
+   "nombre": "Comunicación del proyecto",
+   "creditos": 1.0
+  },
+  {
+   "id": 16019,
+   "programa_id": 16,
+   "codigo": "DD026",
+   "nombre": "Entornos virtuales de trabajo colaborativo",
+   "creditos": 1.0
+  },
+  {
+   "id": 16020,
+   "programa_id": 16,
+   "codigo": "DD076",
+   "nombre": "Gestión sin distancias",
+   "creditos": 1.0
+  },
+  {
+   "id": 16021,
+   "programa_id": 16,
+   "codigo": "DD044",
+   "nombre": "Técnicas de presentación en público",
+   "creditos": 1.0
+  },
+  {
+   "id": 16022,
+   "programa_id": 16,
+   "codigo": "TR026",
+   "nombre": "Administración y dirección de empresas",
+   "creditos": 3.0
+  },
+  {
+   "id": 16023,
+   "programa_id": 16,
+   "codigo": "DD014",
+   "nombre": "Dirección y planificación estratégica",
+   "creditos": 3.0
+  },
+  {
+   "id": 16024,
+   "programa_id": 16,
+   "codigo": "DD040",
+   "nombre": "Técnicas de resolución de conflictos y negociación",
+   "creditos": 2.0
+  },
+  {
+   "id": 16025,
+   "programa_id": 16,
+   "codigo": "DD041",
+   "nombre": "Técnicas de dirección de equipos de trabajo",
+   "creditos": 2.0
+  },
+  {
+   "id": 16026,
+   "programa_id": 16,
+   "codigo": "DD068",
+   "nombre": "Gestión del conocimiento y aprendizaje organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 16027,
+   "programa_id": 16,
+   "codigo": "TI025",
+   "nombre": "E-business y su integración con los sistemas corporativos de gestión",
+   "creditos": 3.0
+  },
+  {
+   "id": 16028,
+   "programa_id": 16,
+   "codigo": "PC012",
+   "nombre": "Sistema de cooperación internacional",
+   "creditos": 1.0
+  },
+  {
+   "id": 16029,
+   "programa_id": 16,
+   "codigo": "PC013",
+   "nombre": "Marco lógico",
+   "creditos": 2.0
+  },
+  {
+   "id": 16030,
+   "programa_id": 16,
+   "codigo": "DD090",
+   "nombre": "Ética y responsabilidad social corporativa",
+   "creditos": 3.0
+  },
+  {
+   "id": 16031,
+   "programa_id": 16,
+   "codigo": "PC002",
+   "nombre": "Teoría del desarrollo y la cooperación",
+   "creditos": 3.0
+  },
+  {
+   "id": 16032,
+   "programa_id": 16,
+   "codigo": "TR047",
+   "nombre": "Dirección financiera",
+   "creditos": 3.0
+  },
+  {
+   "id": 16033,
+   "programa_id": 16,
+   "codigo": "DD102",
+   "nombre": "Resolución/transformación de conflictos en el ámbito comunitario",
+   "creditos": 2.0
+  },
+  {
+   "id": 16034,
+   "programa_id": 16,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 17001,
+   "programa_id": 17,
+   "codigo": "DD050",
+   "nombre": "Introducción de proyectos",
+   "creditos": 1.0
+  },
+  {
+   "id": 17002,
+   "programa_id": 17,
+   "codigo": "DD051",
+   "nombre": "Diseño de sistemas proyectuales",
+   "creditos": 2.0
+  },
+  {
+   "id": 17003,
+   "programa_id": 17,
+   "codigo": "DD052",
+   "nombre": "Análisis de los servicios a prestar",
+   "creditos": 2.0
+  },
+  {
+   "id": 17004,
+   "programa_id": 17,
+   "codigo": "DD053",
+   "nombre": "Análisis funcional en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 17005,
+   "programa_id": 17,
+   "codigo": "DD054",
+   "nombre": "La ergonomía en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 17006,
+   "programa_id": 17,
+   "codigo": "DD055",
+   "nombre": "Seguridad y fiabilidad en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 17007,
+   "programa_id": 17,
+   "codigo": "DD056",
+   "nombre": "Medio ambiente en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 17008,
+   "programa_id": 17,
+   "codigo": "DD057",
+   "nombre": "Las especificaciones en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 17009,
+   "programa_id": 17,
+   "codigo": "DD058",
+   "nombre": "Elaboración del anteproyecto",
+   "creditos": 3.0
+  },
+  {
+   "id": 17010,
+   "programa_id": 17,
+   "codigo": "DD070",
+   "nombre": "Introducción a la gestión de proyectos",
+   "creditos": 1.0
+  },
+  {
+   "id": 17011,
+   "programa_id": 17,
+   "codigo": "TR038",
+   "nombre": "Planificación y gestión de proyectos",
+   "creditos": 3.0
+  },
+  {
+   "id": 17012,
+   "programa_id": 17,
+   "codigo": "AU010",
+   "nombre": "Gestión integral de diseño y de producto",
+   "creditos": 2.0
+  },
+  {
+   "id": 17013,
+   "programa_id": 17,
+   "codigo": "DD073",
+   "nombre": "Seguimiento y control del proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 17014,
+   "programa_id": 17,
+   "codigo": "AU011",
+   "nombre": "Ámbitos del diseño. Condicionantes del contexto y requerimientos del usuario",
+   "creditos": 2.0
+  },
+  {
+   "id": 17015,
+   "programa_id": 17,
+   "codigo": "DD075",
+   "nombre": "Gestión de la confianza: riesgo y calidad",
+   "creditos": 2.0
+  },
+  {
+   "id": 17016,
+   "programa_id": 17,
+   "codigo": "AU012",
+   "nombre": "La innovación como herramienta de mejora y aporte de valor al producto",
+   "creditos": 2.0
+  },
+  {
+   "id": 17017,
+   "programa_id": 17,
+   "codigo": "AU013",
+   "nombre": "Producto y medio ambiente",
+   "creditos": 2.0
+  },
+  {
+   "id": 17018,
+   "programa_id": 17,
+   "codigo": "DD077",
+   "nombre": "Comunicación del proyecto",
+   "creditos": 1.0
+  },
+  {
+   "id": 17019,
+   "programa_id": 17,
+   "codigo": "AU014",
+   "nombre": "Teoría del objetivo",
+   "creditos": 1.0
+  },
+  {
+   "id": 17020,
+   "programa_id": 17,
+   "codigo": "DD076",
+   "nombre": "Gestión sin distancias",
+   "creditos": 1.0
+  },
+  {
+   "id": 17021,
+   "programa_id": 17,
+   "codigo": "DD044",
+   "nombre": "Técnicas de presentación en público",
+   "creditos": 1.0
+  },
+  {
+   "id": 17022,
+   "programa_id": 17,
+   "codigo": "TR026",
+   "nombre": "Administración y dirección de empresas",
+   "creditos": 3.0
+  },
+  {
+   "id": 17023,
+   "programa_id": 17,
+   "codigo": "DD014",
+   "nombre": "Dirección y planificación estratégica",
+   "creditos": 3.0
+  },
+  {
+   "id": 17024,
+   "programa_id": 17,
+   "codigo": "AU015",
+   "nombre": "Relaciones entre innovación, creatividad, productividad y competitividad",
+   "creditos": 2.0
+  },
+  {
+   "id": 17025,
+   "programa_id": 17,
+   "codigo": "AU016",
+   "nombre": "El diseño de producto y los actores de innovación tecnológica",
+   "creditos": 2.0
+  },
+  {
+   "id": 17026,
+   "programa_id": 17,
+   "codigo": "DD068",
+   "nombre": "Gestión del conocimiento y aprendizaje organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 17027,
+   "programa_id": 17,
+   "codigo": "AU017",
+   "nombre": "Diseño rentable y estratégico",
+   "creditos": 3.0
+  },
+  {
+   "id": 17028,
+   "programa_id": 17,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 18001,
+   "programa_id": 18,
+   "codigo": "DD050",
+   "nombre": "Introducción de proyectos",
+   "creditos": 1.0
+  },
+  {
+   "id": 18002,
+   "programa_id": 18,
+   "codigo": "DD051",
+   "nombre": "Diseño de sistemas proyectuales",
+   "creditos": 2.0
+  },
+  {
+   "id": 18003,
+   "programa_id": 18,
+   "codigo": "DD052",
+   "nombre": "Análisis de los servicios a prestar",
+   "creditos": 2.0
+  },
+  {
+   "id": 18004,
+   "programa_id": 18,
+   "codigo": "DD053",
+   "nombre": "Análisis funcional en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 18005,
+   "programa_id": 18,
+   "codigo": "DD054",
+   "nombre": "La ergonomía en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 18006,
+   "programa_id": 18,
+   "codigo": "DD055",
+   "nombre": "Seguridad y fiabilidad en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 18007,
+   "programa_id": 18,
+   "codigo": "DD056",
+   "nombre": "Medio ambiente en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 18008,
+   "programa_id": 18,
+   "codigo": "DD057",
+   "nombre": "Las Especificaciones en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 18009,
+   "programa_id": 18,
+   "codigo": "DD058",
+   "nombre": "Elaboración del anteproyecto",
+   "creditos": 3.0
+  },
+  {
+   "id": 18010,
+   "programa_id": 18,
+   "codigo": "DD070",
+   "nombre": "Introducción a la gestión de proyectos",
+   "creditos": 1.0
+  },
+  {
+   "id": 18011,
+   "programa_id": 18,
+   "codigo": "TR038",
+   "nombre": "Planificación y gestión de proyectos",
+   "creditos": 3.0
+  },
+  {
+   "id": 18012,
+   "programa_id": 18,
+   "codigo": "AU001",
+   "nombre": "Interrelaciones entre urbanismo y arquitectura",
+   "creditos": 2.0
+  },
+  {
+   "id": 18013,
+   "programa_id": 18,
+   "codigo": "DD073",
+   "nombre": "Seguimiento y control de producto",
+   "creditos": 2.0
+  },
+  {
+   "id": 18014,
+   "programa_id": 18,
+   "codigo": "AU002",
+   "nombre": "El medio ambiente en proyectos urbano-arquitectónicos",
+   "creditos": 2.0
+  },
+  {
+   "id": 18015,
+   "programa_id": 18,
+   "codigo": "DD075",
+   "nombre": "Gestión de la confianza: riesgo y calidad",
+   "creditos": 2.0
+  },
+  {
+   "id": 18016,
+   "programa_id": 18,
+   "codigo": "AU003",
+   "nombre": "Impacto de la tecnología en proyectos urbano-arquitectónicos",
+   "creditos": 2.0
+  },
+  {
+   "id": 18017,
+   "programa_id": 18,
+   "codigo": "AU004",
+   "nombre": "Componentes contextuales del proyecto: económicos, Sociales, instituciones y culturales",
+   "creditos": 2.0
+  },
+  {
+   "id": 18018,
+   "programa_id": 18,
+   "codigo": "AU005",
+   "nombre": "Marketing de la ciudad",
+   "creditos": 2.0
+  },
+  {
+   "id": 18019,
+   "programa_id": 18,
+   "codigo": "AU006",
+   "nombre": "Teoría del proyecto urbano-arquitectónico",
+   "creditos": 1.0
+  },
+  {
+   "id": 18020,
+   "programa_id": 18,
+   "codigo": "DD076",
+   "nombre": "Gestión sin distancias",
+   "creditos": 1.0
+  },
+  {
+   "id": 18021,
+   "programa_id": 18,
+   "codigo": "DD044",
+   "nombre": "Técnicas de presentación en público",
+   "creditos": 1.0
+  },
+  {
+   "id": 18022,
+   "programa_id": 18,
+   "codigo": "TR026",
+   "nombre": "Administración y dirección de empresas",
+   "creditos": 3.0
+  },
+  {
+   "id": 18023,
+   "programa_id": 18,
+   "codigo": "DD014",
+   "nombre": "Dirección y planificación estratégica",
+   "creditos": 3.0
+  },
+  {
+   "id": 18024,
+   "programa_id": 18,
+   "codigo": "AU007",
+   "nombre": "Preservación del patrimonio urbano-arquitectónico",
+   "creditos": 2.0
+  },
+  {
+   "id": 18025,
+   "programa_id": 18,
+   "codigo": "DD041",
+   "nombre": "Técnicas de dirección de equipos de trabajo",
+   "creditos": 2.0
+  },
+  {
+   "id": 18026,
+   "programa_id": 18,
+   "codigo": "DD068",
+   "nombre": "Gestión del conocimiento y aprendizaje organizacional",
+   "creditos": 2.0
+  },
+  {
+   "id": 18027,
+   "programa_id": 18,
+   "codigo": "AU008",
+   "nombre": "La función del estado",
+   "creditos": 3.0
+  },
+  {
+   "id": 18028,
+   "programa_id": 18,
+   "codigo": "FP092",
+   "nombre": "Metodología de la investigación científica",
+   "creditos": 3.0
+  },
+  {
+   "id": 19001,
+   "programa_id": 19,
+   "codigo": "DO005",
+   "nombre": "Metodología de la Investigación I. Fundamentos",
+   "creditos": 6.0
+  },
+  {
+   "id": 19002,
+   "programa_id": 19,
+   "codigo": "DO0014",
+   "nombre": "Metodología de la Investigación II. Paradigmas y Métodos",
+   "creditos": 3.0
+  },
+  {
+   "id": 19003,
+   "programa_id": 19,
+   "codigo": "DO011",
+   "nombre": "Seminario de Investigación (ficha doctoral)",
+   "creditos": 3.0
+  },
+  {
+   "id": 19004,
+   "programa_id": 19,
+   "codigo": "FP117",
+   "nombre": "Teorías del aprendizaje y bases metodológicas de la formación",
+   "creditos": 4.0
+  },
+  {
+   "id": 19005,
+   "programa_id": 19,
+   "codigo": "FP118",
+   "nombre": "Diseño curricular y programación",
+   "creditos": 4.0
+  },
+  {
+   "id": 19006,
+   "programa_id": 19,
+   "codigo": "FP119",
+   "nombre": "Factores de aprendizaje",
+   "creditos": 6.0
+  },
+  {
+   "id": 19007,
+   "programa_id": 19,
+   "codigo": "FP120",
+   "nombre": "Creación, adaptación y evaluación de materiales",
+   "creditos": 5.0
+  },
+  {
+   "id": 19008,
+   "programa_id": 19,
+   "codigo": "FP121",
+   "nombre": "Desarrollo de competencias",
+   "creditos": 4.0
+  },
+  {
+   "id": 19009,
+   "programa_id": 19,
+   "codigo": "FP122",
+   "nombre": "Fundamentos de la educación especial: procesos de atención a la diversidad",
+   "creditos": 4.0
+  },
+  {
+   "id": 19010,
+   "programa_id": 19,
+   "codigo": "FP123",
+   "nombre": "Orientación educativa y tutoría",
+   "creditos": 6.0
+  },
+  {
+   "id": 19011,
+   "programa_id": 19,
+   "codigo": "FP124",
+   "nombre": "Didáctica aplicada",
+   "creditos": 6.0
+  },
+  {
+   "id": 19012,
+   "programa_id": 19,
+   "codigo": "FP125",
+   "nombre": "Actividad física aplicada a la educación, salud y rendimiento",
+   "creditos": 6.0
+  },
+  {
+   "id": 19013,
+   "programa_id": 19,
+   "codigo": "FP126",
+   "nombre": "Las TIC en la educación y las teorías de aprendizaje",
+   "creditos": 3.0
+  },
+  {
+   "id": 19014,
+   "programa_id": 19,
+   "codigo": "FP127",
+   "nombre": "Organización y gestión de centros educativos",
+   "creditos": 6.0
+  },
+  {
+   "id": 19015,
+   "programa_id": 19,
+   "codigo": "DO006",
+   "nombre": "Trabajo de Investigación I",
+   "creditos": 5.0
+  },
+  {
+   "id": 19016,
+   "programa_id": 19,
+   "codigo": "DO007",
+   "nombre": "Trabajo de Investigación II",
+   "creditos": 5.0
+  },
+  {
+   "id": 19017,
+   "programa_id": 19,
+   "codigo": "DO008",
+   "nombre": "Propuesta de la tesis",
+   "creditos": 4.0
+  },
+  {
+   "id": 19018,
+   "programa_id": 19,
+   "codigo": "DO009",
+   "nombre": "Elaboración de la tesis",
+   "creditos": 15.0
+  },
+  {
+   "id": 19019,
+   "programa_id": 19,
+   "codigo": "DO010",
+   "nombre": "Disertación de la tesis",
+   "creditos": 10.0
+  },
+  {
+   "id": 20001,
+   "programa_id": 20,
+   "codigo": "DD070",
+   "nombre": "Introducción a la gestión de proyectos",
+   "creditos": 2.0
+  },
+  {
+   "id": 20002,
+   "programa_id": 20,
+   "codigo": "TR038",
+   "nombre": "Planificación y programación de proyectos",
+   "creditos": 2.0
+  },
+  {
+   "id": 20003,
+   "programa_id": 20,
+   "codigo": "DD073",
+   "nombre": "Control del proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 20004,
+   "programa_id": 20,
+   "codigo": "DO005",
+   "nombre": "Metodología de la Investigación I. Fundamentos",
+   "creditos": 6.0
+  },
+  {
+   "id": 20005,
+   "programa_id": 20,
+   "codigo": "DO0014",
+   "nombre": "Metodología de la Investigación II. Paradigmas y Métodos",
+   "creditos": 3.0
+  },
+  {
+   "id": 20006,
+   "programa_id": 20,
+   "codigo": "DO011",
+   "nombre": "Seminario de Investigación (ficha doctoral)",
+   "creditos": 3.0
+  },
+  {
+   "id": 20007,
+   "programa_id": 20,
+   "codigo": "DD026",
+   "nombre": "Entornos virtuales de trabajo colaborativo",
+   "creditos": 1.0
+  },
+  {
+   "id": 20008,
+   "programa_id": 20,
+   "codigo": "DD235",
+   "nombre": "Introducción al diseño del proyecto: del conflicto al problema técnico",
+   "creditos": 2.0
+  },
+  {
+   "id": 20009,
+   "programa_id": 20,
+   "codigo": "DD236",
+   "nombre": "Diseño de sistemas-soluciones en proyectos",
+   "creditos": 2.0
+  },
+  {
+   "id": 20010,
+   "programa_id": 20,
+   "codigo": "DD237",
+   "nombre": "Servicio deseado y las condiciones de prestación",
+   "creditos": 2.0
+  },
+  {
+   "id": 20011,
+   "programa_id": 20,
+   "codigo": "DD238",
+   "nombre": "Sistema-solución: análisis funcional en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 20012,
+   "programa_id": 20,
+   "codigo": "DO012",
+   "nombre": "Taller transversal I",
+   "creditos": 2.0
+  },
+  {
+   "id": 20013,
+   "programa_id": 20,
+   "codigo": "DD239",
+   "nombre": "Roles de las personas en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 20014,
+   "programa_id": 20,
+   "codigo": "DD240",
+   "nombre": "Seguridad y fiabilidad en el proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 20015,
+   "programa_id": 20,
+   "codigo": "DD241",
+   "nombre": "Viabilidad medioambiental del proyecto",
+   "creditos": 2.0
+  },
+  {
+   "id": 20016,
+   "programa_id": 20,
+   "codigo": "DO013",
+   "nombre": "Taller transversal II",
+   "creditos": 2.0
+  },
+  {
+   "id": 20017,
+   "programa_id": 20,
+   "codigo": "DD242",
+   "nombre": "Propuesta del proyecto: especificaciones",
+   "creditos": 2.0
+  },
+  {
+   "id": 20018,
+   "programa_id": 20,
+   "codigo": "DD243",
+   "nombre": "Elaboración del anteproyecto",
+   "creditos": 3.0
+  },
+  {
+   "id": 20019,
+   "programa_id": 20,
+   "codigo": "DO006",
+   "nombre": "Trabajo de Investigación I",
+   "creditos": 5.0
+  },
+  {
+   "id": 20020,
+   "programa_id": 20,
+   "codigo": "DO007",
+   "nombre": "Trabajo de Investigación II",
+   "creditos": 5.0
+  },
+  {
+   "id": 20021,
+   "programa_id": 20,
+   "codigo": "DO00248",
+   "nombre": "Propuesta de la tesis",
+   "creditos": 4.0
+  },
+  {
+   "id": 20022,
+   "programa_id": 20,
+   "codigo": "DO009",
+   "nombre": "Elaboración de la tesis",
+   "creditos": 15.0
+  },
+  {
+   "id": 20023,
+   "programa_id": 20,
+   "codigo": "DO010",
+   "nombre": "Disertación de la tesis",
+   "creditos": 10.0
+  }
+ ],
+ "imparticiones": [
+  {
+   "profesor_email": "profesor.a@example.edu",
+   "asignatura_id": 5047,
+   "curso_academico_id": 2
+  },
+  {
+   "profesor_email": "profesor.a@example.edu",
+   "asignatura_id": 5040,
+   "curso_academico_id": 2
+  },
+  {
+   "profesor_email": "profesor.b@example.edu",
+   "asignatura_id": 5025,
+   "curso_academico_id": 2
+  }
+ ]
 }

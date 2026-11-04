@@ -1,32 +1,38 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api, post } from "../api/cliente";
-import type { ElementoCatalogo, Encuesta, Plantilla } from "../api/tipos";
+import type { AsignaturaCatalogo, CursoCatalogo, Encuesta, Plantilla, ProgramaCatalogo } from "../api/tipos";
 
 export default function NuevaEncuesta() {
   const navegar = useNavigate();
   const [plantillas, setPlantillas] = useState<Plantilla[]>([]);
-  const [programas, setProgramas] = useState<ElementoCatalogo[]>([]);
-  const [asignaturas, setAsignaturas] = useState<ElementoCatalogo[]>([]);
-  const [cursos, setCursos] = useState<ElementoCatalogo[]>([]);
+  const [programas, setProgramas] = useState<ProgramaCatalogo[]>([]);
+  const [asignaturas, setAsignaturas] = useState<AsignaturaCatalogo[]>([]);
+  const [cursos, setCursos] = useState<CursoCatalogo[]>([]);
   const [f, setF] = useState({ plantilla_id: "", programa: "", asignatura: "", curso: "", apertura: "", cierre: "", umbral: "5" });
   const [error, setError] = useState("");
 
   useEffect(() => {
     Promise.all([
       api<Plantilla[]>("/api/plantillas").then((ps) => setPlantillas(ps.filter((p) => p.estado === "Publicada"))),
-      api<ElementoCatalogo[]>("/api/catalogo/programas").then(setProgramas),
-      api<ElementoCatalogo[]>("/api/catalogo/cursos-academicos").then(setCursos),
+      api<ProgramaCatalogo[]>("/api/catalogo/programas").then(setProgramas),
+      api<CursoCatalogo[]>("/api/catalogo/cursos-academicos").then(setCursos),
     ]).catch((e) => setError(e.message));
   }, []);
 
   useEffect(() => {
-    if (f.programa) api<ElementoCatalogo[]>(`/api/catalogo/programas/${f.programa}/asignaturas`).then(setAsignaturas);
+    if (f.programa)
+      api<AsignaturaCatalogo[]>(`/api/catalogo/programas/${f.programa}/asignaturas`).then((as) =>
+        setAsignaturas([...as].sort((a, b) => a.codigo.localeCompare(b.codigo))),
+      );
   }, [f.programa]);
+
+  const niveles = [...new Set(programas.map((p) => p.nivel))];
 
   const campo = (k: keyof typeof f) => ({
     value: f[k],
-    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setF({ ...f, [k]: e.target.value }),
+    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+      setF(k === "programa" ? { ...f, programa: e.target.value, asignatura: "" } : { ...f, [k]: e.target.value }),
   });
 
   async function crear(e: React.FormEvent) {
@@ -42,7 +48,7 @@ export default function NuevaEncuesta() {
         cierre: new Date(f.cierre).toISOString(),
         umbral_minimo: Number(f.umbral),
       });
-      navegar(`/panel/encuestas/${enc.id}`);
+      navegar(`/app/encuestas/${enc.id}`);
     } catch (err) {
       setError((err as Error).message);
     }
@@ -50,26 +56,33 @@ export default function NuevaEncuesta() {
 
   return (
     <form className="tarjeta" onSubmit={crear}>
-      <h2>Nueva encuesta</h2>
       <label>Plantilla (publicada)</label>
       <select {...campo("plantilla_id")} required>
         <option value="" />
         {plantillas.map((p) => <option key={p.id} value={p.id}>{p.nombre} v{p.version}</option>)}
       </select>
-      <label>Programa (CELDA)</label>
+      <label>Programa</label>
       <select {...campo("programa")} required>
         <option value="" />
-        {programas.map((p) => <option key={p.id} value={p.id}>{p.nombre}</option>)}
+        {niveles.map((nivel) => (
+          <optgroup key={nivel} label={nivel}>
+            {programas.filter((p) => p.nivel === nivel).map((p) => <option key={p.id} value={p.id}>{p.nombre}</option>)}
+          </optgroup>
+        ))}
       </select>
       <label>Asignatura</label>
-      <select {...campo("asignatura")} required>
+      <select {...campo("asignatura")} required disabled={!f.programa}>
         <option value="" />
-        {asignaturas.map((a) => <option key={a.id} value={a.id}>{a.nombre}</option>)}
+        {asignaturas.map((a) => (
+          <option key={a.id} value={a.id}>
+            {a.codigo} · {a.nombre}{a.creditos !== null ? ` (${a.creditos} cr.)` : ""}
+          </option>
+        ))}
       </select>
       <label>Curso académico</label>
       <select {...campo("curso")} required>
         <option value="" />
-        {cursos.map((c) => <option key={c.id} value={c.id}>{c.etiqueta}</option>)}
+        {cursos.map((c) => <option key={c.id} value={c.id}>{c.etiqueta}{c.activo ? " (activo)" : ""}</option>)}
       </select>
       <label>Apertura</label>
       <input type="datetime-local" {...campo("apertura")} required />

@@ -73,8 +73,23 @@ export interface Participacion {
   alcanza_umbral: boolean;
 }
 
-export interface ElementoCatalogo {
+export interface ProgramaCatalogo {
   id: number;
-  nombre?: string;
-  etiqueta?: string;
+  nombre: string;
+  nivel: string;
+  departamento: string | null;
+}
+
+export interface AsignaturaCatalogo {
+  id: number;
+  programa_id: number;
+  codigo: string;
+  nombre: string;
+  creditos: number | null;
+}
+
+export interface CursoCatalogo {
+  id: number;
+  etiqueta: string;
+  activo: boolean;
 }

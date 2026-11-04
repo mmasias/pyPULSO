@@ -20,13 +20,21 @@ from app.core.config import get_settings
 class Programa:
     id: int
     nombre: str
+    nivel: str = ""
+    departamento: str | None = None
 
 
 @dataclass(frozen=True)
 class Asignatura:
     id: int
     programa_id: int
+    codigo: str
     nombre: str
+    creditos: float | None = None
+
+    @property
+    def etiqueta(self) -> str:
+        return f"{self.codigo} {self.nombre}"
 
 
 @dataclass(frozen=True)
@@ -65,23 +73,31 @@ class StubCatalogoCelda:
             for email in p.get("directores", [])
         }
 
+    @staticmethod
+    def _programa(p: dict) -> Programa:
+        return Programa(p["id"], p["nombre"], p.get("nivel", ""), p.get("departamento"))
+
+    @staticmethod
+    def _asignatura(a: dict) -> Asignatura:
+        return Asignatura(a["id"], a["programa_id"], a["codigo"], a["nombre"], a.get("creditos"))
+
     def programas(self) -> list[Programa]:
-        return [Programa(p["id"], p["nombre"]) for p in self._programas.values()]
+        return [self._programa(p) for p in self._programas.values()]
 
     def programa(self, programa_id: int) -> Programa | None:
         p = self._programas.get(programa_id)
-        return Programa(p["id"], p["nombre"]) if p else None
+        return self._programa(p) if p else None
 
     def asignaturas(self, programa_id: int) -> list[Asignatura]:
         return [
-            Asignatura(a["id"], a["programa_id"], a["nombre"])
+            self._asignatura(a)
             for a in self._asignaturas.values()
             if a["programa_id"] == programa_id
         ]
 
     def asignatura(self, asignatura_id: int) -> Asignatura | None:
         a = self._asignaturas.get(asignatura_id)
-        return Asignatura(a["id"], a["programa_id"], a["nombre"]) if a else None
+        return self._asignatura(a) if a else None
 
     def cursos_academicos(self) -> list[CursoAcademico]:
         return [CursoAcademico(c["id"], c["etiqueta"], c["activo"]) for c in self._cursos.values()]
