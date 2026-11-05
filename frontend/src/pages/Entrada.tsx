@@ -31,7 +31,7 @@ export default function Entrada() {
 
   return (
     <Marco>
-      <Titular titulo="PULSO" subtitulo="Encuestas de satisfacción docente de la Universidad Internacional Iberoamericana" />
+      <Titular titulo="PULSO" subtitulo="Encuestas de satisfacción anónimas" />
       <main>
         <div className="entrada">
           <form className="tarjeta" onSubmit={entrar} autoComplete="off">
