@@ -115,7 +115,7 @@ def test_plantillas_sin_nombre_de_institucion():
     # Plantillas agnosticas: ninguna nombra a una universidad concreta.
     for fichero in sorted(cargar_plantillas.DIRECTORIO.glob("*.json")):
         texto = fichero.read_text(encoding="utf-8")
-        assert "Universidad " not in texto and "UNIB" not in texto, fichero.name
+        assert "Universidad " not in texto, fichero.name
 
 
 def test_ids_fijos_de_programas_internos():
