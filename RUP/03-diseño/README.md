@@ -2,7 +2,7 @@
 
 ## Identidad visual
 
-Estética de UNIB tomada de unib.org: verde `#006d68` (oscuro `#005d58`), dorado `#cdb380`, casi negro `#2b2926`, extraídos de `themes/unini/css/global.min.css`; tipografías Roboto (títulos, botones) y Open Sans (texto); barra superior verde, cabecera blanca con el logo (`frontend/public/logo-unib.svg`, copia local) y filete dorado, botones en mayúsculas de esquinas casi rectas. Variables en `frontend/src/estilos.css`.
+Identidad visual neutra, sin marca de ninguna institución: logotipo de texto "PULSO", azul pizarra `#2c4a6e` como color de marca, tipografías del sistema (sin Google Fonts ni otra dependencia externa), modo claro y oscuro. Adaptarla a una institución consiste en redefinir las variables de marca al principio de `frontend/src/estilos.css` (`--marca`, `--marca-oscuro`, `--marca-claro`, `--marca-fondo`, `--resalte`, `--oscuro`, `--sobre-marca`, y las fuentes `--fuente-texto` y `--fuente-titulos`), en el bloque claro y en el oscuro; el resto de la hoja solo usa variables. Un logotipo en imagen requiere además cambiar el enlace `.marca` de `frontend/src/Marco.tsx` y, si se sirve desde otro origen, `img-src` en la CSP.
 
 ## Navegación
 
@@ -27,7 +27,7 @@ Estructura del backend, misma división que pyCelda: `models/` (entidades y regl
 
 ## Integración con CELDA
 
-CELDA no expone hoy una API para satélites, y UNIB no está aún en CELDA. El stub de desarrollo contiene el catálogo público de UNIB (20 programas, 783 asignaturas con código y créditos), más los programas internos PAS y FACULTAD (ids fijos 9001 y 9002) y una asignatura `ENC ENCUESTA` por programa (id programa * 1000 + 999), regenerable con `python3 -I scripts/generar_catalogo_unib.py > app/data/celda_stub.json`. Profesores y director son identidades ficticias de desarrollo. El puerto `CatalogoCelda` (`app/celda/catalogo.py`) define exactamente lo que PULSO necesita: programas, asignaturas, cursos académicos, `imparte(email, asignatura, curso)` y `dirige(email, programa)`. La implementación real sustituirá al stub sin cambios en servicios ni routers.
+CELDA no expone hoy una API para satélites. El stub (`StubCatalogoCelda`) lee un JSON indicado por `CELDA_STUB_PATH`; el del repositorio (`app/data/celda_stub.json`) es un catálogo de ejemplo ficticio: 5 programas, más los programas internos PAS y FACULTAD (ids fijos 9001 y 9002) y una asignatura `ENC ENCUESTA` por programa (id programa * 1000 + 999). Profesores y director son identidades ficticias de desarrollo. El catálogo de una institución sigue la misma estructura (`cursos_academicos`, `programas`, `asignaturas`, `imparticiones`) y las mismas reglas de ids, que `tests/test_plantillas_institucionales.py` comprueba sobre el fichero del repositorio, y va fuera del repositorio para que `git pull` no lo sobrescriba. El puerto `CatalogoCelda` (`app/celda/catalogo.py`) define exactamente lo que PULSO necesita: programas, asignaturas, cursos académicos, `imparte(email, asignatura, curso)` y `dirige(email, programa)`. La implementación real sustituirá al stub sin cambios en servicios ni routers.
 
 `Encuesta` guarda el identificador CELDA y una copia de la etiqueta legible (`*_nombre`, `curso_academico_etiqueta`): el dato sigue teniendo un único dueño, y el histórico de resultados sigue siendo legible si CELDA renombra o archiva.
 
@@ -73,7 +73,7 @@ Variables en [`backend/.env.example`](../../backend/.env.example):
 | `SESSION_SECRET` | Firma de la cookie de sesión; obligatorio (>= 32 caracteres) fuera de dev. Cambiarlo cierra todas las sesiones |
 | `GESTORES_EMAILS` | Emails con rol Gestor de calidad, separados por comas. Solo tiene efecto a través de `X-Dev-User` en dev; las sesiones solo se emiten para `ACCESO_USUARIO` |
 | `FRONTEND_URL` | Origen permitido por CORS |
-| `CELDA_STUB_PATH` | JSON del catálogo simulado. Por defecto, el catálogo de UNIB generado por `scripts/generar_catalogo_unib.py`; los tests usan `tests/celda_test.json` |
+| `CELDA_STUB_PATH` | JSON del catálogo simulado. Por defecto, el catálogo de ejemplo del repositorio; los tests usan `tests/celda_test.json` |
 
 ## Modelo de datos
 

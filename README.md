@@ -76,14 +76,14 @@ npm install
 npm run dev                   # http://localhost:5173 (proxy /api -> :8000)
 ```
 
-La página de entrada (`/`) tiene el login del personal (usuario y contraseña) y el acceso del alumno (`/participar`); el resto de la aplicación (`/app`) exige sesión. La cuenta de acceso se configura en `backend/.env` (`ACCESO_USUARIO` y `ACCESO_CLAVE_HASH`, generado con `python3 -m app.core.claves`) y tiene rol Gestor de calidad. El catálogo es el de UNIB (20 programas y 783 asignaturas extraídos de unib.org por `backend/scripts/generar_catalogo_unib.py`, más los programas internos PAS y FACULTAD y una asignatura `ENC · ENCUESTA` por programa: 22 programas y 805 asignaturas); profesores y director, sin cuenta con contraseña todavía, son identidades ficticias que solo se usan en desarrollo por la cabecera `X-Dev-User` (tests y `curl`):
+La página de entrada (`/`) tiene el login del personal (usuario y contraseña) y el acceso del alumno (`/participar`); el resto de la aplicación (`/app`) exige sesión. La cuenta de acceso se configura en `backend/.env` (`ACCESO_USUARIO` y `ACCESO_CLAVE_HASH`, generado con `python3 -m app.core.claves`) y tiene rol Gestor de calidad. El catálogo es un ejemplo ficticio (`backend/app/data/celda_stub.json`: 5 programas de grado, máster y doctorado, más los programas internos PAS y FACULTAD y una asignatura `ENC · ENCUESTA` por programa: 7 programas y 30 asignaturas). Para usar el de una institución, `CELDA_STUB_PATH` apunta a un JSON con la misma estructura (ver [Diseño](RUP/03-diseño/README.md#integración-con-celda)); profesores y director, sin cuenta con contraseña todavía, son identidades ficticias que solo se usan en desarrollo por la cabecera `X-Dev-User` (tests y `curl`):
 
 | Identidad | Rol |
 |---|---|
 | El email de `GESTORES_EMAILS` | Gestor de calidad |
-| `director.programa@example.edu` | Director de la Maestría en Dirección Estratégica con Especialidad en Tecnologías de la Información |
-| `profesor.a@example.edu` | Imparte TI041 y TI043 de esa maestría en 2026-2027 |
-| `profesor.b@example.edu` | Imparte DD014 de esa maestría en 2026-2027 |
+| `director.programa@example.edu` | Director del Máster en Dirección de Proyectos |
+| `profesor.a@example.edu` | Imparte DP01 y DP02 de ese máster en 2026-2027 |
+| `profesor.b@example.edu` | Imparte DP04 de ese máster en 2026-2027 |
 
 ### Stack
 
@@ -98,7 +98,7 @@ La página de entrada (`/`) tiene el login del personal (usuario y contraseña) 
 | Compilación del frontend | Node.js + npm | >= 20.19 o >= 22.12 (lo exige Vite 8); probado con 24 | Solo para compilar |
 | Proxy inverso / TLS | Caddy (como pyCelda) | 2.x | Servidor |
 
-Dependencias externas en ejecución: solo Google Fonts (Roboto y Open Sans, desde `fonts.googleapis.com` y `fonts.gstatic.com`). Sin correo, colas ni servicios de terceros; el catálogo de UNIB va dentro del repositorio (`backend/app/data/celda_stub.json`).
+Dependencias externas en ejecución: ninguna. Tipografías del sistema, sin correo, colas ni servicios de terceros; el catálogo va en un fichero JSON local (`CELDA_STUB_PATH`).
 
 ### Despliegue en servidor
 
@@ -214,7 +214,7 @@ pulso.<dominio> {
     }
     header {
         Strict-Transport-Security "max-age=31536000; includeSubDomains"
-        Content-Security-Policy "default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+        Content-Security-Policy "default-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
     }
     log {
         output file /var/log/caddy/pulso.log {
@@ -272,6 +272,8 @@ sudo -u pulso -H sh -c 'set -a; . ./.env; set +a; .venv/bin/python -m app.cargar
 cd ../frontend && sudo -u pulso -H npm ci && sudo -u pulso -H npm run build
 sudo systemctl restart pulso
 ```
+
+Catálogo propio: si `CELDA_STUB_PATH` apunta al fichero del repositorio (`app/data/celda_stub.json`), `git pull` lo sustituye por la versión del repositorio, y las encuestas existentes quedan apuntando a ids de programa y asignatura que pueden haber cambiado. El catálogo de una institución va fuera del repositorio (por ejemplo, `/opt/pulso/catalogo.json`) con `CELDA_STUB_PATH` apuntando a él.
 
 #### Límites conocidos del despliegue
 
