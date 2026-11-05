@@ -16,7 +16,7 @@ function roles(yo: Yo): string {
 
 function titular(ruta: string, yo: Yo): [string, string] {
   if (ruta.startsWith("/app/plantillas")) return ["Plantillas", "Catálogo institucional de cuestionarios"];
-  if (ruta.startsWith("/app/encuestas/nueva")) return ["Nueva encuesta", "Sobre el catálogo académico de UNIB"];
+  if (ruta.startsWith("/app/encuestas/nueva")) return ["Nueva encuesta", "Sobre el catálogo académico"];
   if (ruta.startsWith("/app/encuestas/")) return ["Encuesta", "Participación y resultados"];
   return ["Encuestas", yo.es_gestor ? "Todas las encuestas" : "Resultados publicados de sus asignaturas y programas"];
 }

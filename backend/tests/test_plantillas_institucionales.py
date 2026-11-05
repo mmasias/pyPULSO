@@ -108,8 +108,14 @@ def test_plantilla_facultad():
         "Datos generales": 2, "Estructura y calidad del programa": 12,
         "Gestión y resultados de la docencia": 10, "Instalaciones, infraestructuras y servicios": 5,
         "Soporte a la docencia": 4, "Motivación y satisfacción": 4, "Observaciones": 1}
-    assert "Universidad Internacional Iberoamericana" in preguntas[-2].enunciado
-    assert not any("Europea" in p.enunciado for p in preguntas)
+    assert preguntas[-2].enunciado == "Me siento satisfecho de manera general con la universidad."
+
+
+def test_plantillas_sin_nombre_de_institucion():
+    # Plantillas agnosticas: ninguna nombra a una universidad concreta.
+    for fichero in sorted(cargar_plantillas.DIRECTORIO.glob("*.json")):
+        texto = fichero.read_text(encoding="utf-8")
+        assert "Universidad " not in texto and "UNIB" not in texto, fichero.name
 
 
 def test_ids_fijos_de_programas_internos():
