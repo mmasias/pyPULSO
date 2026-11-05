@@ -1,9 +1,9 @@
 {
- "_fuente": "UNIB, 'Encuestas de satisfacción' (Encuestas-satisfaccion-Esp_v0r1), 3. Encuestas de satisfacción de la facultad, págs. 9-12. Texto literal salvo la corrección anotada.",
+ "_fuente": "Instrumento institucional 'Encuestas de satisfacción' (v0r1), 3. Encuestas de satisfacción de la facultad, págs. 9-12. Texto literal salvo la corrección anotada.",
  "_notas": [
   "Escala de valoración del instrumento: 1 'nada satisfecho o en total desacuerdo', 7 'totalmente satisfecho o en total acuerdo' (tipo likert7).",
   "Cabecera 'Curso académico' y 'Titulación': no son preguntas; los aporta el contexto de la encuesta.",
-  "CORRECCIÓN del original: la pregunta 35 decía 'Universidad Europea del Atlántico' (errata de copia); se carga 'Universidad Internacional Iberoamericana'.",
+  "ADAPTACIÓN del original: la pregunta 35 nombraba a la institución; se carga con la expresión genérica 'la universidad'.",
   "Datos generales opcionales. Se lanza en el programa interno FACULTAD (resultados solo para el gestor): por programa, el director vería resultados de pocos docentes, identificables por sexo y edad, sobre su propia dirección y el clima laboral."
  ],
  "nombre": "Encuesta de satisfacción de la facultad",
@@ -240,7 +240,7 @@
   {
    "seccion": "Motivación y satisfacción",
    "tipo": "likert7",
-   "enunciado": "Me siento satisfecho de manera general con la Universidad Internacional Iberoamericana.",
+   "enunciado": "Me siento satisfecho de manera general con la universidad.",
    "obligatoria": true
   },
   {
