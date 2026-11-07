@@ -75,6 +75,7 @@ El recorrido de una encuesta, de principio a fin.
 ### Qué garantiza y qué no
 
 - **Garantiza** que, cerrada la encuesta, nadie puede saber qué respondió cada persona.
+- **Se puede comprobar.** El [código de PULSO](https://github.com/mmasias/pyPULSO) es público: cualquiera puede revisar cómo se emiten los códigos, cómo se guardan las respuestas y que nada las liga a quien las dio. Unas pruebas automáticas vigilan que siga siendo así ([`test_anonimato.py`](backend/tests/test_anonimato.py)). No hace falta fiarse de quien administra el sistema.
 - **No oculta quién participó.** Quien reparte los códigos sabe a quién los dio, y el sistema sabe qué códigos se usaron. Es lo mismo que ocurre con cualquier encuesta que controle la participación.
 - **Las preguntas personales restan anonimato.** Sexo, edad o país, combinados en un grupo pequeño, pueden señalar a una persona. Por eso lo habitual es no preguntarlos.
 - **El texto libre es del participante.** Lo que alguien escribe puede delatarle. El formulario lo advierte, y los comentarios solo se muestran por encima del mínimo de participación y en orden aleatorio.
