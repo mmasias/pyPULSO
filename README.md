@@ -94,6 +94,7 @@ PULSO cubre hoy el ciclo completo de una encuesta: plantilla, lanzamiento, parti
 | Conexión con el catálogo de [CELDA](https://github.com/mmasias/pyCeldaPublico) | <sub>Quien organiza: programas y asignaturas sin mantener un fichero aparte</sub> | <sub>Depende de que CELDA exponga su catálogo a otras aplicaciones</sub> |
 | Conexión con PRISMA | <sub>La institución: indicadores sin pasos manuales</sub> | <sub>Los agregados ya existen; falta acordar el formato con PRISMA ([D8](docs/DECISIONES.md))</sub> |
 | Participación limitada a los matriculados | <sub>Departamento de calidad: el código deja de poder cederse</sub> | <sub>Depende de conectarse con los sistemas de gestión académica (GUIAA, AGORA, SG...)</sub> |
+| Origen del colectivo no docente | <sub>Departamento de calidad: encuestas al personal administrativo sin mantener el colectivo a mano</sub> | <sub>CELDA cubre buena parte de los colectivos docentes (programas, profesorado, alumnado, asignaturas). El personal administrativo no está en CELDA: falta decidir de qué sistema se obtiene ([D12](docs/DECISIONES.md))</sub> |
 | Mockups de navegación por perfil | <sub>Validar el recorrido con quien va a usarlo</sub> | <sub>Al completar el RUP, como en [CELDA](https://github.com/mmasias/pyCeldaPublico)</sub> |
 
 PULSO forma parte del [ecosistema CELDA](https://github.com/mmasias/_ECOSISTEMA_CELDA/tree/main#qu%C3%A9). Para instalarlo o contribuir: [Desarrollo](docs/DESARROLLO.md), [Despliegue](docs/DESPLIEGUE.md), [Decisiones](docs/DECISIONES.md) y [RUP](RUP/README.md).
