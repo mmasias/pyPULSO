@@ -84,14 +84,15 @@ El recorrido de una encuesta, de principio a fin.
 
 PULSO cubre hoy el ciclo completo de una encuesta: plantilla, lanzamiento, participación, cierre y publicación. Lo que falta está identificado, y su orden depende del uso real: las prioridades salen de las campañas que se lancen y de lo que pidan quienes las organizan.
 
-| Pendiente | Para quién |
-|---|---|
-| Inicio de sesión institucional | Dirección de programa y profesorado: consultar sus resultados |
-| Cuentas por departamento, bajo la supervisión de calidad | Departamentos que preparan encuestas |
-| Retirar las preguntas personales (sexo, edad, país) de las plantillas incluidas, que las traen del instrumento original | Quien responde: más anonimato ([D14](docs/DECISIONES.md)) |
-| Mínimo de participación institucional, común a todas las encuestas | Departamento de calidad ([D3](docs/DECISIONES.md)) |
-| Conexión con PRISMA y con el catálogo de CELDA | La institución: indicadores sin pasos manuales |
-| Participación limitada a los matriculados (censo del ERP) | Departamento de calidad: el código deja de poder cederse |
-| Mockups de navegación por perfil | Validar el recorrido con quien va a usarlo |
+| Pendiente | Para quién | Situación |
+|---|---|---|
+| Inicio de sesión institucional | Dirección de programa y profesorado: consultar sus resultados | Resuelto en [pyCelda](https://github.com/mmasias/pyCelda); falta incorporarlo a PULSO |
+| Cuentas por departamento, bajo la supervisión de calidad | Departamentos que preparan encuestas | Por hacer en PULSO |
+| Retirar las preguntas personales (sexo, edad, país) de las plantillas incluidas, que las traen del instrumento original | Quien responde: más anonimato | Cambio menor en las plantillas ([D14](docs/DECISIONES.md)) |
+| Mínimo de participación institucional, común a todas las encuestas | Departamento de calidad | Decisión institucional; el mecanismo ya existe por encuesta ([D3](docs/DECISIONES.md)) |
+| Conexión con el catálogo de CELDA | Quien organiza: programas y asignaturas sin mantener un fichero aparte | Depende de que CELDA exponga su catálogo a otras aplicaciones |
+| Conexión con PRISMA | La institución: indicadores sin pasos manuales | Los agregados ya existen; falta acordar el formato con PRISMA ([D8](docs/DECISIONES.md)) |
+| Participación limitada a los matriculados | Departamento de calidad: el código deja de poder cederse | Depende de conectarse con los sistemas de gestión académica (GUIAA, AGORA, SG...) |
+| Mockups de navegación por perfil | Validar el recorrido con quien va a usarlo | Al completar el RUP, como en pyCelda |
 
 PULSO forma parte del [ecosistema CELDA](https://github.com/mmasias/_ECOSISTEMA_CELDA/blob/main/docs/PULSO/README.md). Para instalarlo o contribuir: [Desarrollo](docs/DESARROLLO.md), [Despliegue](docs/DESPLIEGUE.md), [Decisiones](docs/DECISIONES.md) y [RUP](RUP/README.md).
