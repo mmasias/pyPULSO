@@ -7,7 +7,7 @@ emite POST /api/auth/login con usuario y contrasena. v1 tiene una unica
 cuenta, configurada por entorno (ACCESO_USUARIO, ACCESO_CLAVE_HASH), con rol
 Gestor de calidad. El login institucional (previsiblemente el Google OAuth
 de pyCelda) sustituira al endpoint, no a la cookie. Ver
-RUP/03-diseño/README.md#autenticacion.
+RUP/03-diseño/README.md#autenticación.
 
 Solo en dev se acepta ademas la cabecera X-Dev-User, para tests y curl.
 """
