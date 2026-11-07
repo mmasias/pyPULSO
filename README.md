@@ -95,4 +95,4 @@ PULSO cubre hoy el ciclo completo de una encuesta: plantilla, lanzamiento, parti
 | Participación limitada a los matriculados | <sub>Departamento de calidad: el código deja de poder cederse</sub> | <sub>Depende de conectarse con los sistemas de gestión académica (GUIAA, AGORA, SG...)</sub> |
 | Mockups de navegación por perfil | <sub>Validar el recorrido con quien va a usarlo</sub> | <sub>Al completar el RUP, como en [CELDA](https://github.com/mmasias/pyCeldaPublico)</sub> |
 
-PULSO forma parte del [ecosistema CELDA](https://github.com/mmasias/_ECOSISTEMA_CELDA/blob/main/docs/PULSO/README.md). Para instalarlo o contribuir: [Desarrollo](docs/DESARROLLO.md), [Despliegue](docs/DESPLIEGUE.md), [Decisiones](docs/DECISIONES.md) y [RUP](RUP/README.md).
+PULSO forma parte del [ecosistema CELDA](https://github.com/mmasias/_ECOSISTEMA_CELDA/tree/main#qu%C3%A9). Para instalarlo o contribuir: [Desarrollo](docs/DESARROLLO.md), [Despliegue](docs/DESPLIEGUE.md), [Decisiones](docs/DECISIONES.md) y [RUP](RUP/README.md).
