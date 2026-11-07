@@ -58,7 +58,7 @@ CELDA no expone hoy una API para satélites. El stub (`StubCatalogoCelda`) lee u
 | Suplantación en dev | `X-Dev-User` nunca adopta la cuenta de acceso: esa identidad solo se obtiene con contraseña |
 | CSRF | Cookie SameSite=Lax y rechazo de escrituras con `Sec-Fetch-Site` distinto de `same-origin` (cubre subdominios hermanos) |
 
-Límites conocidos: la sesión no tiene estado en servidor (una cookie copiada vale hasta caducar, también tras cambiar la contraseña; solo rotar `SESSION_SECRET` las invalida); el limitador vive en memoria de un proceso (con varios workers hay que moverlo a almacén compartido) y es por IP, sin límite por cuenta; el límite de tamaño no cubre peticiones `chunked` sin `Content-Length` (lo cubre Caddy); CSP y HSTS los pone Caddy (configuración en el [README](../../README.md#despliegue-en-servidor)).
+Límites conocidos: la sesión no tiene estado en servidor (una cookie copiada vale hasta caducar, también tras cambiar la contraseña; solo rotar `SESSION_SECRET` las invalida); el limitador vive en memoria de un proceso (con varios workers hay que moverlo a almacén compartido) y es por IP, sin límite por cuenta; el límite de tamaño no cubre peticiones `chunked` sin `Content-Length` (lo cubre Caddy); CSP y HSTS los pone Caddy (configuración en el [despliegue](../../docs/DESPLIEGUE.md#etccaddycaddyfile)).
 
 ## Configuración
 
