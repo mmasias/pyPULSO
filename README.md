@@ -24,14 +24,14 @@ Las encuestas de satisfacción se hacen hoy con formularios genéricos: Google F
 
 ## ¿Qué?
 
-PULSO es el sitio donde se preparan, se lanzan y se consultan las encuestas de satisfacción de una institución académica. Cada encuesta nace ligada al catálogo: programa, asignatura y curso académico. Sobre esa base, cinco garantías:
+PULSO es el sitio donde se preparan, se lanzan y se consultan las encuestas de satisfacción de una institución académica. Cada encuesta nace ligada al catálogo y a un curso académico, con uno de tres alcances: una asignatura, un programa completo o un colectivo de la institución, como el personal administrativo o el profesorado. Sobre esa base, cinco garantías:
 
 | Garantía | En la práctica |
 |---|---|
 | **Anónima, también frente a quien administra el sistema** | Cada participante recibe un código de un solo uso. El código sirve para entrar y deja de servir, pero la respuesta no guarda nada que permita volver a él. Cerrada la encuesta, ni el departamento de calidad, ni el profesorado, ni quien tenga acceso a la base de datos puede saber qué respondió cada persona ([cómo se garantiza](RUP/02-analisis/anonimato.md)) |
 | **Una persona, una respuesta** | El código se consume al enviar: no admite un segundo envío |
 | **Resultados solo cuando son fiables** | Mientras la encuesta está abierta no se ve ningún resultado, solo cuántos han respondido. Al cerrarla, si no se alcanza el mínimo de participación fijado al crearla, no se muestra nada a nadie |
-| **Con contexto desde el origen** | No hay nada que cruzar: cada respuesta pertenece ya a su programa, asignatura y curso |
+| **Con contexto desde el origen** | No hay nada que cruzar: cada respuesta pertenece ya a su asignatura, programa o colectivo, y a su curso |
 | **Comparable entre cursos** | Las plantillas se versionan: una plantilla publicada no cambia, y las mejoras crean una versión nueva |
 
 ## ¿Para qué?
@@ -88,6 +88,7 @@ PULSO cubre hoy el ciclo completo de una encuesta: plantilla, lanzamiento, parti
 |---|---|---|
 | Inicio de sesión institucional | <sub>Dirección de programa y profesorado: consultar sus resultados</sub> | <sub>Resuelto en [CELDA](https://github.com/mmasias/pyCeldaPublico); falta incorporarlo a PULSO</sub> |
 | Cuentas por departamento, bajo la supervisión de calidad | <sub>Departamentos que preparan encuestas</sub> | <sub>Por hacer en PULSO</sub> |
+| Encuestas de programa e institucionales como alcance propio | <sub>Quien organiza: lanzarlas sin rodeos</sub> | <sub>Hoy se resuelven con un apaño: cada programa tiene en el catálogo una asignatura ficticia `ENCUESTA`, y el personal administrativo y el profesorado tienen sus propios programas internos (`PAS`, `FACULTAD`). Funciona, pero obliga a mantener esas entradas en el catálogo ([D11-D13](docs/DECISIONES.md))</sub> |
 | Retirar las preguntas personales (sexo, edad, país) de las plantillas incluidas, que las traen del instrumento original | <sub>Quien responde: más anonimato</sub> | <sub>Cambio menor en las plantillas ([D14](docs/DECISIONES.md))</sub> |
 | Mínimo de participación institucional, común a todas las encuestas | <sub>Departamento de calidad</sub> | <sub>Decisión institucional; el mecanismo ya existe por encuesta ([D3](docs/DECISIONES.md))</sub> |
 | Conexión con el catálogo de [CELDA](https://github.com/mmasias/pyCeldaPublico) | <sub>Quien organiza: programas y asignaturas sin mantener un fichero aparte</sub> | <sub>Depende de que CELDA exponga su catálogo a otras aplicaciones</sub> |
