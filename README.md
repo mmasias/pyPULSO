@@ -10,7 +10,7 @@ Encuestas de satisfacción anónimas sobre el catálogo académico: cada respues
 
 ## ¿Por qué?
 
-Las encuestas de satisfacción se hacen hoy con formularios genéricos: Google Forms, Microsoft Forms u otros similares. Funcionan para recoger respuestas, pero no para lo que viene antes y después.
+Las encuestas de satisfacción se hacen hoy con formularios genéricos: Google Forms, Microsoft Forms u otros similares. Funcionan para recoger respuestas, pero no para lo que hay que hacer antes (ligar la encuesta a su asignatura y curso, decidir quién puede responder) ni después (cruzar, proteger y comparar los resultados).
 
 <div align=center>
 
