@@ -86,13 +86,13 @@ PULSO cubre hoy el ciclo completo de una encuesta: plantilla, lanzamiento, parti
 
 | Pendiente | Para quién | Situación |
 |---|---|---|
-| Inicio de sesión institucional | Dirección de programa y profesorado: consultar sus resultados | Resuelto en [pyCelda](https://github.com/mmasias/pyCelda); falta incorporarlo a PULSO |
-| Cuentas por departamento, bajo la supervisión de calidad | Departamentos que preparan encuestas | Por hacer en PULSO |
-| Retirar las preguntas personales (sexo, edad, país) de las plantillas incluidas, que las traen del instrumento original | Quien responde: más anonimato | Cambio menor en las plantillas ([D14](docs/DECISIONES.md)) |
-| Mínimo de participación institucional, común a todas las encuestas | Departamento de calidad | Decisión institucional; el mecanismo ya existe por encuesta ([D3](docs/DECISIONES.md)) |
-| Conexión con el catálogo de CELDA | Quien organiza: programas y asignaturas sin mantener un fichero aparte | Depende de que CELDA exponga su catálogo a otras aplicaciones |
-| Conexión con PRISMA | La institución: indicadores sin pasos manuales | Los agregados ya existen; falta acordar el formato con PRISMA ([D8](docs/DECISIONES.md)) |
-| Participación limitada a los matriculados | Departamento de calidad: el código deja de poder cederse | Depende de conectarse con los sistemas de gestión académica (GUIAA, AGORA, SG...) |
-| Mockups de navegación por perfil | Validar el recorrido con quien va a usarlo | Al completar el RUP, como en pyCelda |
+| Inicio de sesión institucional | <sub>Dirección de programa y profesorado: consultar sus resultados</sub> | <sub>Resuelto en [CELDA](https://github.com/mmasias/pyCeldaPublico); falta incorporarlo a PULSO</sub> |
+| Cuentas por departamento, bajo la supervisión de calidad | <sub>Departamentos que preparan encuestas</sub> | <sub>Por hacer en PULSO</sub> |
+| Retirar las preguntas personales (sexo, edad, país) de las plantillas incluidas, que las traen del instrumento original | <sub>Quien responde: más anonimato</sub> | <sub>Cambio menor en las plantillas ([D14](docs/DECISIONES.md))</sub> |
+| Mínimo de participación institucional, común a todas las encuestas | <sub>Departamento de calidad</sub> | <sub>Decisión institucional; el mecanismo ya existe por encuesta ([D3](docs/DECISIONES.md))</sub> |
+| Conexión con el catálogo de [CELDA](https://github.com/mmasias/pyCeldaPublico) | <sub>Quien organiza: programas y asignaturas sin mantener un fichero aparte</sub> | <sub>Depende de que CELDA exponga su catálogo a otras aplicaciones</sub> |
+| Conexión con PRISMA | <sub>La institución: indicadores sin pasos manuales</sub> | <sub>Los agregados ya existen; falta acordar el formato con PRISMA ([D8](docs/DECISIONES.md))</sub> |
+| Participación limitada a los matriculados | <sub>Departamento de calidad: el código deja de poder cederse</sub> | <sub>Depende de conectarse con los sistemas de gestión académica (GUIAA, AGORA, SG...)</sub> |
+| Mockups de navegación por perfil | <sub>Validar el recorrido con quien va a usarlo</sub> | <sub>Al completar el RUP, como en [CELDA](https://github.com/mmasias/pyCeldaPublico)</sub> |
 
 PULSO forma parte del [ecosistema CELDA](https://github.com/mmasias/_ECOSISTEMA_CELDA/blob/main/docs/PULSO/README.md). Para instalarlo o contribuir: [Desarrollo](docs/DESARROLLO.md), [Despliegue](docs/DESPLIEGUE.md), [Decisiones](docs/DECISIONES.md) y [RUP](RUP/README.md).
